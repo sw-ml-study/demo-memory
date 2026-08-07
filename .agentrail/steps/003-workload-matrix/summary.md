@@ -1,0 +1,1 @@
+Added a deterministic four-workload matrix comparing linear and Robin Hood probing in eight stable schema-v1 rows; documented the numeric result contract; added a benchmark runner, correctness invariants, README entry points, and pre-commit coverage.
