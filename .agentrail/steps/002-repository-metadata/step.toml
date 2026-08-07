@@ -1,9 +1,10 @@
 number = 2
 slug = "repository-metadata"
-status = "in-progress"
+status = "completed"
 description = "Make README demo and supporting-document references clickable; add COPYRIGHT ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T16:22:56"
+completed_at = "2026-08-07T16:23:46"
 task_type = "fix"
-commits = []
+commits = ["edcc331a9113e9d59291d6c632034c73a4b166c1"]

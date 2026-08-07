@@ -1,0 +1,1 @@
+Added clickable README links for the demo, implementation, tests, upstream contract, and license; added matching COPYRIGHT and MIT LICENSE files; verified the repository pre-commit gate.
