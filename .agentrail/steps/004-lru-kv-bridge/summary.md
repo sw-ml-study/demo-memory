@@ -1,0 +1,1 @@
+Implemented bounded numeric LRU key/value memory with logical-clock recency, demand loading, promotion, and eviction accounting; added uniform-reuse, hot-set, scan, and bursty benchmark traces with a documented schema; integrated invariants, runner commands, README guidance, and pre-commit coverage.

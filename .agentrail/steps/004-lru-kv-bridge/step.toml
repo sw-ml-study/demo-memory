@@ -1,9 +1,10 @@
 number = 4
 slug = "lru-kv-bridge"
-status = "in-progress"
+status = "completed"
 description = "Implement a bounded deterministic LRU key/value memory in MLPL and benchmark ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T16:50:04"
+completed_at = "2026-08-07T16:51:50"
 task_type = "feature"
-commits = []
+commits = ["9aa9b93690a14da981cb18d9891169503b736c51"]
