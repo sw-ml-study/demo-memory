@@ -1,0 +1,1 @@
+Bootstrapped demo-memory with generated AgentRail instructions, project-specific feature/fix rules, a required pre-commit gate, sane ignores, and the first measured open-addressing demo with tests and upstream contracts.
