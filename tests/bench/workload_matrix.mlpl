@@ -1,0 +1,19 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/workload_matrix.mlpl"
+
+def u:check_matrix(condition, label) { "Exit unsuccessfully when a matrix invariant is false."; if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+
+matrix = u:standard_matrix()
+u:check_matrix(eq(rank(matrix), 2), "matrix rank")
+u:check_matrix(eq(take(shape(matrix), 0, 0), 8), "one pair for each of four workloads")
+u:check_matrix(eq(take(shape(matrix), 0, 1), 15), "schema v1 width")
+u:check_matrix(eq(reduce_add(take(matrix, 1, 0), 0), 8), "all rows use schema v1")
+u:check_matrix(eq(reduce_add(take(matrix, 1, 12), 0), 24), "all requested hits were found")
+u:check_matrix(eq(reduce_add(take(matrix, 1, 10), 0), 24), "hit count is stable")
+u:check_matrix(eq(reduce_add(take(matrix, 1, 13), 0), 24), "miss count is stable")
+
+# Workload 1 is the clustered fixture: linear row 2, Robin Hood row 3.
+linear_miss_probes = take(take(matrix, 0, 2), 0, 14)
+robin_miss_probes = take(take(matrix, 0, 3), 0, 14)
+u:check_matrix(lt(robin_miss_probes, linear_miss_probes), "Robin Hood rejects clustered misses with fewer probes")
+"PASS workload_matrix"

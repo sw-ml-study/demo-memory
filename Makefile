@@ -1,4 +1,7 @@
-.PHONY: check demo test
+.PHONY: benchmark check demo test
+
+benchmark:
+	./scripts/run-benchmark
 
 check:
 	./scripts/check

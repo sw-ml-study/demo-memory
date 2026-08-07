@@ -1,0 +1,45 @@
+# Stable logical benchmark schema for open-addressing implementations.
+#
+# Each result is a 15-number row. See docs/benchmark-schema.md. Numeric IDs
+# keep the output machine-readable without requiring string serialization.
+
+def u:lookup_totals_from(table, keys, index, implementation, probes, found) { "Accumulate lookup probes and found outcomes for one implementation.";
+  if eq(index, tally(keys)) { {probes: probes, found: found} } else {
+    key = take(keys, 0, index);
+    result = if eq(implementation, 0) { u:linear_lookup_from(table, key, 0) } else { u:robin_lookup_from(table, key, 0) };
+    u:lookup_totals_from(table, keys, index + 1, implementation, probes + result.probes, found + result.found)
+  }
+}
+def u:lookup_totals(table, keys, implementation) { "Measure all lookups in a vector."; u:lookup_totals_from(table, keys, 0, implementation, 0, 0) }
+
+def u:benchmark_case(implementation, workload, distribution, order, capacity, keys, hit_keys, miss_keys) { "Return one stable numeric benchmark row.";
+  table = if eq(implementation, 0) { u:linear_build(capacity, keys) } else { u:robin_build(capacity, keys) };
+  profile = u:profile(table);
+  hits = u:lookup_totals(table, hit_keys, implementation);
+  misses = u:lookup_totals(table, miss_keys, implementation);
+  [1, implementation, workload, distribution, order, capacity, table.size, profile.load_factor, profile.insert_probes, profile.max_displacement, tally(hit_keys), hits.probes, hits.found, tally(miss_keys), misses.probes]
+}
+
+def u:pair(workload, distribution, order, capacity, keys, hit_keys, miss_keys) { "Benchmark linear and Robin Hood tables on an identical workload.";
+  linear = reshape(u:benchmark_case(0, workload, distribution, order, capacity, keys, hit_keys, miss_keys), [1, 15]);
+  robin = reshape(u:benchmark_case(1, workload, distribution, order, capacity, keys, hit_keys, miss_keys), [1, 15]);
+  concat(linear, robin, 0)
+}
+
+def u:standard_matrix() { "Run the version-one deterministic workload matrix.";
+  # Uniform homes at 45% load.
+  uniform_keys = range(5);
+  uniform = u:pair(0, 0, 0, 11, uniform_keys, [0, 2, 4], [20, 21, 22]);
+
+  # Three adjacent home buckets with heavy collisions at 73% load, in two
+  # insertion orders. This is the small inspectable fixture from the demo.
+  clustered_keys = [0, 22, 11, 1, 12, 23, 2, 13];
+  clustered = u:pair(1, 1, 0, 11, clustered_keys, [0, 23, 13], [3, 99, 100]);
+  clustered_rotated = rotate(clustered_keys, 3, 0);
+  reordered = u:pair(2, 1, 1, 11, clustered_rotated, [0, 23, 13], [3, 99, 100]);
+
+  # Three interleaved homes at 71% load in a larger table.
+  interleaved_keys = range(12) * 6;
+  interleaved = u:pair(3, 2, 0, 17, interleaved_keys, [0, 30, 66], [1, 67, 100]);
+  concat(concat(concat(uniform, clustered, 0), reordered, 0), interleaved, 0)
+}

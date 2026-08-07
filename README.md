@@ -27,6 +27,7 @@ and its [executable invariants](tests/hash/open_addressing.mlpl).
 
 ```sh
 make demo
+make benchmark
 make test
 make check       # required before each feature/fix commit
 ```
@@ -41,8 +42,10 @@ src/hash/open_addressing.mlpl       reusable measured implementations
 demos/hash/probe_tradeoffs.mlpl    narrated, runnable comparison
 tests/hash/open_addressing.mlpl     invariants and expected metrics
 scripts/run-demo                    stable command-line entry point
+scripts/run-benchmark               deterministic workload matrix
 scripts/test                        smoke/unit gate
 scripts/check                       repository pre-commit gate
+docs/benchmark-schema.md            stable numeric result contract
 docs/upstream-contract.md           feature pressure on sw-mlpl
 ```
 

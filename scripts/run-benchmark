@@ -6,8 +6,8 @@ mlpl=${MLPL:-"$repo_root/../sw-mlpl/target/debug/mlpl-repl"}
 
 if [ ! -x "$mlpl" ]; then
   echo "mlpl-repl is not executable: $mlpl" >&2
+  echo "set MLPL=/absolute/path/to/mlpl-repl" >&2
   exit 1
 fi
 
-"$mlpl" --source-dir "$repo_root" "$repo_root/tests/hash/open_addressing.mlpl"
-"$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/workload_matrix.mlpl"
+exec "$mlpl" --source-dir "$repo_root" "$repo_root/demos/bench/workload_matrix.mlpl"

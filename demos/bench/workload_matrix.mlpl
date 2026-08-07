@@ -1,0 +1,9 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/workload_matrix.mlpl"
+
+print("demo-memory benchmark schema v1")
+print("columns", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+print("rows: schema implementation workload distribution order capacity size load insert_probes max_displacement hit_count hit_probes hits_found miss_count miss_probes")
+matrix = u:standard_matrix()
+for row in matrix { print("row", row) }
+"PASS workload_matrix_benchmark"

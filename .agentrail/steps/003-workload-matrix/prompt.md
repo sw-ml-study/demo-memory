@@ -1,0 +1,1 @@
+Add a deterministic benchmark workload matrix for open addressing across capacities, load factors, key distributions, and hit/miss lookups. Define a stable machine-readable result schema that uses current sw-MLPL capabilities, add correctness tests and documentation, include it in scripts/check, commit, complete, and push.
