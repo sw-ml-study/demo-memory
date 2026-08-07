@@ -1,0 +1,9 @@
+number = 2
+slug = "repository-metadata"
+status = "in-progress"
+description = "Make README demo and supporting-document references clickable; add COPYRIGHT ..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T16:22:56"
+task_type = "fix"
+commits = []

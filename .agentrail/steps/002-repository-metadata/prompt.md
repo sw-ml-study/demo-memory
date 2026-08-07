@@ -1,0 +1,1 @@
+Make README demo and supporting-document references clickable; add COPYRIGHT for Copyright (c) 2026 Michael A Wright; add the MIT LICENSE with the same copyright; run the full pre-commit gate, commit, complete the step, and push.
