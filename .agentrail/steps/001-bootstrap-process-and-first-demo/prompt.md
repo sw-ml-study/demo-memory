@@ -1,0 +1,1 @@
+Adopt sibling repository AgentRail and pre-commit conventions; add sane ignore rules and a single pre-commit gate; finish and verify the initial measured open-addressing demo and its documentation.

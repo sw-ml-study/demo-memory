@@ -1,0 +1,19 @@
+include "../../src/hash/open_addressing.mlpl"
+
+# Every key has the same home slot modulo 11. Later keys repeatedly collide,
+# making probe policy visible in a tiny, inspectable fixture.
+keys = [0, 22, 11, 1, 12, 23, 2, 13]
+linear = u:linear_build(11, keys)
+robin = u:robin_build(11, keys)
+linear_hit = u:linear_lookup_from(linear, 2, 0)
+robin_hit = u:robin_lookup_from(robin, 2, 0)
+linear_miss = u:linear_lookup_from(linear, 99, 0)
+robin_miss = u:robin_lookup_from(robin, 99, 0)
+
+print("demo-memory: open addressing under clustered homes")
+print("keys", keys)
+print("linear", u:profile(linear))
+print("robin-hood", u:profile(robin))
+print("successful lookup probes (key 2)", linear_hit.probes, robin_hit.probes)
+print("missing lookup probes (key 99)", linear_miss.probes, robin_miss.probes)
+"note: probe counts are deterministic work metrics; packed bytes and cache misses are blocked upstream"

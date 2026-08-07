@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+
+sh -n "$repo_root/scripts/check" "$repo_root/scripts/run-demo" "$repo_root/scripts/test"
+"$repo_root/scripts/test"
+"$repo_root/scripts/run-demo" >/dev/null
+git -C "$repo_root" diff --check
+
+echo "PASS pre-commit"

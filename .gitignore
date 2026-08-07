@@ -1,0 +1,15 @@
+# macOS and editor noise
+.DS_Store
+*~
+*.swp
+
+# Local configuration and secrets
+.env
+.env.*
+
+# Generated benchmark and visualization output
+out/
+*.svg
+
+# Local sw-MLPL binaries or build products, if copied into this repo
+target/

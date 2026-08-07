@@ -1,0 +1,9 @@
+number = 1
+slug = "bootstrap-process-and-first-demo"
+status = "in-progress"
+description = "Adopt sibling repository AgentRail and pre-commit conventions; add sane ignor..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T16:20:39"
+task_type = "feature"
+commits = []

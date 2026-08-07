@@ -1,0 +1,53 @@
+# Measured open-addressing models. Arrays represent logical slots; no claim is
+# made that the runtime stores their metadata in a packed physical layout.
+
+def u:rem(value, divisor) { "Return a nonnegative arithmetic remainder."; value - floor(value / divisor) * divisor }
+def u:home(key, capacity) { "Map a nonnegative integer key to its home slot."; u:rem(key, capacity) }
+def u:max_from(values, index, best) { "Return the maximum suffix value."; if eq(index, tally(values)) { best } else { value = take(values, 0, index); u:max_from(values, index + 1, if gt(value, best) { value } else { best }) } }
+
+def u:linear_new(capacity) { "Create an empty measured linear-probing set."; {states: fill([capacity], 0), keys: fill([capacity], 0), distances: fill([capacity], 0), capacity: capacity, size: 0, insert_probes: 0} }
+def u:linear_place(table, key, distance) { "Place one absent key and account for inspected slots.";
+  index = u:rem(u:home(key, table.capacity) + distance, table.capacity);
+  if eq(take(table.states, 0, index), 0) {
+    {states: scatter(table.states, index, 1), keys: scatter(table.keys, index, key), distances: scatter(table.distances, index, distance), capacity: table.capacity, size: table.size + 1, insert_probes: table.insert_probes + distance + 1}
+  } else { u:linear_place(table, key, distance + 1) }
+}
+def u:linear_build_from(table, keys, index) { "Insert all remaining keys."; if eq(index, tally(keys)) { table } else { u:linear_build_from(u:linear_place(table, take(keys, 0, index), 0), keys, index + 1) } }
+def u:linear_build(capacity, keys) { "Build a measured linear-probing set from unique keys."; u:linear_build_from(u:linear_new(capacity), keys, 0) }
+def u:linear_lookup_from(table, key, distance) { "Return found status and inspected-slot count.";
+  if eq(distance, table.capacity) { {found: 0, probes: distance} } else {
+    index = u:rem(u:home(key, table.capacity) + distance, table.capacity);
+    if eq(take(table.states, 0, index), 0) { {found: 0, probes: distance + 1} } else {
+      if eq(take(table.keys, 0, index), key) { {found: 1, probes: distance + 1} } else { u:linear_lookup_from(table, key, distance + 1) }
+    }
+  }
+}
+
+def u:robin_new(capacity) { "Create an empty measured Robin Hood set."; {states: fill([capacity], 0), keys: fill([capacity], 0), distances: fill([capacity], 0), capacity: capacity, size: 0, insert_probes: 0} }
+def u:robin_carry(table, key, distance, probes) { "Carry an entry until empty space, stealing from a richer resident.";
+  index = u:rem(u:home(key, table.capacity) + distance, table.capacity);
+  if eq(take(table.states, 0, index), 0) {
+    {states: scatter(table.states, index, 1), keys: scatter(table.keys, index, key), distances: scatter(table.distances, index, distance), capacity: table.capacity, size: table.size + 1, insert_probes: table.insert_probes + probes + 1}
+  } else {
+    resident_distance = take(table.distances, 0, index);
+    if lt(resident_distance, distance) {
+      resident_key = take(table.keys, 0, index);
+      displaced = {states: table.states, keys: scatter(table.keys, index, key), distances: scatter(table.distances, index, distance), capacity: table.capacity, size: table.size, insert_probes: table.insert_probes};
+      u:robin_carry(displaced, resident_key, resident_distance + 1, probes + 1)
+    } else { u:robin_carry(table, key, distance + 1, probes + 1) }
+  }
+}
+def u:robin_build_from(table, keys, index) { "Insert all remaining keys."; if eq(index, tally(keys)) { table } else { u:robin_build_from(u:robin_carry(table, take(keys, 0, index), 0, 0), keys, index + 1) } }
+def u:robin_build(capacity, keys) { "Build a measured Robin Hood set from unique keys."; u:robin_build_from(u:robin_new(capacity), keys, 0) }
+def u:robin_lookup_from(table, key, distance) { "Look up with Robin Hood early termination.";
+  if eq(distance, table.capacity) { {found: 0, probes: distance} } else {
+    index = u:rem(u:home(key, table.capacity) + distance, table.capacity);
+    if eq(take(table.states, 0, index), 0) { {found: 0, probes: distance + 1} } else {
+      if eq(take(table.keys, 0, index), key) { {found: 1, probes: distance + 1} } else {
+        if lt(take(table.distances, 0, index), distance) { {found: 0, probes: distance + 1} } else { u:robin_lookup_from(table, key, distance + 1) }
+      }
+    }
+  }
+}
+
+def u:profile(table) { "Report implementation-independent logical metrics."; {capacity: table.capacity, size: table.size, load_factor: table.size / table.capacity, insert_probes: table.insert_probes, max_displacement: u:max_from(table.distances, 0, 0), distances: table.distances} }

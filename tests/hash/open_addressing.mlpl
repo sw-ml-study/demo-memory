@@ -1,0 +1,20 @@
+include "../../src/hash/open_addressing.mlpl"
+
+keys = [0, 22, 11, 1, 12, 23, 2, 13]
+linear = u:linear_build(11, keys)
+robin = u:robin_build(11, keys)
+
+def u:check(condition, label) { "Exit unsuccessfully when an invariant is false."; if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+
+u:check(eq(linear.size, 8), "linear size")
+u:check(eq(robin.size, 8), "robin size")
+u:check(eq(reduce_add(linear.states, 0), 8), "linear occupancy")
+u:check(eq(reduce_add(robin.states, 0), 8), "robin occupancy")
+u:check(eq(u:linear_lookup_from(linear, 23, 0).found, 1), "linear finds inserted key")
+u:check(eq(u:robin_lookup_from(robin, 23, 0).found, 1), "robin finds inserted key")
+u:check(eq(u:linear_lookup_from(linear, 99, 0).found, 0), "linear rejects absent key")
+u:check(eq(u:robin_lookup_from(robin, 99, 0).found, 0), "robin rejects absent key")
+u:check(eq(u:profile(linear).load_factor, 8 / 11), "linear load factor")
+u:check(eq(u:profile(robin).load_factor, 8 / 11), "robin load factor")
+u:check(lt(u:robin_lookup_from(robin, 99, 0).probes, u:linear_lookup_from(linear, 99, 0).probes), "Robin Hood ordering rejects this miss earlier")
+"PASS open_addressing"

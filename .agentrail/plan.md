@@ -1,0 +1,1 @@
+Establish demo-memory as a runnable, benchmark-oriented sw-MLPL companion repository. Each feature or fix is a separate AgentRail step, developed with a focused test and completed only after scripts/check passes, the commit is recorded, and the branch is pushed.
