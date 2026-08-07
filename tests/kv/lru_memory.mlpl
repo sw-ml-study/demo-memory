@@ -1,0 +1,22 @@
+include "../../src/kv/lru_memory.mlpl"
+include "../../src/bench/lru_matrix.mlpl"
+
+def u:check_lru(condition, label) { "Exit unsuccessfully when an LRU invariant is false."; if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+
+result = u:lru_trace(2, [1, 2, 1, 3, 1, 2])
+u:check_lru(u:lru_valid(result.memory), "memory invariant")
+u:check_lru(eq(result.accesses, 6), "access count")
+u:check_lru(eq(result.hits, 2), "hit count")
+u:check_lru(eq(result.misses, 4), "miss count")
+u:check_lru(eq(result.promotions, 2), "promotion count")
+u:check_lru(eq(result.evictions, 2), "eviction count")
+u:check_lru(eq(u:lru_find_from(result.memory, 3, 0), -1), "least-recent key was evicted")
+u:check_lru(gt(u:lru_find_from(result.memory, 1, 0), -1), "reused key remains")
+u:check_lru(gt(u:lru_find_from(result.memory, 2, 0), -1), "last requested key remains")
+
+matrix = u:lru_standard_matrix()
+u:check_lru(eq(take(shape(matrix), 0, 0), 4), "four access patterns")
+u:check_lru(eq(take(shape(matrix), 0, 1), 10), "schema v1 width")
+u:check_lru(eq(reduce_add(take(matrix, 1, 0), 0), 4), "schema version")
+u:check_lru(eq(reduce_add(take(matrix, 1, 4), 0), reduce_add(take(matrix, 1, 5), 0) + reduce_add(take(matrix, 1, 6), 0)), "every access is a hit or miss")
+"PASS lru_memory"

@@ -1,0 +1,8 @@
+include "../../src/kv/lru_memory.mlpl"
+include "../../src/bench/lru_matrix.mlpl"
+
+print("demo-memory LRU/KV benchmark schema v1")
+print("rows: schema workload pattern capacity accesses hits misses promotions evictions final_size")
+matrix = u:lru_standard_matrix()
+for row in matrix { print("row", row) }
+"PASS lru_access_patterns"

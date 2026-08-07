@@ -25,9 +25,13 @@ Run the narrated [probe-tradeoffs demo](demos/hash/probe_tradeoffs.mlpl), or
 read the reusable [open-addressing implementation](src/hash/open_addressing.mlpl)
 and its [executable invariants](tests/hash/open_addressing.mlpl).
 
+The [LRU/KV bridge](docs/lru-kv-bridge.md) adds bounded key/value memory and
+compares uniform-reuse, hot-set, scan, and bursty access patterns.
+
 ```sh
 make demo
 make benchmark
+make lru-benchmark
 make test
 make check       # required before each feature/fix commit
 ```
@@ -43,6 +47,7 @@ demos/hash/probe_tradeoffs.mlpl    narrated, runnable comparison
 tests/hash/open_addressing.mlpl     invariants and expected metrics
 scripts/run-demo                    stable command-line entry point
 scripts/run-benchmark               deterministic workload matrix
+scripts/run-lru-benchmark           LRU/KV access-pattern matrix
 scripts/test                        smoke/unit gate
 scripts/check                       repository pre-commit gate
 docs/benchmark-schema.md            stable numeric result contract

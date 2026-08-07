@@ -11,3 +11,4 @@ fi
 
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/hash/open_addressing.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/workload_matrix.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/kv/lru_memory.mlpl"

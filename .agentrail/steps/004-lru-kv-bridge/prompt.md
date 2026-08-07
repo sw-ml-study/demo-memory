@@ -1,0 +1,1 @@
+Implement a bounded deterministic LRU key/value memory in MLPL and benchmark uniform-reuse, hot-set, scan, and bursty access traces. Measure accesses, hits, misses, promotions, and evictions using a stable documented schema; add invariants, runner commands, README coverage, and pre-commit integration; commit, complete, and push.

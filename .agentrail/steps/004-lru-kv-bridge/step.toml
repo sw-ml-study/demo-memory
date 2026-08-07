@@ -1,0 +1,9 @@
+number = 4
+slug = "lru-kv-bridge"
+status = "in-progress"
+description = "Implement a bounded deterministic LRU key/value memory in MLPL and benchmark ..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T16:50:04"
+task_type = "feature"
+commits = []

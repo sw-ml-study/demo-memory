@@ -1,7 +1,10 @@
-.PHONY: benchmark check demo test
+.PHONY: benchmark check demo lru-benchmark test
 
 benchmark:
 	./scripts/run-benchmark
+
+lru-benchmark:
+	./scripts/run-lru-benchmark
 
 check:
 	./scripts/check
