@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 46,
+    "step": "online-order-selection"
+  },
+  "action": "Implemented pair probes, tie-breaking, hindsight oracle comparison, three-workload demo, selection tests, documentation of zero regret and high probe overhead, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-08T09:58:56"
+}
