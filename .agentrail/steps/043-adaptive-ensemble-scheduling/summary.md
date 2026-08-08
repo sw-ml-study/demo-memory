@@ -1,0 +1,1 @@
+Added an adaptive hard-budget ensemble that stops after two completed agreeing projections, otherwise runs a third and uses majority, carrying savings across rotation queries.

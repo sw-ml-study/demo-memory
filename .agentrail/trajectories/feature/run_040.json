@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 43,
+    "step": "adaptive-ensemble-scheduling"
+  },
+  "action": "Implemented adaptive query/shared/fair evaluators, scheduling comparison demo, majority tests, documentation of recall gains and quota limitations, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T22:31:53"
+}
