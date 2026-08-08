@@ -1,9 +1,10 @@
 number = 20
 slug = "projected-binary-codes"
-status = "in-progress"
+status = "completed"
 description = "Derive packed binary codes from continuous vectors using deterministic sign p..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:06:52"
+completed_at = "2026-08-07T19:08:33"
 task_type = "feature"
-commits = []
+commits = ["8c4a8595559876c5b7f442c65c6443df2e60719f"]

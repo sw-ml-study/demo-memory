@@ -1,0 +1,1 @@
+Derived packed binary codes from continuous vectors using deterministic sign projections and from_bits; compared dense dot-product, exhaustive Hamming, and radius-one indexed retrieval; achieved 75% projection recall while indexing preserved it with 68.75% fewer comparisons.

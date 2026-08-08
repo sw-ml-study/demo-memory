@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 20,
+    "step": "projected-binary-codes"
+  },
+  "action": "Implemented recursive row encoding, dense dot-neighbor oracle, projected/indexed evaluation, fixture invariants and docs, ran just check and just projected-codes, and committed without hooks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:08:33"
+}
