@@ -1,0 +1,6 @@
+include "../../src/retrieval/binary_index.mlpl"
+codes=[0,1,2,3,60,61,62,63]
+queries=[4,5,58,59]
+r=u:evaluate_prefix(codes,queries,2)
+print("schema codes queries prefix_bits recall exhaustive_comparisons shortlist_comparisons fallbacks reduction")
+[1,tally(codes),r.queries,2,r.recall,r.exhaustive_comparisons,r.shortlist_comparisons,r.fallbacks,r.reduction]

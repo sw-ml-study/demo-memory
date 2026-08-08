@@ -7,6 +7,9 @@ benchmark:
 benchmark-report:
     ./scripts/save-benchmark-report
 
+binary-retrieval:
+    ./scripts/run-binary-retrieval
+
 compare-reports before after:
     ./scripts/compare-benchmark-reports {{before}} {{after}}
 

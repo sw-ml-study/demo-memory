@@ -35,6 +35,8 @@ against an exact-set oracle while keeping packed-memory claims upstream-gated.
 counters, removal, and explicit underflow protection.
 [Packed-word Bloom](docs/packed-bloom-filter.md) uses the delivered bit
 operations and proves equivalence with the logical representation.
+[Binary-code retrieval](docs/binary-retrieval.md) uses Hamming shortlists as
+the bridge from classical indexing toward sparse ML retrieval.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
@@ -49,6 +51,7 @@ just benchmark
 just bloom-benchmark
 just counting-bloom
 just packed-bloom
+just binary-retrieval
 just timing-benchmark
 just benchmark-report
 # just compare-reports out/BEFORE.txt out/AFTER.txt

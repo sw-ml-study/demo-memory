@@ -1,0 +1,1 @@
+Implement binary-code retrieval using popcount(bxor), compare exhaustive nearest-neighbor search with prefix-indexed shortlist search, measure recall/comparisons/fallbacks on deterministic workloads, document sparse retrieval/attention bridge, add tests/just/check integration; publish via git add/commit/push without hooks; complete and suggest next step.
