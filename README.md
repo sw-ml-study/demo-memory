@@ -71,6 +71,8 @@ loss when that learned index becomes stale and the recovery after rebuilding.
 never, periodic, and every-batch rebuild policies as the memory drifts.
 [Adaptive projection rebuilds](docs/adaptive-rebuild.md) trigger from sampled
 recall instead of assuming a fixed maintenance interval.
+[Adaptive thresholds and sample size](docs/adaptive-threshold-samples.md)
+exposes missed degradation and unnecessary rebuilds from policy choices.
 
 ### Honest native measurements
 
@@ -111,6 +113,7 @@ just data-derived-projection
 just distribution-shift
 just shift-rebuild-cadence
 just adaptive-rebuild
+just adaptive-threshold-samples
 
 # Bounded-memory policies and timing
 just memory-timing

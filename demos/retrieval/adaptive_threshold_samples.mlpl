@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a=initial*0.33+shifted*0.67;aq=iq*0.33+sq*0.67;memory=concat(initial,a,0);queries=[[1.9,0.1,0,0],[-0.627,-0.033,-1.273,-0.067],[0.033,0.627,0.067,1.273],[-0.033,-0.627,-0.067,-1.273]];s1=[[1.9,0.1,0,0]];s2=[[1.9,0.1,0,0],[-0.627,-0.033,-1.273,-0.067]];base=u:covariance_projection(initial,4)
+miss=u:adaptive_projection_sampled_step(memory,s1,queries,base,4,1,0.75);representative=u:adaptive_projection_sampled_step(memory,s2,queries,base,4,1,0.75);disabled=u:adaptive_projection_sampled_step(memory,queries,queries,base,4,1,0);eager=u:adaptive_projection_sampled_step(memory,s1,queries,base,4,1,1.01)
+print("schema policy threshold samples sample_recall rebuilt full_recall full_indexed rebuild_cells power_steps")
+[[1,0.75,miss.samples,miss.sample_recall,miss.rebuilt,miss.result.hamming_recall,miss.result.indexed_recall,miss.rebuild_cells,miss.power_steps],[2,0.75,representative.samples,representative.sample_recall,representative.rebuilt,representative.result.hamming_recall,representative.result.indexed_recall,representative.rebuild_cells,representative.power_steps],[3,0,disabled.samples,disabled.sample_recall,disabled.rebuilt,disabled.result.hamming_recall,disabled.result.indexed_recall,disabled.rebuild_cells,disabled.power_steps],[4,1.01,eager.samples,eager.sample_recall,eager.rebuilt,eager.result.hamming_recall,eager.result.indexed_recall,eager.rebuild_cells,eager.power_steps]]

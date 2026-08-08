@@ -1,0 +1,11 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+def u:check_samples(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];queries=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]];memory=concat(initial,shifted,0);old=u:covariance_projection(initial,4)
+r=u:adaptive_projection_sampled_step(memory,[[0,0,-1.9,-0.1]],queries,old,4,1,0.75)
+u:check_samples(eq(r.samples,1),"sample count")
+u:check_samples(eq(r.rebuilt,1),"sample triggers rebuild")
+u:check_samples(eq(r.rebuild_cells,64),"sampled rebuild cells")
+u:check_samples(gt(r.result.hamming_recall,r.sample_recall),"full recall after rebuild")
+"PASS adaptive_threshold_samples"

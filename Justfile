@@ -7,6 +7,9 @@ benchmark:
 adaptive-rebuild:
     ./scripts/run-adaptive-rebuild
 
+adaptive-threshold-samples:
+    ./scripts/run-adaptive-threshold-samples
+
 benchmark-report:
     ./scripts/save-benchmark-report
 
