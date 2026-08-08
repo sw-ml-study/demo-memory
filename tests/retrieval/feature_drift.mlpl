@@ -1,0 +1,8 @@
+include "../../src/retrieval/feature_drift.mlpl"
+def u:check_drift(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+v=[[2,0,0],[-2,0,0],[1,0,0],[-1,0,0]];m=u:covariance_projection(v,1);inside=u:feature_drift_alarm([[3,0,0],[-3,0,0]],m,0.1);outside=u:feature_drift_alarm([[0,0,2],[0,0,-2]],m,0.1)
+u:check_drift(lt(inside.ratio,0.000001),"inside subspace")
+u:check_drift(eq(inside.alarm,0),"inside no alarm")
+u:check_drift(gt(outside.ratio,0.99),"outside residual")
+u:check_drift(eq(outside.alarm,1),"outside alarm")
+"PASS feature_drift"

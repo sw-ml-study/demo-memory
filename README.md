@@ -85,6 +85,8 @@ calibrated policy on rotational, magnitude-only, and localized drift.
 global reservoir with explicit per-cluster samples.
 [Recency monitoring](docs/recency-local-drift.md) tests whether forgetting
 stale samples detects localized drift sooner.
+[Proactive feature-drift alarms](docs/feature-drift-alarm.md) compare
+covariance-subspace residuals with failure-based recall monitoring.
 
 ### Honest native measurements
 
@@ -132,6 +134,7 @@ just monitoring-policy-calibration
 just shift-shape-generalization
 just stratified-local-drift
 just recency-local-drift
+just feature-drift-alarm
 
 # Bounded-memory policies and timing
 just memory-timing

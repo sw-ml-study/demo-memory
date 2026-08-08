@@ -1,0 +1,14 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/shift_shapes.mlpl"
+include "../../src/retrieval/feature_drift.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+retrieval=u:covariance_projection(initial,4);subspace=u:covariance_projection(initial,2);seeds=[11,17,29,47,83];a=initial*0.33+shifted*0.67;aq=iq*0.33+sq*0.67;rotation_memory=concat(initial,a,0);rotation_stream=concat(iq,aq,0)
+scaled=iq*1.25;scaling_stream=concat(iq,scaled,0)
+local_memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];healthy=[[0.1,1.9,0,0],[-0.1,-1.9,0,0],[0.2,1.8,0,0],[-0.2,-1.8,0,0]];local_queries=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]];local_stream=concat(healthy,local_queries,0)
+r=u:shift_shape_summary(rotation_stream,rotation_memory,aq,retrieval,1,seeds,0.75);s=u:shift_shape_summary(scaling_stream,initial,scaled,retrieval,1,seeds,0.75);l=u:shift_shape_summary(local_stream,local_memory,local_queries,retrieval,1,seeds,0.75)
+ra=u:feature_drift_alarm(u:rows_at(rotation_stream,[4,5]),subspace,0.1);sa=u:feature_drift_alarm(u:rows_at(scaling_stream,[4,5]),subspace,0.1);la=u:feature_drift_alarm(u:rows_at(local_stream,[4,5]),subspace,0.1)
+def u:alarm_row(kind,quality,alarm) { [1,kind,quality.stale_recall,quality.rebuild_warranted,quality.p50_delay,alarm.ratio,alarm.alarm,if alarm.alarm{2}else{6}] }
+print("schema shape stale_recall rebuild_warranted recall_delay residual_ratio feature_alarm feature_delay")
+print(u:alarm_row(1,r,ra));print(u:alarm_row(2,s,sa));u:alarm_row(3,l,la)

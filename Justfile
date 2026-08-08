@@ -67,6 +67,9 @@ reservoir-seed-trials:
 recency-local-drift:
     ./scripts/run-recency-local-drift
 
+feature-drift-alarm:
+    ./scripts/run-feature-drift-alarm
+
 check:
     ./scripts/check
 

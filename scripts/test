@@ -36,3 +36,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/shift_shapes.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/stratified_monitor.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/recency_monitor.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/feature_drift.mlpl"

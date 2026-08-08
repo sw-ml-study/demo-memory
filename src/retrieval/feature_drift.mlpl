@@ -1,0 +1,4 @@
+include "./covariance_projection.mlpl"
+def u:feature_center_vectors(vectors,mean) { vectors-matmul(ones([take(shape(vectors),0,0),1]),reshape(mean,[1,tally(mean)])) }
+def u:subspace_residual_ratio(vectors,model) { "Return squared energy outside a fitted covariance subspace.";centered=u:feature_center_vectors(vectors,model.mean);scores=matmul(centered,model.projection);reconstructed=matmul(scores,transpose(model.projection));residual=centered-reconstructed;total=reduce_add(reduce_add(centered*centered,0),0);outside=reduce_add(reduce_add(residual*residual,0),0);if gt(total,0){outside/total}else{0} }
+def u:feature_drift_alarm(vectors,model,threshold) { ratio=u:subspace_residual_ratio(vectors,model);{ratio: ratio,alarm: 1-lt(ratio,threshold)} }
