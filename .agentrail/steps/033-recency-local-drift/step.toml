@@ -1,9 +1,10 @@
 number = 33
 slug = "recency-local-drift"
-status = "in-progress"
+status = "completed"
 description = "Compare global reservoir monitoring with fixed recency-window monitoring on l..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T20:00:22"
+completed_at = "2026-08-07T20:02:28"
 task_type = "feature"
-commits = []
+commits = ["30ab3423cf6931640ae6d5d7ef20c0fa1b45b012"]
