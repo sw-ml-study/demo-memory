@@ -1,0 +1,1 @@
+Implemented a packed-word Bloom filter using shl/bor/band/bmask/popcount, reducing 61 logical elements to two 32-bit words while proving membership and set-bit equivalence; added native logical-versus-packed throughput, tests, docs, just and check integration.
