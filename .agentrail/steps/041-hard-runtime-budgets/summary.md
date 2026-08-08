@@ -1,0 +1,1 @@
+Implemented hard total comparison budgets inside multi-probe candidate scanning for single and sequential ensemble retrieval across localized, rotation, and scaling workloads.

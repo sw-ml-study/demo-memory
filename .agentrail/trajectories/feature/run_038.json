@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 41,
+    "step": "hard-runtime-budgets"
+  },
+  "action": "Added budget-aware lookup/evaluators, truncation and completion accounting, three-workload demo, cap tests, documentation of quality/resource tradeoffs, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T21:04:50"
+}
