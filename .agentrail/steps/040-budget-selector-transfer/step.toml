@@ -1,0 +1,9 @@
+number = 40
+slug = "budget-selector-transfer"
+status = "in-progress"
+description = "Freeze retrieval modes selected from the localized-drift validation fixture a..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T20:57:42"
+task_type = "feature"
+commits = []

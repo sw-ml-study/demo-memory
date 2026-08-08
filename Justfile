@@ -16,6 +16,9 @@ benchmark-report:
 retrieval-budget-selector:
     ./scripts/run-retrieval-budget-selector
 
+budget-selector-transfer:
+    ./scripts/run-budget-selector-transfer
+
 binary-retrieval:
     ./scripts/run-binary-retrieval
 

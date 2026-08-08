@@ -1,0 +1,7 @@
+include "../../src/retrieval/budget_transfer.mlpl"
+def u:check_transfer(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+selected={mode: 2,recall: 1,work: 24,feasible: 1};same=u:budget_transfer_result(24,selected,{recall: 1,work: 20});drift=u:budget_transfer_result(24,selected,{recall: 0.5,work: 30})
+u:check_transfer(eq(same.recall_delta,0)*eq(same.budget_violation,0),"stable transfer")
+u:check_transfer(eq(drift.recall_delta,-0.5),"quality transfer loss")
+u:check_transfer(eq(drift.budget_violation,1),"target budget violation")
+"PASS budget_transfer"

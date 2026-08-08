@@ -42,3 +42,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/projection_recovery_trials.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/projection_ensemble.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/budget_selector.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/budget_transfer.mlpl"

@@ -97,6 +97,8 @@ random-projection recovery survives width and seed variation.
 indexed answers and dense fallback on seed disagreement.
 [Retrieval budget selection](docs/retrieval-budget-selector.md) chooses among
 single-index, ensemble, and dense modes from validated quality and work.
+[Budget-selector transfer](docs/budget-selector-transfer.md) freezes those
+choices and measures quality/work drift on other workloads.
 
 ### Honest native measurements
 
@@ -150,6 +152,7 @@ just failed-rebuild-escalation
 just wider-code-seed-trials
 just projection-ensemble-fallback
 just retrieval-budget-selector
+just budget-selector-transfer
 
 # Bounded-memory policies and timing
 just memory-timing
