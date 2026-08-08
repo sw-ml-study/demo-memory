@@ -1,0 +1,1 @@
+Added a controlled distribution-shift severity sweep comparing never, every-second-batch, and every-batch covariance projection rebuilds, with recall, indexed recall, and cumulative cells reread.

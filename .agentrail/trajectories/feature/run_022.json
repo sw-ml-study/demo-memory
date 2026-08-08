@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 25,
+    "step": "shift-rebuild-cadence"
+  },
+  "action": "Added reusable projection-model evaluation and rebuild-work helpers, cadence demo, tests, documentation, README/Just/check integration, and reconciled the upstream contract with shipped clock and bit operations.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:26:12"
+}
