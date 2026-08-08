@@ -1,9 +1,10 @@
 number = 44
 slug = "adaptive-ensemble-order"
-status = "in-progress"
+status = "completed"
 description = "Evaluate all six execution orders of projection seeds 11, 17, and 29 for the ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T23:03:55"
+completed_at = "2026-08-07T23:05:58"
 task_type = "feature"
-commits = []
+commits = ["91c864853ff14912b0f217c8d6f3640cff096cc0"]

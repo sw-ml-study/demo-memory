@@ -1,0 +1,1 @@
+Evaluated all six orders of seeds 11, 17, and 29 for adaptive early-agreement retrieval on rotation under hard budget 24.

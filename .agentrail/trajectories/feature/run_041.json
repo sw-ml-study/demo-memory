@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 44,
+    "step": "adaptive-ensemble-order"
+  },
+  "action": "Added order statistics, six-order demo, summary tests, documentation of robust minimum and favorable 17/29 first pair, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T23:05:58"
+}
