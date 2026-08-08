@@ -1,0 +1,10 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+def u:check_cadence(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+v=[[2,0,0,0],[-2,0,0,0],[0,2,0,0],[0,-2,0,0]];q=[[1.9,0,0,0],[-1.9,0,0,0]];m=u:covariance_projection(v,4);r=u:evaluate_projection_model(v,q,m,4,1);w=u:projection_rebuild_work(v,4)
+u:check_cadence(eq(r.hamming_recall,1),"model evaluation")
+u:check_cadence(eq(w.rows,4),"rebuild rows")
+u:check_cadence(eq(w.cells,16),"rebuild cells")
+u:check_cadence(eq(w.power_steps,80),"rebuild iteration budget")
+"PASS shift_rebuild_cadence"

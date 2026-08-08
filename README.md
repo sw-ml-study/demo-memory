@@ -67,6 +67,8 @@ variance instead of relying on one projection.
 directions from memory itself as a small BinaryPC-like bridge.
 [Distribution shift and reindexing](docs/distribution-shift.md) shows recall
 loss when that learned index becomes stale and the recovery after rebuilding.
+[Shift severity and rebuild cadence](docs/shift-rebuild-cadence.md) compares
+never, periodic, and every-batch rebuild policies as the memory drifts.
 
 ### Honest native measurements
 
@@ -105,6 +107,7 @@ just projected-codes
 just projection-sweep
 just data-derived-projection
 just distribution-shift
+just shift-rebuild-cadence
 
 # Bounded-memory policies and timing
 just memory-timing

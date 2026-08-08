@@ -13,6 +13,9 @@ its systems claim being measurable. It is the handoff surface from
   deterministic algorithms and workloads executable.
 - Demo-owned counters measure probes, collisions, and displacement without
   pretending that evaluator overhead is table throughput.
+- Native `clock_ms()` supports honest elapsed-time and throughput reports.
+- Fixed-width bit operations support faithful packed-word algorithms, Hamming
+  distance, and binary retrieval indexes.
 
 ## Requests earned by the first demo
 
@@ -34,11 +37,11 @@ its systems claim being measurable. It is the handoff surface from
 
 | Demo | Runs with current surface | Upstream pressure |
 |---|---|---|
-| Linear vs Robin Hood probing | Yes | clock for throughput |
-| Bloom/counting filters | Logical Bloom filter runs; packed form blocked | unsigned bits, popcount, packed storage |
+| Linear vs Robin Hood probing | Yes, including native timing | none for current claims |
+| Bloom/counting filters | Logical, counting, and packed-word forms run | packed storage for credible bytes/key claims |
 | Tiny-pointer navigation | Logical approximation | packed widths/layout/size |
-| LRU and KV eviction | Yes | clock only for performance claims |
-| Binary-code sparse retrieval | Numeric approximation | bits, popcount, top-k/index APIs |
+| LRU and KV eviction | Yes, including native timing | packed layouts for locality/size claims |
+| Binary-code sparse retrieval | Yes, with faithful bit operations | runtime index APIs only for scaling beyond demo-owned indexes |
 | KV-cache acceleration | Not yet end-to-end here | stable generation-state API and backend telemetry |
 
 An upstream request graduates from this document only when a small demo or

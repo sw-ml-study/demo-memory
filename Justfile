@@ -61,6 +61,9 @@ data-derived-projection:
 distribution-shift:
     ./scripts/run-distribution-shift
 
+shift-rebuild-cadence:
+    ./scripts/run-shift-rebuild-cadence
+
 eviction-benchmark:
     ./scripts/run-eviction-benchmark
 

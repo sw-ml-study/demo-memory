@@ -27,3 +27,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/projection_sweep.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/covariance_projection.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/distribution_shift.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/shift_rebuild_cadence.mlpl"
