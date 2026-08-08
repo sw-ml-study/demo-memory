@@ -101,6 +101,8 @@ single-index, ensemble, and dense modes from validated quality and work.
 choices and measures quality/work drift on other workloads.
 [Hard runtime budgets](docs/hard-runtime-budgets.md) stop candidate scanning
 inside the comparison cap instead of trusting validation-time estimates.
+[Fair budget scheduling](docs/fair-budget-scheduling.md) compares greedy,
+equal-quota, and round-robin token allocation across queries.
 
 ### Honest native measurements
 
@@ -156,6 +158,7 @@ just projection-ensemble-fallback
 just retrieval-budget-selector
 just budget-selector-transfer
 just hard-runtime-budgets
+just fair-budget-scheduling
 
 # Bounded-memory policies and timing
 just memory-timing

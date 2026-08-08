@@ -123,3 +123,6 @@ timing-benchmark:
 
 hard-runtime-budgets:
     ./scripts/run-hard-runtime-budgets
+
+fair-budget-scheduling:
+    ./scripts/run-fair-budget-scheduling

@@ -1,0 +1,7 @@
+include "../../src/retrieval/fair_budget.mlpl"
+def u:check_fair(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+equal=[u:scheduled_query_quota(10,4,0,0),u:scheduled_query_quota(10,4,1,0),u:scheduled_query_quota(10,4,2,0),u:scheduled_query_quota(10,4,3,0)];round=[u:scheduled_query_quota(10,4,0,1),u:scheduled_query_quota(10,4,1,1),u:scheduled_query_quota(10,4,2,1),u:scheduled_query_quota(10,4,3,1)]
+u:check_fair(eq(reduce_add(equal,0),8),"equal leaves remainder")
+u:check_fair(eq(reduce_add(round,0),10),"round robin spends remainder")
+u:check_fair(eq(reduce_add(eq(round,[3,3,2,2]),0),4),"round robin allocation")
+"PASS fair_budget"

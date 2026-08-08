@@ -1,0 +1,9 @@
+number = 42
+slug = "fair-budget-scheduling"
+status = "in-progress"
+description = "Compare greedy hard-budget consumption with equal per-query quotas and round-..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T22:25:01"
+task_type = "feature"
+commits = []
