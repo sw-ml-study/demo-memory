@@ -1,0 +1,1 @@
+Added a deterministic distribution-shift benchmark showing an initially accurate covariance projection becoming stale on orthogonal arrivals and recovering after reindexing, with explicit rebuild work.

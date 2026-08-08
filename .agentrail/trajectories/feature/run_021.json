@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 24,
+    "step": "distribution-shift-reindexing"
+  },
+  "action": "Added reusable shift evaluation, demo fixture, focused tests, documentation, README link, Just recipe, and repository check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:20:46"
+}
