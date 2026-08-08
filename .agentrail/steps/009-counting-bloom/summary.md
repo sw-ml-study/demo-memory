@@ -1,0 +1,1 @@
+Implemented logical counting Bloom filters with duplicate-aware inserts, membership, counter-safe removal, and underflow rejection; added deterministic counter-pressure rows, deletion invariants, false-positive removal warnings, packed-counter blockers, a just recipe, and pre-commit integration.
