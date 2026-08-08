@@ -1,9 +1,10 @@
 number = 19
 slug = "sparse-aggregation"
-status = "in-progress"
+status = "completed"
 description = "Attach numeric values to binary keys and implement dense versus prefix/multi-..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:03:44"
+completed_at = "2026-08-07T19:05:28"
 task_type = "feature"
-commits = []
+commits = ["e0df032793562de92a197e95153632e28498a924"]

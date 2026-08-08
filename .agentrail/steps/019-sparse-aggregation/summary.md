@@ -1,0 +1,1 @@
+Implemented dense versus prefix/multi-probe Hamming-weighted value aggregation, measuring mean/max output error, scored candidates, fallbacks, and reduction across widths three through five; radius one consistently reduced error while remaining sparse.
