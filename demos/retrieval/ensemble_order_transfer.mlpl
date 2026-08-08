@@ -1,0 +1,15 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/projection_ensemble.mlpl"
+include "../../src/retrieval/budgeted_retrieval.mlpl"
+include "../../src/retrieval/fair_budget.mlpl"
+include "../../src/retrieval/adaptive_ensemble.mlpl"
+include "../../src/retrieval/order_transfer.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]];shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a=initial*0.33+shifted*0.67;rotation_queries=iq*0.33+sq*0.67;rotation_memory=concat(initial,a,0);local_memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];local_queries=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]];scaled=iq*1.25;p11=randn(11,[4,8]);p17=randn(17,[4,8]);p29=randn(29,[4,8])
+def u:neutral(v,q){u:evaluate_adaptive_ensemble3(v,q,p11,p17,p29,8,1,24)};def u:tuned(v,q){u:evaluate_adaptive_ensemble3(v,q,p17,p29,p11,8,1,24)}
+rn=u:neutral(rotation_memory,rotation_queries);rt=u:tuned(rotation_memory,rotation_queries);ln=u:neutral(local_memory,local_queries);lt=u:tuned(local_memory,local_queries);sn=u:neutral(initial,scaled);st=u:tuned(initial,scaled);rd=u:order_transfer_delta(rn,rt);ld=u:order_transfer_delta(ln,lt);sd=u:order_transfer_delta(sn,st)
+def u:transfer_row(workload,order,x,delta){[1,workload,order,x.recall,x.comparisons,x.exhausted_queries,x.completed_projections,x.early_agreements,x.third_projections,delta.recall_delta]}
+print("schema workload order recall comparisons exhausted completed early_agreements third_projections tuned_recall_delta")
+print(u:transfer_row(1,1,rn,rd));print(u:transfer_row(1,2,rt,rd));print(u:transfer_row(2,1,ln,ld));print(u:transfer_row(2,2,lt,ld));print(u:transfer_row(3,1,sn,sd));u:transfer_row(3,2,st,sd)

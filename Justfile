@@ -16,6 +16,9 @@ adaptive-ensemble-scheduling:
 adaptive-ensemble-order:
     ./scripts/run-adaptive-ensemble-order
 
+ensemble-order-transfer:
+    ./scripts/run-ensemble-order-transfer
+
 benchmark-report:
     ./scripts/save-benchmark-report
 

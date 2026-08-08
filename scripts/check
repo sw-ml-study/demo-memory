@@ -39,6 +39,7 @@ sh -n "$repo_root/scripts/compare-memory-reports" "$repo_root/scripts/run-memory
 "$repo_root/scripts/run-fair-budget-scheduling" >/dev/null
 "$repo_root/scripts/run-adaptive-ensemble-scheduling" >/dev/null
 "$repo_root/scripts/run-adaptive-ensemble-order" >/dev/null
+"$repo_root/scripts/run-ensemble-order-transfer" >/dev/null
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

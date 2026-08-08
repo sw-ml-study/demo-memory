@@ -1,0 +1,7 @@
+include "../../src/retrieval/order_transfer.mlpl"
+def u:check_order_transfer(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+n={recall: 0.75,comparisons: 24,exhausted_queries: 1};t={recall: 1,comparisons: 20,exhausted_queries: 0};d=u:order_transfer_delta(n,t)
+u:check_order_transfer(eq(d.recall_delta,0.25),"recall delta")
+u:check_order_transfer(eq(d.work_delta,-4),"work delta")
+u:check_order_transfer(eq(d.exhaustion_delta,-1),"exhaustion delta")
+"PASS order_transfer"

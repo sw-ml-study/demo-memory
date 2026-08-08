@@ -107,6 +107,8 @@ equal-quota, and round-robin token allocation across queries.
 after two agreeing projections and carries saved work forward.
 [Adaptive ensemble order](docs/adaptive-ensemble-order.md) sweeps every seed
 ordering to expose early-stop sensitivity.
+[Ensemble order transfer](docs/ensemble-order-transfer.md) freezes the
+rotation-tuned pair and tests it on other shift shapes.
 
 ### Honest native measurements
 
@@ -165,6 +167,7 @@ just hard-runtime-budgets
 just fair-budget-scheduling
 just adaptive-ensemble-scheduling
 just adaptive-ensemble-order
+just ensemble-order-transfer
 
 # Bounded-memory policies and timing
 just memory-timing

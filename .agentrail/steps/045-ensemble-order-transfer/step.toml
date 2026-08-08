@@ -1,0 +1,9 @@
+number = 45
+slug = "ensemble-order-transfer"
+status = "in-progress"
+description = "Freeze the rotation-tuned adaptive ensemble order 17/29/11 and compare it wit..."
+role = "production"
+context_files = []
+created_at = "2026-08-08T09:40:31"
+task_type = "feature"
+commits = []

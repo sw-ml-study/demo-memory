@@ -1,0 +1,1 @@
+def u:order_transfer_delta(neutral,tuned) { {recall_delta: tuned.recall-neutral.recall,work_delta: tuned.comparisons-neutral.comparisons,exhaustion_delta: tuned.exhausted_queries-neutral.exhausted_queries} }
