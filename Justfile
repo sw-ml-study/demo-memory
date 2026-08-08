@@ -10,6 +10,15 @@ benchmark-report:
 compare-reports before after:
     ./scripts/compare-benchmark-reports {{before}} {{after}}
 
+memory-timing:
+    ./scripts/run-memory-timing
+
+memory-report:
+    ./scripts/save-memory-report
+
+compare-memory-reports before after:
+    ./scripts/compare-memory-reports {{before}} {{after}}
+
 bloom-benchmark:
     ./scripts/run-bloom-benchmark
 

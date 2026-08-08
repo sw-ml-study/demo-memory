@@ -1,0 +1,17 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/native_timing.mlpl"
+include "../../src/kv/lru_memory.mlpl"
+include "../../src/kv/fifo_memory.mlpl"
+include "../../src/bloom/filter.mlpl"
+include "../../src/bench/memory_timing.mlpl"
+hot=[0,1,0,1,2,0,1,3,0,1]
+inserted=[3,7,11,19,23,31,43,47]
+queries=floor(random(42,[80])*100000)+100
+print("memory_trials: schema family implementation workload trials min median mean max ops_per_sec")
+print("memory_trials",u:eviction_three(0,1,3,hot,100))
+print("memory_trials",u:eviction_three(1,1,3,hot,100))
+print("memory_trials",u:bloom_build_three(1,0,61,inserted,50))
+print("memory_trials",u:bloom_build_three(3,0,61,inserted,50))
+print("memory_trials",u:bloom_query_three(1,0,61,inserted,queries,20))
+print("memory_trials",u:bloom_query_three(3,0,61,inserted,queries,20))
+"PASS memory_timing"

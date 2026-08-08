@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+[ "$#" -eq 2 ] || { echo "usage: $0 BEFORE AFTER" >&2; exit 2; }
+echo "memory_comparison family implementation workload median_before median_after change_pct"
+awk 'NR==FNR && $1=="memory_trials"{k=$3":"$4":"$5;m[k]=$8;next}$1=="memory_trials"{k=$3":"$4":"$5;if(k in m)printf "memory_comparison %s %s %s %.6f %.6f %.3f\n",$3,$4,$5,m[k],$8,100*($8/m[k]-1)}' "$1" "$2"

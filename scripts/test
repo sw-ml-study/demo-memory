@@ -17,3 +17,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bloom/filter.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bloom/counting_filter.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/native_timing.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/memory_timing.mlpl"

@@ -1,0 +1,1 @@
+Add repeated native timing for FIFO/LRU trace operations and Bloom build/query operations, with stable family schemas, metadata-prefixed saved reports, comparison support, tests/docs/just/check integration; publish via git add/commit/push without hooks; complete and suggest next step.

@@ -1,0 +1,12 @@
+# Schema: schema family implementation workload trials min median mean max.
+# Families: 0 eviction trace, 1 Bloom build, 2 Bloom query.
+def u:eviction_once(policy, capacity, trace) { r = if eq(policy, 0) { u:lru_trace(capacity, trace) } else { u:fifo_trace(capacity, trace) }; r.hits }
+def u:eviction_rate(policy, capacity, trace, iterations) { i=0; t0=clock_ms(); while gt(iterations,i) { work=u:eviction_once(policy,capacity,trace); i=i+1 }; elapsed=clock_ms()-t0; iterations*tally(trace)*1000/elapsed }
+def u:bloom_build_once(bits, hashes, inserted) { f=u:bloom_build(bits,hashes,inserted); reduce_add(f.bits,0) }
+def u:bloom_build_rate(bits, hashes, inserted, iterations) { i=0; t0=clock_ms(); while gt(iterations,i) { work=u:bloom_build_once(bits,hashes,inserted); i=i+1 }; iterations*tally(inserted)*1000/(clock_ms()-t0) }
+def u:bloom_query_once(filter, queries) { i=0; possible=0; while gt(tally(queries),i) { possible=possible+u:bloom_contains(filter,take(queries,0,i)); i=i+1 }; possible }
+def u:bloom_query_rate(bits, hashes, inserted, queries, iterations) { filter=u:bloom_build(bits,hashes,inserted); i=0; t0=clock_ms(); while gt(iterations,i) { work=u:bloom_query_once(filter,queries); i=i+1 }; iterations*tally(queries)*1000/(clock_ms()-t0) }
+def u:memory_row(family, implementation, workload, values) { concat([1,family,implementation,workload,3], u:three_summary(values)) }
+def u:eviction_three(policy, workload, capacity, trace, iterations) { u:memory_row(0,policy,workload,[u:eviction_rate(policy,capacity,trace,iterations),u:eviction_rate(policy,capacity,trace,iterations),u:eviction_rate(policy,capacity,trace,iterations)]) }
+def u:bloom_build_three(hashes, workload, bits, inserted, iterations) { u:memory_row(1,hashes,workload,[u:bloom_build_rate(bits,hashes,inserted,iterations),u:bloom_build_rate(bits,hashes,inserted,iterations),u:bloom_build_rate(bits,hashes,inserted,iterations)]) }
+def u:bloom_query_three(hashes, workload, bits, inserted, queries, iterations) { u:memory_row(2,hashes,workload,[u:bloom_query_rate(bits,hashes,inserted,queries,iterations),u:bloom_query_rate(bits,hashes,inserted,queries,iterations),u:bloom_query_rate(bits,hashes,inserted,queries,iterations)]) }

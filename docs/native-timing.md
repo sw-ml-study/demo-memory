@@ -16,6 +16,10 @@ runs with `just compare-reports out/BEFORE.txt out/AFTER.txt`; the comparator
 reports percentage changes in median insert and lookup throughput for each
 matching implementation/workload pair.
 
+`just memory-timing` applies the same three-trial summary to LRU/FIFO trace
+operations and Bloom build/query operations. `just memory-report` saves those
+rows; `just compare-memory-reports BEFORE AFTER` compares their medians.
+
 These numbers include immutable MLPL evaluator and allocation overhead; they
 compare executable implementations rather than production hash-table kernels.
 They vary by machine and build profile, unlike deterministic probe metrics.

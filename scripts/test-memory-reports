@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+out=$("$root/scripts/compare-memory-reports" "$root/tests/fixtures/memory-before.txt" "$root/tests/fixtures/memory-after.txt")
+printf '%s\n' "$out" | rg -q '^memory_comparison 0 0 1 .* 10\.000$'
+printf '%s\n' "$out" | rg -q '^memory_comparison 2 3 0 .* -10\.000$'
+echo "PASS memory_reports"

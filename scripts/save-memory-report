@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+stamp=$(date -u '+%Y%m%dT%H%M%SZ')
+output_dir=${BENCHMARK_OUT:-"$repo_root/out"}
+output="$output_dir/memory-$stamp.txt"
+mkdir -p "$output_dir"
+"$repo_root/scripts/run-memory-timing" >"$output"
+echo "$output"

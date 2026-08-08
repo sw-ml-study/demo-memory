@@ -1,0 +1,11 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/native_timing.mlpl"
+include "../../src/kv/lru_memory.mlpl"
+include "../../src/kv/fifo_memory.mlpl"
+include "../../src/bloom/filter.mlpl"
+include "../../src/bench/memory_timing.mlpl"
+def u:check_memory_timing(c,l){if c {1}else{eprint("FAIL",l);exit(1)}}
+row=u:eviction_three(0,0,3,[0,1,2,0],10)
+u:check_memory_timing(eq(tally(row),9),"schema width")
+u:check_memory_timing(gt(take(row,0,6),0),"median measurable")
+"PASS memory_timing"
