@@ -6,6 +6,11 @@ operations per second for builds and lookups, plus calibrated clock-call cost.
 It also runs three independent trials and reports min, median, mean, and max
 throughput, making run-to-run variability visible.
 
+Before numeric rows, the runner emits schema-v1 `meta` lines containing the
+UTC timestamp, sw-MLPL version and commit, executable and inferred build
+profile, platform and architecture, workload/timing schema versions, and trial
+count. Saved output therefore retains the context required for comparison.
+
 These numbers include immutable MLPL evaluator and allocation overhead; they
 compare executable implementations rather than production hash-table kernels.
 They vary by machine and build profile, unlike deterministic probe metrics.

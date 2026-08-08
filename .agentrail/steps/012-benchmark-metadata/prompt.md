@@ -1,0 +1,1 @@
+Add a stable metadata preamble for native benchmark runs containing UTC timestamp, sw-mlpl version, executable/build profile, platform/architecture, workload and timing schema versions, and trial count. Add validation, docs, just integration, and check coverage; publish with git add/commit/push without hooks; complete and suggest next step.

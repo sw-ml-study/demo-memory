@@ -34,7 +34,8 @@ against an exact-set oracle while keeping packed-memory claims upstream-gated.
 [Counting Bloom deletion](docs/counting-bloom-filter.md) adds duplicate-aware
 counters, removal, and explicit underflow protection.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
-the monotonic `clock_ms()` runtime capability.
+the monotonic `clock_ms()` runtime capability and emits reproducibility
+metadata before every run.
 [Probe-distribution reporting](docs/probe-distributions.md) exposes the lookup
 tails hidden by aggregate totals through histograms and p50/p95 summaries.
 

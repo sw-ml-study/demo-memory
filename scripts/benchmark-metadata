@@ -1,0 +1,24 @@
+#!/bin/sh
+set -eu
+
+mlpl=${MLPL:?set MLPL to the native mlpl-repl executable}
+version_output=$("$mlpl" --version)
+version=$(printf '%s\n' "$version_output" | sed -n '1s/^mlpl-repl //p')
+commit=$(printf '%s\n' "$version_output" | sed -n 's/^  Commit: //p')
+case "$mlpl" in
+  */debug/*) profile=debug ;;
+  */release/*) profile=release ;;
+  *) profile=unknown ;;
+esac
+
+echo "meta schema 1"
+echo "meta timestamp_utc $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "meta sw_mlpl_version $version"
+echo "meta sw_mlpl_commit $commit"
+echo "meta executable $mlpl"
+echo "meta build_profile $profile"
+echo "meta platform $(uname -s)"
+echo "meta architecture $(uname -m)"
+echo "meta workload_schema 1"
+echo "meta timing_schema 1"
+echo "meta trials 3"
