@@ -47,6 +47,8 @@ just benchmark
 just bloom-benchmark
 just counting-bloom
 just timing-benchmark
+just benchmark-report
+# just compare-reports out/BEFORE.txt out/AFTER.txt
 just lru-benchmark
 just eviction-benchmark
 just probe-distributions

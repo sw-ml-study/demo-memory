@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+if [ "$#" -ne 2 ]; then
+  echo "usage: $0 BEFORE AFTER" >&2
+  exit 2
+fi
+before=$1
+after=$2
+[ -f "$before" ] || { echo "missing report: $before" >&2; exit 2; }
+[ -f "$after" ] || { echo "missing report: $after" >&2; exit 2; }
+
+echo "comparison implementation workload insert_before insert_after insert_change_pct lookup_before lookup_after lookup_change_pct"
+awk '
+  NR == FNR && $1 == "trials" { key=$3 ":" $4; ins[key]=$7; look[key]=$11; next }
+  $1 == "trials" {
+    key=$3 ":" $4
+    if (key in ins) {
+      printf "comparison %s %s %.6f %.6f %.3f %.6f %.6f %.3f\n", $3, $4, ins[key], $7, 100*($7/ins[key]-1), look[key], $11, 100*($11/look[key]-1)
+    }
+  }
+' "$before" "$after"

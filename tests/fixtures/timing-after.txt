@@ -1,0 +1,5 @@
+meta schema 1
+meta timing_schema 1
+meta trials 3
+trials 1 0 0 3 99 110 110 121 162 180 180 198
+trials 1 1 0 3 180 200 200 220 297 330 330 363

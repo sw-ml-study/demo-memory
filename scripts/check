@@ -3,9 +3,10 @@ set -eu
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 
-sh -n "$repo_root/scripts/benchmark-metadata" "$repo_root/scripts/check" "$repo_root/scripts/run-benchmark" "$repo_root/scripts/run-bloom-benchmark" "$repo_root/scripts/run-counting-bloom" "$repo_root/scripts/run-demo" "$repo_root/scripts/run-eviction-benchmark" "$repo_root/scripts/run-lru-benchmark" "$repo_root/scripts/run-probe-distributions" "$repo_root/scripts/run-timing-benchmark" "$repo_root/scripts/test" "$repo_root/scripts/test-benchmark-metadata"
+sh -n "$repo_root/scripts/benchmark-metadata" "$repo_root/scripts/check" "$repo_root/scripts/compare-benchmark-reports" "$repo_root/scripts/run-benchmark" "$repo_root/scripts/run-bloom-benchmark" "$repo_root/scripts/run-counting-bloom" "$repo_root/scripts/run-demo" "$repo_root/scripts/run-eviction-benchmark" "$repo_root/scripts/run-lru-benchmark" "$repo_root/scripts/run-probe-distributions" "$repo_root/scripts/run-timing-benchmark" "$repo_root/scripts/save-benchmark-report" "$repo_root/scripts/test" "$repo_root/scripts/test-benchmark-metadata" "$repo_root/scripts/test-benchmark-reports"
 "$repo_root/scripts/test"
 "$repo_root/scripts/test-benchmark-metadata"
+"$repo_root/scripts/test-benchmark-reports"
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

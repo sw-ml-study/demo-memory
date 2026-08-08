@@ -1,0 +1,1 @@
+Add just benchmark-report to save complete metadata plus timing output under ignored out/, and compare-reports to compare median insert/lookup throughput between two saved runs by implementation/workload. Add fixture-based tests, docs, and check integration; publish with git add/commit/push without hooks; complete and suggest next step.

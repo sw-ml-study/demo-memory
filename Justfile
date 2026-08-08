@@ -4,6 +4,12 @@ default:
 benchmark:
     ./scripts/run-benchmark
 
+benchmark-report:
+    ./scripts/save-benchmark-report
+
+compare-reports before after:
+    ./scripts/compare-benchmark-reports {{before}} {{after}}
+
 bloom-benchmark:
     ./scripts/run-bloom-benchmark
 

@@ -11,6 +11,11 @@ UTC timestamp, sw-MLPL version and commit, executable and inferred build
 profile, platform and architecture, workload/timing schema versions, and trial
 count. Saved output therefore retains the context required for comparison.
 
+`just benchmark-report` saves a complete run under ignored `out/`. Compare two
+runs with `just compare-reports out/BEFORE.txt out/AFTER.txt`; the comparator
+reports percentage changes in median insert and lookup throughput for each
+matching implementation/workload pair.
+
 These numbers include immutable MLPL evaluator and allocation overhead; they
 compare executable implementations rather than production hash-table kernels.
 They vary by machine and build profile, unlike deterministic probe metrics.
