@@ -1,0 +1,1 @@
+Transferred the rotation-tuned adaptive ensemble order 17/29/11 to localized drift and scaling against neutral 11/17/29 under hard budget 24.
