@@ -39,6 +39,8 @@ operations and proves equivalence with the logical representation.
 the bridge from classical indexing toward sparse ML retrieval.
 [Prefix-width tradeoffs](docs/prefix-width-tradeoff.md) sweep index selectivity
 against recall, comparisons, and fallback rate.
+[Multi-probe retrieval](docs/multiprobe-retrieval.md) searches nearby prefix
+buckets to recover recall for controlled extra work.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
@@ -55,6 +57,7 @@ just counting-bloom
 just packed-bloom
 just binary-retrieval
 just prefix-widths
+just multiprobe
 just timing-benchmark
 just benchmark-report
 # just compare-reports out/BEFORE.txt out/AFTER.txt

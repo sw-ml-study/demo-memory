@@ -1,0 +1,1 @@
+Implement binary multi-probe retrieval over exact and one-bit-neighbor prefixes; benchmark radius 0 versus 1 for several prefix widths, reporting recall recovery, comparisons, candidate averages, fallbacks, and reduction; add tests/docs/just/check; publish via git add/commit/push without hooks; complete and suggest next step.

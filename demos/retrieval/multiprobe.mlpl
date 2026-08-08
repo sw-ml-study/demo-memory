@@ -1,0 +1,6 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/bench/multiprobe_matrix.mlpl"
+print("schema width radius codes queries recall exhaustive shortlist fallbacks average reduction")
+m=u:standard_multiprobe_matrix();for row in m{print("row",row)}
+"PASS multiprobe"

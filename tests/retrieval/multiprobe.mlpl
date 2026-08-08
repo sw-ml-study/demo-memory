@@ -1,0 +1,7 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/bench/multiprobe_matrix.mlpl"
+def u:check_multi(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+m=u:standard_multiprobe_matrix();u:check_multi(eq(take(shape(m),0,0),6),"six configurations")
+i=0;while gt(6,i){if eq(take(take(m,0,i),0,2),0){zero=take(m,0,i);one=take(m,0,i+1);u:check_multi(1-lt(take(one,0,5),take(zero,0,5)),"radius one recall");u:check_multi(1-lt(take(one,0,7),take(zero,0,7)),"radius one work")}else{0};i=i+2}
+"PASS multiprobe"

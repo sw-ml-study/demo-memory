@@ -16,6 +16,9 @@ compare-reports before after:
 memory-timing:
     ./scripts/run-memory-timing
 
+multiprobe:
+    ./scripts/run-multiprobe
+
 memory-report:
     ./scripts/save-memory-report
 
