@@ -1,0 +1,1 @@
+Replaced the Makefile with explicit just recipes; verified every demo, benchmark, test, and check through just 1.58.0; updated all user documentation; excluded generic AgentRail GitHub/branch/hook fragments; and recorded local rules prohibiting hooks, gh CLI, and GitHub Actions.
