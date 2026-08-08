@@ -105,6 +105,8 @@ inside the comparison cap instead of trusting validation-time estimates.
 equal-quota, and round-robin token allocation across queries.
 [Adaptive ensemble scheduling](docs/adaptive-ensemble-scheduling.md) stops
 after two agreeing projections and carries saved work forward.
+[Adaptive ensemble order](docs/adaptive-ensemble-order.md) sweeps every seed
+ordering to expose early-stop sensitivity.
 
 ### Honest native measurements
 
@@ -162,6 +164,7 @@ just budget-selector-transfer
 just hard-runtime-budgets
 just fair-budget-scheduling
 just adaptive-ensemble-scheduling
+just adaptive-ensemble-order
 
 # Bounded-memory policies and timing
 just memory-timing

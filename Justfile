@@ -13,6 +13,9 @@ adaptive-threshold-samples:
 adaptive-ensemble-scheduling:
     ./scripts/run-adaptive-ensemble-scheduling
 
+adaptive-ensemble-order:
+    ./scripts/run-adaptive-ensemble-order
+
 benchmark-report:
     ./scripts/save-benchmark-report
 

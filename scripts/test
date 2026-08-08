@@ -46,3 +46,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/budgeted_retrieval.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/fair_budget.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/adaptive_ensemble.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/ensemble_order.mlpl"

@@ -1,0 +1,7 @@
+include "../../src/retrieval/ensemble_order.mlpl"
+def u:check_order(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+s=u:ensemble_order_summary([0.5,0.75,1,0.75])
+u:check_order(eq(s.minimum,0.5),"order minimum")
+u:check_order(eq(s.mean,0.75),"order mean")
+u:check_order(eq(s.maximum,1),"order maximum")
+"PASS ensemble_order"

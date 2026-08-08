@@ -1,0 +1,3 @@
+def u:order_min_from(values,index,best) { if eq(index,tally(values)){best}else{value=take(values,0,index);u:order_min_from(values,index+1,if lt(value,best){value}else{best})} }
+def u:order_max_from(values,index,best) { if eq(index,tally(values)){best}else{value=take(values,0,index);u:order_max_from(values,index+1,if gt(value,best){value}else{best})} }
+def u:ensemble_order_summary(recalls) { {minimum: u:order_min_from(recalls,1,take(recalls,0,0)),mean: reduce_add(recalls,0)/tally(recalls),maximum: u:order_max_from(recalls,1,take(recalls,0,0))} }
