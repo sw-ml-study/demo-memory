@@ -1,0 +1,1 @@
+Validated the calibrated size-1/0.75 reservoir policy across orthogonal rotation, harmless magnitude scaling, and localized cluster drift over five seeds.
