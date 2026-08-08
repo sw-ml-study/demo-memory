@@ -1,9 +1,10 @@
 number = 7
 slug = "fifo-vs-lru"
-status = "in-progress"
+status = "completed"
 description = "Implement a bounded FIFO key/value eviction baseline and compare it with LRU ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T17:14:57"
+completed_at = "2026-08-07T17:16:27"
 task_type = "feature"
-commits = []
+commits = ["f6a4bd88ab337802d7b24199908c17b4838598eb"]

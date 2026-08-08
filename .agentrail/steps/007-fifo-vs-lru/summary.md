@@ -1,0 +1,1 @@
+Implemented bounded FIFO key/value memory and compared it with LRU on identical uniform-reuse, hot-set, scan, and bursty traces; added a stable policy schema, comparative invariants, documentation, a just recipe, and pre-commit integration.
