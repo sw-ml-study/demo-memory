@@ -25,6 +25,9 @@ memory-timing:
 multiprobe:
     ./scripts/run-multiprobe
 
+monitoring-policy-calibration:
+    ./scripts/run-monitoring-policy-calibration
+
 memory-report:
     ./scripts/save-memory-report
 

@@ -1,0 +1,11 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/monitoring_calibration.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a=initial*0.33+shifted*0.67;aq=iq*0.33+sq*0.67;shift_memory=concat(initial,a,0);shift_stream=concat(iq,aq,0);control_stream=concat(iq,iq,0);base=u:covariance_projection(initial,4);seeds=[11,17,29,47,83]
+def u:cal(size,threshold) { u:monitoring_calibration(shift_stream,shift_memory,control_stream,initial,base,size,seeds,threshold) }
+a=u:cal(1,0.5);b=u:cal(2,0.5);c=u:cal(4,0.5);d=u:cal(1,0.75);e=u:cal(2,0.75);f=u:cal(4,0.75);g=u:cal(1,1.01);h=u:cal(2,1.01);i=u:cal(4,1.01)
+def u:row(p) { [1,p.size,p.threshold,p.trials,p.detection_rate,p.p50_delay,p.p95_delay,p.mean_monitored,p.false_trigger_rate] }
+print("schema reservoir threshold trials detection_rate p50_delay p95_delay mean_monitored false_trigger_rate")
+print(u:row(a));print(u:row(b));print(u:row(c));print(u:row(d));print(u:row(e));print(u:row(f));print(u:row(g));print(u:row(h));u:row(i)

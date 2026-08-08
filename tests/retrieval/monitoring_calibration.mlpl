@@ -1,0 +1,10 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/monitoring_calibration.mlpl"
+def u:check_cal(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]];healthy=concat(iq,iq,0);model=u:covariance_projection(initial,4);seeds=[11,17]
+normal=u:monitoring_calibration(healthy,initial,healthy,initial,model,1,seeds,0.75);eager=u:monitoring_calibration(healthy,initial,healthy,initial,model,1,seeds,1.01)
+u:check_cal(eq(normal.false_trigger_rate,0),"healthy threshold")
+u:check_cal(eq(eager.false_trigger_rate,1),"over-eager false triggers")
+u:check_cal(eq(normal.trials,2),"trial count")
+"PASS monitoring_calibration"

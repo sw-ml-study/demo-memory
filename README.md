@@ -77,6 +77,8 @@ exposes missed degradation and unnecessary rebuilds from policy choices.
 samples and measures shift-detection delay against monitoring work.
 [Reservoir seed trials](docs/reservoir-seed-trials.md) report detection rate
 and delay percentiles without relying on one replacement sequence.
+[Monitoring-policy calibration](docs/monitoring-policy-calibration.md) crosses
+sample size and threshold against both shifted and healthy control streams.
 
 ### Honest native measurements
 
@@ -120,6 +122,7 @@ just adaptive-rebuild
 just adaptive-threshold-samples
 just reservoir-shift-detection
 just reservoir-seed-trials
+just monitoring-policy-calibration
 
 # Bounded-memory policies and timing
 just memory-timing
