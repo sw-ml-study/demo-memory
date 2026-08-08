@@ -1,0 +1,1 @@
+Added a recall-triggered adaptive covariance projection rebuild policy that skips healthy batches, rebuilds after measured degradation, and retains recovered quality through further shift.

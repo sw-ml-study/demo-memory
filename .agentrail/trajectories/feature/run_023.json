@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 26,
+    "step": "adaptive-rebuild-policy"
+  },
+  "action": "Added reusable adaptive step logic, deterministic three-batch demo, focused tests, documentation of the oracle-backed quality signal and packed-layout boundary, plus README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:29:32"
+}
