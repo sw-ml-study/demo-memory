@@ -250,6 +250,7 @@ This repository follows the AgentRail saga/step process used by adjacent
 - Use the explicitly configured `$MLPL` binary or the documented adjacent
   development build; never overwrite a user's installed binary.
 - After `agentrail complete`, stop. Further work belongs to a new step.
+- Every completed-step handoff names the next highest-value unblocked step.
 
 ## Demo and benchmark rules
 

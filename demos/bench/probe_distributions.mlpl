@@ -1,0 +1,10 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/probe_distributions.mlpl"
+
+result = u:standard_probe_distributions()
+print("demo-memory lookup probe distributions schema v1")
+print("summary: schema implementation workload phase capacity count total mean min p50 p95 max")
+for row in result.summaries { print("summary", row) }
+print("histogram: schema implementation workload phase capacity count then bins 1..17")
+for row in result.histograms { print("histogram", row) }
+"PASS probe_distributions"

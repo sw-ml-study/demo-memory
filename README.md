@@ -27,11 +27,14 @@ and its [executable invariants](tests/hash/open_addressing.mlpl).
 
 The [LRU/KV bridge](docs/lru-kv-bridge.md) adds bounded key/value memory and
 compares uniform-reuse, hot-set, scan, and bursty access patterns.
+[Probe-distribution reporting](docs/probe-distributions.md) exposes the lookup
+tails hidden by aggregate totals through histograms and p50/p95 summaries.
 
 ```sh
 make demo
 make benchmark
 make lru-benchmark
+make probe-distributions
 make test
 make check       # required before each feature/fix commit
 ```
@@ -48,6 +51,7 @@ tests/hash/open_addressing.mlpl     invariants and expected metrics
 scripts/run-demo                    stable command-line entry point
 scripts/run-benchmark               deterministic workload matrix
 scripts/run-lru-benchmark           LRU/KV access-pattern matrix
+scripts/run-probe-distributions     lookup histogram and tail summaries
 scripts/test                        smoke/unit gate
 scripts/check                       repository pre-commit gate
 docs/benchmark-schema.md            stable numeric result contract

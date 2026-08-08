@@ -1,0 +1,20 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/probe_distributions.mlpl"
+
+def u:check_probe(condition, label) { "Exit unsuccessfully when a distribution invariant is false."; if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+
+table = u:linear_build(11, [0, 22, 11, 1, 12, 23, 2, 13])
+probes = u:probe_vector(table, [3, 99, 100], 0)
+stats = u:probe_stats(probes, 11)
+u:check_probe(eq(stats.count, 3), "operation count")
+u:check_probe(eq(reduce_add(stats.histogram, 0), stats.count), "histogram frequency")
+u:check_probe(eq(stats.total, reduce_add(probes, 0)), "histogram source total")
+u:check_probe(1 - lt(stats.p95, stats.p50), "ordered percentiles")
+u:check_probe(eq(stats.maximum, u:max_from(probes, 0, 0)), "maximum")
+
+result = u:standard_probe_distributions()
+u:check_probe(eq(take(shape(result.summaries), 0, 0), 16), "four workloads times implementations and phases")
+u:check_probe(eq(take(shape(result.summaries), 0, 1), 12), "summary schema width")
+u:check_probe(eq(take(shape(result.histograms), 0, 0), 16), "one histogram per summary")
+u:check_probe(eq(take(shape(result.histograms), 0, 1), 23), "histogram schema width")
+"PASS probe_distributions"
