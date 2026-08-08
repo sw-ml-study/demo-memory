@@ -1,0 +1,1 @@
+Attach numeric values to binary keys and implement dense versus prefix/multi-probe Hamming-weighted aggregation as a sparse-attention analogue. Measure mean/max output error, scored candidates, fallback, and reduction across widths/radii; add tests/docs/just/check; publish via git add/commit/push without hooks; complete and suggest next step.

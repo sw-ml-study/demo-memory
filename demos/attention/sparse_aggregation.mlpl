@@ -1,0 +1,6 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/attention/sparse_aggregation.mlpl"
+include "../../src/bench/sparse_aggregation_matrix.mlpl"
+print("schema width radius keys queries mean_error max_error dense_scored sparse_scored fallbacks reduction")
+m=u:standard_sparse_aggregation_matrix();for row in m{print("row",row)}
+"PASS sparse_aggregation"

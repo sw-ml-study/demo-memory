@@ -55,5 +55,8 @@ eviction-benchmark:
 test:
     ./scripts/test
 
+sparse-aggregation:
+    ./scripts/run-sparse-aggregation
+
 timing-benchmark:
     ./scripts/run-timing-benchmark

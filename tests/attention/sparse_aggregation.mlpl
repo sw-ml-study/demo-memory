@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/attention/sparse_aggregation.mlpl"
+include "../../src/bench/sparse_aggregation_matrix.mlpl"
+def u:check_sparse(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+keys=[0,1,2,3];values=[10,20,30,40];d=u:dense_aggregate(keys,values,1);s=u:sparse_aggregate(keys,values,1,1,0)
+u:check_sparse(gt(d.comparisons,s.comparisons),"sparse scores fewer keys")
+m=u:standard_sparse_aggregation_matrix();u:check_sparse(eq(take(shape(m),0,0),6),"six configurations")
+i=0;while gt(6,i){zero=take(m,0,i);one=take(m,0,i+1);u:check_sparse(1-lt(take(one,0,8),take(zero,0,8)),"radius one scores more");u:check_sparse(1-gt(take(one,0,5),take(zero,0,5)),"radius one lowers mean error");u:check_sparse(gt(take(one,0,10),0),"still sparse");i=i+2}
+"PASS sparse_aggregation"

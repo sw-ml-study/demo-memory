@@ -1,0 +1,9 @@
+number = 19
+slug = "sparse-aggregation"
+status = "in-progress"
+description = "Attach numeric values to binary keys and implement dense versus prefix/multi-..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T19:03:44"
+task_type = "feature"
+commits = []

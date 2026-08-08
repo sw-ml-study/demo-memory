@@ -22,3 +22,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/binary_index.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/prefix_width_matrix.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/multiprobe.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/attention/sparse_aggregation.mlpl"

@@ -41,6 +41,8 @@ the bridge from classical indexing toward sparse ML retrieval.
 against recall, comparisons, and fallback rate.
 [Multi-probe retrieval](docs/multiprobe-retrieval.md) searches nearby prefix
 buckets to recover recall for controlled extra work.
+[Sparse aggregation](docs/sparse-aggregation.md) attaches values and measures
+output error after Hamming-indexed candidate selection.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
@@ -58,6 +60,7 @@ just packed-bloom
 just binary-retrieval
 just prefix-widths
 just multiprobe
+just sparse-aggregation
 just timing-benchmark
 just benchmark-report
 # just compare-reports out/BEFORE.txt out/AFTER.txt
