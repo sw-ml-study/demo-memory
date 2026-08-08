@@ -18,6 +18,7 @@ sh -n "$repo_root/scripts/compare-memory-reports" "$repo_root/scripts/run-memory
 "$repo_root/scripts/run-projected-codes" >/dev/null
 "$repo_root/scripts/run-projection-sweep" >/dev/null
 "$repo_root/scripts/run-data-derived-projection" >/dev/null
+"$repo_root/scripts/run-distribution-shift" >/dev/null
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

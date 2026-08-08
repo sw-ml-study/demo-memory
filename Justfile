@@ -58,6 +58,9 @@ demo:
 data-derived-projection:
     ./scripts/run-data-derived-projection
 
+distribution-shift:
+    ./scripts/run-distribution-shift
+
 eviction-benchmark:
     ./scripts/run-eviction-benchmark
 

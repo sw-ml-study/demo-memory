@@ -65,6 +65,8 @@ continuous vectors and separate projection recall from shortlist recall.
 variance instead of relying on one projection.
 [Data-derived projection](docs/data-derived-projection.md) extracts covariance
 directions from memory itself as a small BinaryPC-like bridge.
+[Distribution shift and reindexing](docs/distribution-shift.md) shows recall
+loss when that learned index becomes stale and the recovery after rebuilding.
 
 ### Honest native measurements
 
@@ -102,6 +104,7 @@ just sparse-aggregation
 just projected-codes
 just projection-sweep
 just data-derived-projection
+just distribution-shift
 
 # Bounded-memory policies and timing
 just memory-timing

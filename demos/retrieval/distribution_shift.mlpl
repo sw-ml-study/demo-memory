@@ -1,0 +1,10 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]]
+initial_queries=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+arrivals=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]]
+shifted_queries=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+r=u:evaluate_distribution_shift(initial,initial_queries,arrivals,shifted_queries,4,1)
+print("schema bits before_recall stale_recall rebuilt_recall stale_indexed rebuilt_indexed rebuild_rows rebuild_cells power_steps")
+[1,4,r.before.hamming_recall,r.stale.hamming_recall,r.rebuilt.hamming_recall,r.stale.indexed_recall,r.rebuilt.indexed_recall,r.rebuild_rows,r.rebuild_cells,r.power_steps]

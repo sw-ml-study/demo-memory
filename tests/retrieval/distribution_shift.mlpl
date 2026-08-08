@@ -1,0 +1,12 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+def u:check_shift(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+initial=[[2,0,0,0],[-2,0,0,0],[0,2,0,0],[0,-2,0,0]];iq=[[1.9,0,0,0],[-1.9,0,0,0],[0,1.9,0,0],[0,-1.9,0,0]]
+arrivals=[[0,0,2,0],[0,0,-2,0],[0,0,0,2],[0,0,0,-2]];sq=[[0,0,1.9,0],[0,0,-1.9,0],[0,0,0,1.9],[0,0,0,-1.9]]
+r=u:evaluate_distribution_shift(initial,iq,arrivals,sq,4,1)
+u:check_shift(eq(r.rebuild_rows,8),"rebuild rows")
+u:check_shift(eq(r.rebuild_cells,32),"rebuild cells")
+u:check_shift(eq(r.power_steps,80),"power steps")
+u:check_shift(gt(r.rebuilt.hamming_recall,r.stale.hamming_recall),"rebuild improves shifted recall")
+"PASS distribution_shift"
