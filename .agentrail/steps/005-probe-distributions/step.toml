@@ -1,9 +1,10 @@
 number = 5
 slug = "probe-distributions"
-status = "in-progress"
+status = "completed"
 description = "Add per-operation lookup probe histograms and nearest-rank p50/p95/max summar..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T16:53:20"
+completed_at = "2026-08-07T17:11:37"
 task_type = "feature"
-commits = []
+commits = ["bd1f4e27462df81bfab8583a9dab1376ed223820"]

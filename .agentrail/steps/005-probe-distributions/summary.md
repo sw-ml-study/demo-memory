@@ -1,0 +1,1 @@
+Added per-operation lookup probe vectors, fixed-width histograms, and nearest-rank p50/p95/min/mean/max summaries for all standard open-addressing workloads; documented both stable schemas; integrated runner, tests, README, and pre-commit coverage; recorded the mandatory next-unblocked-step handoff rule.
