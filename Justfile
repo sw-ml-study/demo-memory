@@ -55,6 +55,9 @@ prefix-widths:
 projected-codes:
     ./scripts/run-projected-codes
 
+projection-ensemble-fallback:
+    ./scripts/run-projection-ensemble-fallback
+
 projection-sweep:
     ./scripts/run-projection-sweep
 

@@ -1,0 +1,6 @@
+include "../../src/retrieval/projection_ensemble.mlpl"
+def u:check_ensemble(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+u:check_ensemble(eq(u:unanimous_choice(2,2,2),2),"unanimous choice")
+u:check_ensemble(eq(u:unanimous_choice(2,2,3),-1),"disagreement fallback")
+u:check_ensemble(eq(u:unanimous_choice(1,2,1),-1),"majority still falls back")
+"PASS projection_ensemble"

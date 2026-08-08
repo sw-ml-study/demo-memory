@@ -93,6 +93,8 @@ immediate rebuilding versus recall confirmation.
 codes, broader probing, and dense correctness fallback.
 [Wider-code seed trials](docs/wider-code-seed-trials.md) measure whether
 random-projection recovery survives width and seed variation.
+[Projection ensembles](docs/projection-ensemble-fallback.md) use unanimous
+indexed answers and dense fallback on seed disagreement.
 
 ### Honest native measurements
 
@@ -144,6 +146,7 @@ just feature-drift-alarm
 just feature-alarm-actions
 just failed-rebuild-escalation
 just wider-code-seed-trials
+just projection-ensemble-fallback
 
 # Bounded-memory policies and timing
 just memory-timing

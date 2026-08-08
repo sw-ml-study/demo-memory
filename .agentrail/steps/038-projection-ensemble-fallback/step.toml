@@ -1,0 +1,9 @@
+number = 38
+slug = "projection-ensemble-fallback"
+status = "in-progress"
+description = "Implement a three-member ensemble of 8-bit random sign projection indexes for..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T20:51:08"
+task_type = "feature"
+commits = []

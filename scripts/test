@@ -40,3 +40,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/feature_alarm_actions.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/rebuild_escalation.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/projection_recovery_trials.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/projection_ensemble.mlpl"
