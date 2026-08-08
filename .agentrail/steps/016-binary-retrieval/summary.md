@@ -1,0 +1,1 @@
+Implemented exhaustive and low-bit-prefix binary-code retrieval using popcount(bxor), with deterministic nearest-neighbor recall, comparison, fallback, and reduction metrics; demonstrated 100% recall with 75% fewer Hamming comparisons; added tests, docs, just and check integration.
