@@ -1,0 +1,9 @@
+include "../../src/retrieval/budget_selector.mlpl"
+def u:check_budget(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+single=u:budget_candidate(1,0.5,8);ensemble=u:budget_candidate(2,1,24);dense=u:budget_candidate(3,1,32)
+a=u:select_retrieval_budget(7,single,ensemble,dense);b=u:select_retrieval_budget(8,single,ensemble,dense);c=u:select_retrieval_budget(24,single,ensemble,dense);d=u:select_retrieval_budget(40,single,ensemble,dense)
+u:check_budget(eq(a.feasible,0),"no feasible mode")
+u:check_budget(eq(b.mode,1),"cheap single")
+u:check_budget(eq(c.mode,2),"quality ensemble")
+u:check_budget(eq(d.mode,2),"lower-work tie break")
+"PASS budget_selector"

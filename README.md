@@ -95,6 +95,8 @@ codes, broader probing, and dense correctness fallback.
 random-projection recovery survives width and seed variation.
 [Projection ensembles](docs/projection-ensemble-fallback.md) use unanimous
 indexed answers and dense fallback on seed disagreement.
+[Retrieval budget selection](docs/retrieval-budget-selector.md) chooses among
+single-index, ensemble, and dense modes from validated quality and work.
 
 ### Honest native measurements
 
@@ -147,6 +149,7 @@ just feature-alarm-actions
 just failed-rebuild-escalation
 just wider-code-seed-trials
 just projection-ensemble-fallback
+just retrieval-budget-selector
 
 # Bounded-memory policies and timing
 just memory-timing

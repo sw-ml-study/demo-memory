@@ -33,6 +33,7 @@ sh -n "$repo_root/scripts/compare-memory-reports" "$repo_root/scripts/run-memory
 "$repo_root/scripts/run-failed-rebuild-escalation" >/dev/null
 "$repo_root/scripts/run-wider-code-seed-trials" >/dev/null
 "$repo_root/scripts/run-projection-ensemble-fallback" >/dev/null
+"$repo_root/scripts/run-retrieval-budget-selector" >/dev/null
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

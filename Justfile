@@ -13,6 +13,9 @@ adaptive-threshold-samples:
 benchmark-report:
     ./scripts/save-benchmark-report
 
+retrieval-budget-selector:
+    ./scripts/run-retrieval-budget-selector
+
 binary-retrieval:
     ./scripts/run-binary-retrieval
 

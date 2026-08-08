@@ -1,0 +1,13 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/projection_ensemble.mlpl"
+include "../../src/retrieval/rebuild_escalation.mlpl"
+include "../../src/retrieval/budget_selector.mlpl"
+memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];queries=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]]
+p11=randn(11,[4,8]);p17=randn(17,[4,8]);p29=randn(29,[4,8]);p83=randn(83,[4,8]);one=u:evaluate_projected(memory,queries,p83,8,1);three=u:evaluate_projection_ensemble3(memory,queries,p11,p17,p29,8,1);exact=u:dense_fallback_summary(memory,queries)
+single=u:budget_candidate(1,one.indexed_recall,one.indexed_comparisons);ensemble=u:budget_candidate(2,three.final_recall,three.total_work);dense=u:budget_candidate(3,exact.recall,exact.comparisons)
+a=u:select_retrieval_budget(8,single,ensemble,dense);b=u:select_retrieval_budget(16,single,ensemble,dense);c=u:select_retrieval_budget(24,single,ensemble,dense);d=u:select_retrieval_budget(32,single,ensemble,dense)
+def u:budget_row(budget,x) { [1,budget,x.feasible,x.mode,x.recall,x.work] }
+print("schema budget feasible mode validated_recall work")
+print(u:budget_row(8,a));print(u:budget_row(16,b));print(u:budget_row(24,c));u:budget_row(32,d)

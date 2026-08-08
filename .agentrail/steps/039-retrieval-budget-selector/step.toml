@@ -1,0 +1,9 @@
+number = 39
+slug = "retrieval-budget-selector"
+status = "in-progress"
+description = "Implement a comparison-budget selector among a seed-sensitive single 8-bit pr..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T20:54:29"
+task_type = "feature"
+commits = []
