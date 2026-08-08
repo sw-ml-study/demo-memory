@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 27,
+    "step": "adaptive-threshold-samples"
+  },
+  "action": "Added sampled-decision/full-evaluation policy logic, four deterministic policy cases, tests, documentation, README/Just/check integration, and explicit recall/work reporting.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:33:52"
+}
