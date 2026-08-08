@@ -1,0 +1,9 @@
+number = 22
+slug = "data-derived-projection"
+status = "in-progress"
+description = "Implement training-free data-derived binary projection from centered covarian..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T19:12:58"
+task_type = "feature"
+commits = []

@@ -1,0 +1,11 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/covariance_projection.mlpl"
+include "../../src/bench/projection_sweep.mlpl"
+vectors=[[1,0,0,0],[0.9,0.1,0,0],[0,1,0,0],[0.1,0.9,0,0],[0,0,1,0],[0,0.1,0.9,0],[0,0,0,1],[0,0,0.1,0.9]];queries=[[1,0.05,0,0],[0.05,1,0,0],[0,0,1,0.05],[0,0,0.05,1]]
+model=u:covariance_projection(vectors,4);cq=u:center_queries(queries,model.mean)
+data=u:evaluate_projected(model.centered,cq,model.projection,4,1)
+a=u:evaluate_projected(model.centered,cq,randn(11,[4,4]),4,1);b=u:evaluate_projected(model.centered,cq,randn(29,[4,4]),4,1);c=u:evaluate_projected(model.centered,cq,randn(47,[4,4]),4,1)
+print("schema bits data_recall data_indexed data_reduction random_min random_mean random_max")
+[1,4,data.hamming_recall,data.indexed_recall,data.reduction,u:sweep_min3(a.hamming_recall,b.hamming_recall,c.hamming_recall),(a.hamming_recall+b.hamming_recall+c.hamming_recall)/3,u:sweep_max3(a.hamming_recall,b.hamming_recall,c.hamming_recall)]

@@ -1,0 +1,1 @@
+Implement training-free data-derived binary projection from centered covariance directions using visible MLPL power iteration/deflation, compare retrieval recall with random sign projections, report variance and indexed work, add tests/docs/just/check; publish via git add/commit/push without hooks; complete and suggest next step.

@@ -1,0 +1,5 @@
+def u:power_direction(cov,initial,steps) { v=initial;i=0;while gt(steps,i){v=matmul(cov,v);norm=sqrt(dot(v,v));if gt(norm,0){v=v/norm}else{0};i=i+1};v }
+def u:deflate_covariance(cov,v) { eigen=dot(v,matmul(cov,v));cov-eigen*matmul(reshape(v,[tally(v),1]),reshape(v,[1,tally(v)])) }
+def u:covariance_components_from(cov,dimension,count,index) { if eq(index,count){fill([dimension,0],0)}else{initial=eq(range(dimension),index);v=u:power_direction(cov,initial,20);remaining=u:covariance_components_from(u:deflate_covariance(cov,v),dimension,count,index+1);concat(reshape(v,[dimension,1]),remaining,1)} }
+def u:covariance_projection(vectors,count) { "Return centered vectors, mean, and data-derived covariance directions.";rows=take(shape(vectors),0,0);dimension=take(shape(vectors),0,1);mean=reduce_add(vectors,0)/rows;centered=vectors-matmul(ones([rows,1]),reshape(mean,[1,dimension]));cov=matmul(transpose(centered),centered)/rows;{centered: centered,mean: mean,projection: u:covariance_components_from(cov,dimension,count,0)} }
+def u:center_queries(queries,mean) { queries-matmul(ones([take(shape(queries),0,0),1]),reshape(mean,[1,tally(mean)])) }

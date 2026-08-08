@@ -47,6 +47,8 @@ output error after Hamming-indexed candidate selection.
 continuous vectors and separate projection recall from shortlist recall.
 [Projection sweeps](docs/projection-sweep.md) measure width trends and seed
 variance instead of relying on one projection.
+[Data-derived projection](docs/data-derived-projection.md) extracts covariance
+directions from memory itself as a small BinaryPC-like bridge.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
@@ -67,6 +69,7 @@ just multiprobe
 just sparse-aggregation
 just projected-codes
 just projection-sweep
+just data-derived-projection
 just timing-benchmark
 just benchmark-report
 # just compare-reports out/BEFORE.txt out/AFTER.txt

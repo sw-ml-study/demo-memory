@@ -55,6 +55,9 @@ check:
 demo:
     ./scripts/run-demo
 
+data-derived-projection:
+    ./scripts/run-data-derived-projection
+
 eviction-benchmark:
     ./scripts/run-eviction-benchmark
 

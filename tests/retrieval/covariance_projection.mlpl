@@ -1,0 +1,10 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/covariance_projection.mlpl"
+def u:check_cov(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+v=[[2,0],[1,0],[-1,0],[-2,0]];m=u:covariance_projection(v,2)
+u:check_cov(eq(reduce_add(eq(shape(m.projection),[2,2]),0),2),"projection shape")
+u:check_cov(lt(abs(take(take(m.projection,1,0),0,0)),1.01),"normalized direction")
+u:check_cov(eq(reduce_add(eq(reduce_add(m.centered,0),[0,0]),0),2),"centered columns")
+"PASS covariance_projection"
