@@ -1,0 +1,1 @@
+Added a validation-informed comparison-budget selector across a seed-sensitive single index, unanimous ensemble, and dense retrieval.

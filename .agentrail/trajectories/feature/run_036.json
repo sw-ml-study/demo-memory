@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 39,
+    "step": "retrieval-budget-selector"
+  },
+  "action": "Implemented feasible highest-recall/lower-work selection, measured budget frontier demo, focused selection tests, documentation of validation scope, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T20:56:06"
+}

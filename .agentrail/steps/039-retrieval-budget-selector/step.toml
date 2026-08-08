@@ -1,9 +1,10 @@
 number = 39
 slug = "retrieval-budget-selector"
-status = "in-progress"
+status = "completed"
 description = "Implement a comparison-budget selector among a seed-sensitive single 8-bit pr..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T20:54:29"
+completed_at = "2026-08-07T20:56:06"
 task_type = "feature"
-commits = []
+commits = ["05342d0cc53113d13d41b2f3921a70840c8ca3e6"]
