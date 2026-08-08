@@ -1,0 +1,1 @@
+Integrated native clock_ms timing with clock-call calibration, warmup, repeated build/lookup batches, throughput rows, monotonic/measurability tests, native CLI/connect scope documentation, just recipe, README and upstream-contract updates.
