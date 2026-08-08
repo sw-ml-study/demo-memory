@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 37,
+    "step": "wider-code-seed-trials"
+  },
+  "action": "Added reusable projection recovery trials and summaries, demo, focused statistic tests, documentation of non-monotonic width behavior, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T20:48:31"
+}

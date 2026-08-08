@@ -1,0 +1,1 @@
+Validated localized-drift random-sign recovery across widths 4, 8, and 12 and five deterministic seeds, exposing recall variability, validation success, indexed quality, and work.

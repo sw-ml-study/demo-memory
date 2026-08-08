@@ -1,9 +1,10 @@
 number = 37
 slug = "wider-code-seed-trials"
-status = "in-progress"
+status = "completed"
 description = "Validate localized-drift recovery from random sign projections across widths ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T20:46:50"
+completed_at = "2026-08-07T20:48:30"
 task_type = "feature"
-commits = []
+commits = ["858d769b45625b3085a6c1ec0fce417c74135a2a"]
