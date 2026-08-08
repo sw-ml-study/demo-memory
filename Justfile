@@ -37,6 +37,9 @@ lru-benchmark:
 probe-distributions:
     ./scripts/run-probe-distributions
 
+prefix-widths:
+    ./scripts/run-prefix-widths
+
 check:
     ./scripts/check
 

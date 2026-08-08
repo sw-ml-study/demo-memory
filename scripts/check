@@ -12,6 +12,7 @@ sh -n "$repo_root/scripts/compare-memory-reports" "$repo_root/scripts/run-memory
 "$repo_root/scripts/run-memory-timing" >/dev/null
 "$repo_root/scripts/run-packed-bloom" >/dev/null
 "$repo_root/scripts/run-binary-retrieval" >/dev/null
+"$repo_root/scripts/run-prefix-widths" >/dev/null
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

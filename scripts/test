@@ -20,3 +20,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/native_timing.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/memory_timing.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/binary_index.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/prefix_width_matrix.mlpl"

@@ -1,0 +1,4 @@
+# schema, prefix width, codes, queries, recall, exhaustive comparisons,
+# shortlist comparisons, fallbacks, average compared candidates, reduction.
+def u:prefix_width_row(codes,queries,width) { r=u:evaluate_prefix(codes,queries,width); [1,width,tally(codes),r.queries,r.recall,r.exhaustive_comparisons,r.shortlist_comparisons,r.fallbacks,r.shortlist_comparisons/r.queries,r.reduction] }
+def u:standard_prefix_matrix() { codes=range(32)*7; queries=bxor(range(16)*14,[1,2,4,8,3,5,9,17,1,2,4,8,3,5,9,17]); a=reshape(u:prefix_width_row(codes,queries,1),[1,10]);b=reshape(u:prefix_width_row(codes,queries,2),[1,10]);c=reshape(u:prefix_width_row(codes,queries,3),[1,10]);d=reshape(u:prefix_width_row(codes,queries,4),[1,10]);e=reshape(u:prefix_width_row(codes,queries,5),[1,10]);concat(concat(concat(concat(a,b,0),c,0),d,0),e,0) }

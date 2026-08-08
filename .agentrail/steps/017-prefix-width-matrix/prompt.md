@@ -1,0 +1,1 @@
+Benchmark binary retrieval prefix widths over a larger deterministic code/query set, reporting recall, shortlist comparisons, fallbacks, average candidates, and reduction versus exhaustive search. Add stable schema, tests/docs/just/check integration; publish via git add/commit/push without hooks; complete and suggest next step.

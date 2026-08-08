@@ -1,0 +1,5 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/bench/prefix_width_matrix.mlpl"
+print("schema prefix_width codes queries recall exhaustive shortlist fallbacks average_candidates reduction")
+matrix=u:standard_prefix_matrix();for row in matrix{print("row",row)}
+"PASS prefix_widths"

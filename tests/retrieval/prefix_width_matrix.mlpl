@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/bench/prefix_width_matrix.mlpl"
+def u:check_width(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+m=u:standard_prefix_matrix()
+u:check_width(eq(take(shape(m),0,0),5),"five widths")
+u:check_width(eq(take(shape(m),0,1),10),"schema width")
+u:check_width(eq(reduce_add(take(m,1,5),0),5*32*16),"exhaustive baseline stable")
+u:check_width(gt(take(take(m,0,0),0,8),take(take(m,0,4),0,8)),"wider prefixes shrink average shortlist")
+"PASS prefix_width_matrix"

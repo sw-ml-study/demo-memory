@@ -1,0 +1,9 @@
+number = 17
+slug = "prefix-width-matrix"
+status = "in-progress"
+description = "Benchmark binary retrieval prefix widths over a larger deterministic code/que..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T18:21:23"
+task_type = "feature"
+commits = []
