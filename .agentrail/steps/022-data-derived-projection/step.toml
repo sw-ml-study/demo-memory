@@ -1,9 +1,10 @@
 number = 22
 slug = "data-derived-projection"
-status = "in-progress"
+status = "completed"
 description = "Implement training-free data-derived binary projection from centered covarian..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:12:58"
+completed_at = "2026-08-07T19:15:16"
 task_type = "feature"
-commits = []
+commits = ["8e6a9ec4ebf0bbc19007af66a8d85a7216708653"]

@@ -1,0 +1,1 @@
+Implemented training-free covariance-derived binary projections with visible power iteration and deflation; benchmarked against random sign projections with recall, variance, candidate reduction, and indexed-work reporting.

@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 22,
+    "step": "data-derived-projection"
+  },
+  "action": "Added covariance projection module, retrieval demo, focused tests, documentation, Just recipes, and full check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:15:16"
+}
