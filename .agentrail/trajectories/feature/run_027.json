@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 30,
+    "step": "monitoring-policy-calibration"
+  },
+  "action": "Added reusable calibration summary, nine-policy matrix, healthy-control tests, fixture-specific Pareto documentation, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:47:19"
+}

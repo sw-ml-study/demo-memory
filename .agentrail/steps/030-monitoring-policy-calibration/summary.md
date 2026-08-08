@@ -1,0 +1,1 @@
+Jointly calibrated reservoir size and recall threshold across five seeds using shifted and all-healthy control streams, exposing detection, censored delay, monitoring work, and false-trigger tradeoffs.

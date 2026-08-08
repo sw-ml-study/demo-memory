@@ -1,9 +1,10 @@
 number = 30
 slug = "monitoring-policy-calibration"
-status = "in-progress"
+status = "completed"
 description = "Jointly sweep adaptive reservoir size and recall threshold across multiple de..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:45:25"
+completed_at = "2026-08-07T19:47:19"
 task_type = "feature"
-commits = []
+commits = ["e5f5f7fd49c2c48c04ce293172b81e72fe1765d7"]
