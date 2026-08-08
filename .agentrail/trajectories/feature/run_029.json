@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 32,
+    "step": "stratified-local-drift"
+  },
+  "action": "Added deterministic per-stratum sampling and trial aggregation, demo, tests, documentation, and README/Just/check integration; retained the negative result that stratification matched delay but increased work.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:58:43"
+}
