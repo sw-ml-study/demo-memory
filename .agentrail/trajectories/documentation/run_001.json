@@ -1,0 +1,11 @@
+{
+  "task_type": "documentation",
+  "state": {
+    "number": 23,
+    "step": "readme-readable-groups"
+  },
+  "action": "Added topical subsections for hash tables, bounded memory, Bloom filters, retrieval, projections, and timing; grouped runnable recipes by purpose; ran the complete repository check.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:18:44"
+}

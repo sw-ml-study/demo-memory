@@ -1,0 +1,1 @@
+Reformatted README demo descriptions and Just recipes into short conceptual groups with whitespace while preserving all content and commands.

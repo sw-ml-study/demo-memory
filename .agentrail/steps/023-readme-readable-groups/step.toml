@@ -1,9 +1,10 @@
 number = 23
 slug = "readme-readable-groups"
-status = "in-progress"
+status = "completed"
 description = "Reformat README.md so dense demo links and commands are organized into logica..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:17:41"
+completed_at = "2026-08-07T19:18:44"
 task_type = "documentation"
-commits = []
+commits = ["73fcc609661c89ae8f3e7592555eed613849fc25"]
