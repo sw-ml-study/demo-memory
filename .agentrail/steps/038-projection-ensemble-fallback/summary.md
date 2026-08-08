@@ -1,0 +1,1 @@
+Added three-member 8-bit projection ensembles that accept only unanimous indexed answers and use dense fallback on disagreement across three seed triplets.
