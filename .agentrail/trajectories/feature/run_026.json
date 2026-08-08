@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 29,
+    "step": "reservoir-seed-trials"
+  },
+  "action": "Added reusable detection-trial aggregation and percentile logic, demo, focused tests, censoring documentation, README/Just/check integration, and explicit monitoring-work reporting.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:43:49"
+}

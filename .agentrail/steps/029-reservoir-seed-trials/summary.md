@@ -1,0 +1,1 @@
+Repeated reservoir shift detection across five deterministic seeds and summarized detection rate plus censored nearest-rank p50/p95 delay for reservoir sizes 1, 2, and 4.

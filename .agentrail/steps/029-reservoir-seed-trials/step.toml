@@ -1,9 +1,10 @@
 number = 29
 slug = "reservoir-seed-trials"
-status = "in-progress"
+status = "completed"
 description = "Run reservoir shift detection across multiple deterministic seeds and summari..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:42:00"
+completed_at = "2026-08-07T19:43:49"
 task_type = "feature"
-commits = []
+commits = ["9fd4f391a697432eb6f33e8a8ce6a3f01ea5dfe2"]
