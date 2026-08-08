@@ -1,9 +1,10 @@
 number = 8
 slug = "bloom-filter"
-status = "in-progress"
+status = "completed"
 description = "Implement a deterministic logical Bloom filter backed by current MLPL numeric..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T17:23:51"
+completed_at = "2026-08-07T17:27:13"
 task_type = "feature"
-commits = []
+commits = ["75c0e3a19443fb0424af979e1101a5a34d9388b6"]
