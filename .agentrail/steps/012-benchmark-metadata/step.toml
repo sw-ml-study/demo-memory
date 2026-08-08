@@ -1,9 +1,10 @@
 number = 12
 slug = "benchmark-metadata"
-status = "in-progress"
+status = "completed"
 description = "Add a stable metadata preamble for native benchmark runs containing UTC times..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T18:00:05"
+completed_at = "2026-08-07T18:01:18"
 task_type = "feature"
-commits = []
+commits = ["4fc1613f7345cf258f4ed5e46ebccacba637c908"]

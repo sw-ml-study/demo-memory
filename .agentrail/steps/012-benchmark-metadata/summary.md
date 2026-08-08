@@ -1,0 +1,1 @@
+Added schema-v1 metadata preambles to native timing runs with UTC timestamp, sw-MLPL version/commit, executable and build profile, platform/architecture, workload and timing schemas, and trial count; added validation, documentation, and explicit check coverage.
