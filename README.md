@@ -69,6 +69,8 @@ directions from memory itself as a small BinaryPC-like bridge.
 loss when that learned index becomes stale and the recovery after rebuilding.
 [Shift severity and rebuild cadence](docs/shift-rebuild-cadence.md) compares
 never, periodic, and every-batch rebuild policies as the memory drifts.
+[Adaptive projection rebuilds](docs/adaptive-rebuild.md) trigger from sampled
+recall instead of assuming a fixed maintenance interval.
 
 ### Honest native measurements
 
@@ -108,6 +110,7 @@ just projection-sweep
 just data-derived-projection
 just distribution-shift
 just shift-rebuild-cadence
+just adaptive-rebuild
 
 # Bounded-memory policies and timing
 just memory-timing

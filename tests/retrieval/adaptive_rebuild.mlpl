@@ -1,0 +1,11 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+def u:check_adaptive(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];queries=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]];memory=concat(initial,shifted,0);old=u:covariance_projection(initial,4)
+r=u:adaptive_projection_step(memory,queries,old,4,1,0.75)
+u:check_adaptive(eq(r.rebuilt,1),"rebuild below threshold")
+u:check_adaptive(eq(r.rebuild_cells,64),"rebuild cells")
+u:check_adaptive(eq(r.power_steps,80),"power steps")
+u:check_adaptive(gt(r.result.hamming_recall,r.observed_recall),"recall recovery")
+"PASS adaptive_rebuild"

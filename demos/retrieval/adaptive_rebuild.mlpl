@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];initial_queries=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];shifted_queries=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a1=initial*0.67+shifted*0.33;q1=initial_queries*0.67+shifted_queries*0.33;a2=initial*0.33+shifted*0.67;q2=initial_queries*0.33+shifted_queries*0.67;m1=concat(initial,a1,0);m2=concat(initial,a2,0);m3=concat(initial,shifted,0)
+width=4;radius=1;threshold=0.75;base=u:covariance_projection(initial,width);s1=u:adaptive_projection_step(m1,q1,base,width,radius,threshold);s2=u:adaptive_projection_step(m2,q2,s1.model,width,radius,threshold);s3=u:adaptive_projection_step(m3,shifted_queries,s2.model,width,radius,threshold)
+print("schema batch severity observed_recall post_recall post_indexed rebuilt cumulative_cells cumulative_power_steps")
+[[1,0.33,s1.observed_recall,s1.result.hamming_recall,s1.result.indexed_recall,s1.rebuilt,s1.rebuild_cells,s1.power_steps],[2,0.67,s2.observed_recall,s2.result.hamming_recall,s2.result.indexed_recall,s2.rebuilt,s1.rebuild_cells+s2.rebuild_cells,s1.power_steps+s2.power_steps],[3,1,s3.observed_recall,s3.result.hamming_recall,s3.result.indexed_recall,s3.rebuilt,s1.rebuild_cells+s2.rebuild_cells+s3.rebuild_cells,s1.power_steps+s2.power_steps+s3.power_steps]]

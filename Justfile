@@ -4,6 +4,9 @@ default:
 benchmark:
     ./scripts/run-benchmark
 
+adaptive-rebuild:
+    ./scripts/run-adaptive-rebuild
+
 benchmark-report:
     ./scripts/save-benchmark-report
 
