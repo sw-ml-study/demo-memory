@@ -70,6 +70,9 @@ recency-local-drift:
 feature-drift-alarm:
     ./scripts/run-feature-drift-alarm
 
+feature-alarm-actions:
+    ./scripts/run-feature-alarm-actions
+
 check:
     ./scripts/check
 

@@ -87,6 +87,8 @@ global reservoir with explicit per-cluster samples.
 stale samples detects localized drift sooner.
 [Proactive feature-drift alarms](docs/feature-drift-alarm.md) compare
 covariance-subspace residuals with failure-based recall monitoring.
+[Feature-alarm actions](docs/feature-alarm-actions.md) expose the cost of
+immediate rebuilding versus recall confirmation.
 
 ### Honest native measurements
 
@@ -135,6 +137,7 @@ just shift-shape-generalization
 just stratified-local-drift
 just recency-local-drift
 just feature-drift-alarm
+just feature-alarm-actions
 
 # Bounded-memory policies and timing
 just memory-timing

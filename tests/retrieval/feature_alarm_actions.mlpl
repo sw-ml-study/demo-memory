@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/feature_alarm_actions.mlpl"
+def u:check_actions(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+v=[[2,0,0],[1.8,0.2,0],[-2,0,0],[-1.8,-0.2,0],[0,2,0],[0.2,1.8,0],[0,-2,0],[-0.2,-1.8,0]];q=[[1.9,0.1,1],[-1.9,-0.1,1],[0.1,1.9,1],[-0.1,-1.9,1]];retrieval=u:covariance_projection(v,3);subspace=u:covariance_projection(v,2);immediate=u:immediate_feature_action(v,[[1.9,0.1,1],[-1.9,-0.1,1]],q,retrieval,subspace,3,1,0.1);confirmed=u:confirmed_feature_action(v,[[1.9,0.1,1],[-1.9,-0.1,1]],q,retrieval,subspace,3,1,0.1,0.75)
+u:check_actions(eq(immediate.rebuilt,1),"immediate reacts to feature alarm")
+u:check_actions(eq(confirmed.rebuilt,0),"confirmation avoids harmless rebuild")
+u:check_actions(eq(confirmed.post_recall,1),"harmless quality")
+"PASS feature_alarm_actions"

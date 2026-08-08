@@ -29,6 +29,7 @@ sh -n "$repo_root/scripts/compare-memory-reports" "$repo_root/scripts/run-memory
 "$repo_root/scripts/run-stratified-local-drift" >/dev/null
 "$repo_root/scripts/run-recency-local-drift" >/dev/null
 "$repo_root/scripts/run-feature-drift-alarm" >/dev/null
+"$repo_root/scripts/run-feature-alarm-actions" >/dev/null
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

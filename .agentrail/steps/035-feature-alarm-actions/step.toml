@@ -1,0 +1,9 @@
+number = 35
+slug = "feature-alarm-actions"
+status = "in-progress"
+description = "Compare two actions after a proactive feature-drift alarm: immediate projecti..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T20:30:35"
+task_type = "feature"
+commits = []
