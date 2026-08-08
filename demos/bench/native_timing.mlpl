@@ -1,0 +1,9 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/native_timing.mlpl"
+keys = [0, 22, 11, 1, 12, 23, 2, 13]
+queries = [0, 23, 13, 3, 99, 100]
+print("native clock_ms schema: schema implementation capacity size iterations insert_ops insert_ms inserts_per_sec lookup_ops lookup_ms lookups_per_sec")
+print("clock_call_ms", u:clock_overhead(10000))
+print("row", u:timed_hash(0, 11, keys, queries, 1000))
+print("row", u:timed_hash(1, 11, keys, queries, 1000))
+"PASS native_timing"

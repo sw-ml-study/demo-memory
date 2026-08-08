@@ -1,0 +1,11 @@
+def u:timed_build_work(implementation, capacity, keys) { "Build once and return numeric work to keep loop values scalar."; table = if eq(implementation, 0) { u:linear_build(capacity, keys) } else { u:robin_build(capacity, keys) }; table.insert_probes }
+def u:timed_lookup_work(implementation, table, key) { "Look up once and return its numeric probe count."; result = if eq(implementation, 0) { u:linear_lookup_from(table, key, 0) } else { u:robin_lookup_from(table, key, 0) }; result.probes }
+def u:timed_hash(implementation, capacity, keys, queries, iterations) { "Warm up, then time batched builds and lookups with the native monotonic clock.";
+  i = 0; while gt(20, i) { work = u:timed_build_work(implementation, capacity, keys); i = i + 1 };
+  i = 0; t0 = clock_ms(); while gt(iterations, i) { work = u:timed_build_work(implementation, capacity, keys); i = i + 1 }; insert_ms = clock_ms() - t0;
+  table = if eq(implementation, 0) { u:linear_build(capacity, keys) } else { u:robin_build(capacity, keys) };
+  i = 0; t1 = clock_ms(); while gt(iterations, i) { for key in queries { work = u:timed_lookup_work(implementation, table, key) }; i = i + 1 }; lookup_ms = clock_ms() - t1;
+  insert_ops = iterations * tally(keys); lookup_ops = iterations * tally(queries);
+  [1, implementation, capacity, tally(keys), iterations, insert_ops, insert_ms, insert_ops * 1000 / insert_ms, lookup_ops, lookup_ms, lookup_ops * 1000 / lookup_ms]
+}
+def u:clock_overhead(iterations) { "Return average milliseconds per clock call over a batch."; t0 = clock_ms(); repeat iterations { sample = clock_ms() }; (clock_ms() - t0) / (iterations + 2) }

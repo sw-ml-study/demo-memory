@@ -1,0 +1,10 @@
+include "../../src/hash/open_addressing.mlpl"
+include "../../src/bench/native_timing.mlpl"
+def u:check_timing(condition, label) { if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+t0 = clock_ms(); repeat 1000 { x = 1 + 1 }; t1 = clock_ms()
+u:check_timing(1 - lt(t1, t0), "clock is monotonic")
+row = u:timed_hash(0, 11, [0, 11, 1, 12], [0, 12, 99], 100)
+u:check_timing(eq(tally(row), 11), "schema width")
+u:check_timing(gt(take(row, 0, 6), 0), "insert batch measurable")
+u:check_timing(gt(take(row, 0, 9), 0), "lookup batch measurable")
+"PASS native_timing"

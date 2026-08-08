@@ -27,3 +27,6 @@ eviction-benchmark:
 
 test:
     ./scripts/test
+
+timing-benchmark:
+    ./scripts/run-timing-benchmark

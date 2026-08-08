@@ -16,9 +16,9 @@ its systems claim being measurable. It is the handoff surface from
 
 ## Requests earned by the first demo
 
-1. **Monotonic high-resolution clock.** A builtin suitable for elapsed-time
-   measurement, documented with resolution and units. Until then the suite
-   reports operation counts, not inserts/sec or latency percentiles.
+1. **Monotonic high-resolution clock -- delivered.** `clock_ms()` now supports
+   native CLI/connect elapsed-time and throughput measurements. Pure-browser
+   timing remains outside that native capability boundary.
 2. **Fixed-width unsigned integers and bit operations.** At minimum `u8`,
    `u16`, `u32`, shifts, masks, popcount, and explicit conversions. This is
    needed to implement Swiss control bytes, Bloom filters, and binary-code
