@@ -1,0 +1,9 @@
+number = 41
+slug = "hard-runtime-budgets"
+status = "in-progress"
+description = "Implement hard runtime comparison budgets inside binary multi-probe retrieval..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T21:01:49"
+task_type = "feature"
+commits = []

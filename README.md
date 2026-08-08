@@ -99,6 +99,8 @@ indexed answers and dense fallback on seed disagreement.
 single-index, ensemble, and dense modes from validated quality and work.
 [Budget-selector transfer](docs/budget-selector-transfer.md) freezes those
 choices and measures quality/work drift on other workloads.
+[Hard runtime budgets](docs/hard-runtime-budgets.md) stop candidate scanning
+inside the comparison cap instead of trusting validation-time estimates.
 
 ### Honest native measurements
 
@@ -153,6 +155,7 @@ just wider-code-seed-trials
 just projection-ensemble-fallback
 just retrieval-budget-selector
 just budget-selector-transfer
+just hard-runtime-budgets
 
 # Bounded-memory policies and timing
 just memory-timing

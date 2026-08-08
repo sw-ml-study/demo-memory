@@ -1,0 +1,8 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/budgeted_retrieval.mlpl"
+def u:check_hard(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+codes=[0,1,2,3,4,5,6,7];r=u:nearest_multiprobe_budgeted(codes,0,3,3,2);z=u:nearest_multiprobe_budgeted(codes,0,3,3,0)
+u:check_hard(1-lt(2,r.comparisons),"comparison cap")
+u:check_hard(eq(r.exhausted,1),"scan exhaustion")
+u:check_hard(eq(z.comparisons,0)*eq(z.index,-1),"zero budget")
+"PASS budgeted_retrieval"

@@ -120,3 +120,6 @@ stratified-local-drift:
 
 timing-benchmark:
     ./scripts/run-timing-benchmark
+
+hard-runtime-budgets:
+    ./scripts/run-hard-runtime-budgets
