@@ -1,9 +1,10 @@
 number = 40
 slug = "budget-selector-transfer"
-status = "in-progress"
+status = "completed"
 description = "Freeze retrieval modes selected from the localized-drift validation fixture a..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T20:57:42"
+completed_at = "2026-08-07T20:59:33"
 task_type = "feature"
-commits = []
+commits = ["0877ec32a7f907c1890b11a94d474509177e41d7"]

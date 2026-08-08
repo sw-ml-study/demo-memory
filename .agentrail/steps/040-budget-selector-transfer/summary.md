@@ -1,0 +1,1 @@
+Froze localized-drift budget selections at 8 and 24 comparisons and transferred them unchanged to rotation and scaling workloads.
