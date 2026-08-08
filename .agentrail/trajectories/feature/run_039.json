@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 42,
+    "step": "fair-budget-scheduling"
+  },
+  "action": "Added query-quota scheduling and fair evaluators, demo, uneven-allocation tests, documentation of single-index gains and ensemble fragmentation, plus README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T22:27:18"
+}

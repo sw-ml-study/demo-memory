@@ -1,0 +1,1 @@
+Compared greedy shared budgets with equal per-query quotas and round-robin remainder allocation for single and ensemble retrieval on rotation.
