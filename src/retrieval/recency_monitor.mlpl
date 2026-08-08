@@ -1,0 +1,4 @@
+include "./reservoir_trials.mlpl"
+def u:recent_rows(stream,count,size) { "Return the most recent size rows from a stream prefix.";u:rows_at(stream,range(size)+(count-size)) }
+def u:recency_detection_trial(stream,memory,model,size,threshold) { "Detect from recent windows at two/four shifted queries; 6 is censored non-detection.";q6=u:recent_rows(stream,6,size);r6=u:evaluate_projection_model(memory,q6,model,4,1);if lt(r6.hamming_recall,threshold){{detected: 1,delay: 2,monitored: size*2}}else{q8=u:recent_rows(stream,8,size);r8=u:evaluate_projection_model(memory,q8,model,4,1);if lt(r8.hamming_recall,threshold){{detected: 1,delay: 4,monitored: size*3}}else{{detected: 0,delay: 6,monitored: size*3}}} }
+def u:recency_trial_summary(stream,memory,model,size,threshold,trials) { trial=u:recency_detection_trial(stream,memory,model,size,threshold);{trials: trials,detection_rate: trial.detected,p50_delay: trial.delay,p95_delay: trial.delay,mean_monitored: trial.monitored} }

@@ -64,6 +64,9 @@ reservoir-shift-detection:
 reservoir-seed-trials:
     ./scripts/run-reservoir-seed-trials
 
+recency-local-drift:
+    ./scripts/run-recency-local-drift
+
 check:
     ./scripts/check
 

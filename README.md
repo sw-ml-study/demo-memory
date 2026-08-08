@@ -83,6 +83,8 @@ sample size and threshold against both shifted and healthy control streams.
 calibrated policy on rotational, magnitude-only, and localized drift.
 [Stratified localized monitoring](docs/stratified-local-drift.md) compares a
 global reservoir with explicit per-cluster samples.
+[Recency monitoring](docs/recency-local-drift.md) tests whether forgetting
+stale samples detects localized drift sooner.
 
 ### Honest native measurements
 
@@ -129,6 +131,7 @@ just reservoir-seed-trials
 just monitoring-policy-calibration
 just shift-shape-generalization
 just stratified-local-drift
+just recency-local-drift
 
 # Bounded-memory policies and timing
 just memory-timing
