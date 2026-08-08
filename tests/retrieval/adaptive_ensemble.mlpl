@@ -1,0 +1,6 @@
+include "../../src/retrieval/adaptive_ensemble.mlpl"
+def u:check_adaptive_ensemble(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+u:check_adaptive_ensemble(eq(u:majority_choice(2,2,3),2),"first pair majority")
+u:check_adaptive_ensemble(eq(u:majority_choice(2,3,2),2),"split pair majority")
+u:check_adaptive_ensemble(eq(u:majority_choice(1,2,3),-1),"no majority")
+"PASS adaptive_ensemble"

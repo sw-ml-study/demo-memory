@@ -1,0 +1,9 @@
+number = 43
+slug = "adaptive-ensemble-scheduling"
+status = "in-progress"
+description = "Implement an adaptive three-projection ensemble under a hard shared budget: s..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T22:29:41"
+task_type = "feature"
+commits = []

@@ -1,0 +1,11 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/projection_ensemble.mlpl"
+include "../../src/retrieval/budgeted_retrieval.mlpl"
+include "../../src/retrieval/fair_budget.mlpl"
+include "../../src/retrieval/adaptive_ensemble.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]];shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]];a=initial*0.33+shifted*0.67;queries=iq*0.33+sq*0.67;memory=concat(initial,a,0);p11=randn(11,[4,8]);p17=randn(17,[4,8]);p29=randn(29,[4,8])
+strict=u:evaluate_budgeted_ensemble3(memory,queries,p11,p17,p29,8,1,24);adaptive=u:evaluate_adaptive_ensemble3(memory,queries,p11,p17,p29,8,1,24);fair=u:evaluate_fair_adaptive_ensemble3(memory,queries,p11,p17,p29,8,1,24)
+print("schema schedule budget recall comparisons exhausted_queries completed_projections early_agreements third_projections dense_fallbacks")
+print([1,1,24,strict.recall,strict.comparisons,strict.exhausted_queries,strict.completed_projections,0,4,strict.dense_fallbacks]);print([1,2,24,adaptive.recall,adaptive.comparisons,adaptive.exhausted_queries,adaptive.completed_projections,adaptive.early_agreements,adaptive.third_projections,adaptive.dense_fallbacks]);[1,3,24,fair.recall,fair.comparisons,fair.exhausted_queries,fair.completed_projections,fair.early_agreements,fair.third_projections,fair.dense_fallbacks]

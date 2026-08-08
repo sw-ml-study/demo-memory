@@ -10,6 +10,9 @@ adaptive-rebuild:
 adaptive-threshold-samples:
     ./scripts/run-adaptive-threshold-samples
 
+adaptive-ensemble-scheduling:
+    ./scripts/run-adaptive-ensemble-scheduling
+
 benchmark-report:
     ./scripts/save-benchmark-report
 
