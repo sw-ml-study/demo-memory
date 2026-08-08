@@ -79,6 +79,9 @@ distribution-shift:
 shift-rebuild-cadence:
     ./scripts/run-shift-rebuild-cadence
 
+shift-shape-generalization:
+    ./scripts/run-shift-shape-generalization
+
 eviction-benchmark:
     ./scripts/run-eviction-benchmark
 

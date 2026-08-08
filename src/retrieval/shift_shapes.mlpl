@@ -1,0 +1,2 @@
+include "./reservoir_trials.mlpl"
+def u:shift_shape_summary(stream,memory,evaluation_queries,model,size,seeds,threshold) { "Summarize stale quality and monitoring behavior for one shift shape.";stale=u:evaluate_projection_model(memory,evaluation_queries,model,4,1);trials=u:reservoir_trial_summary(stream,memory,model,size,seeds,threshold);{stale_recall: stale.hamming_recall,rebuild_warranted: lt(stale.hamming_recall,threshold),detection_rate: trials.detection_rate,p50_delay: trials.p50_delay,p95_delay: trials.p95_delay,mean_monitored: trials.mean_monitored} }

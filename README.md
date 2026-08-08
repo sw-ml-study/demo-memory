@@ -79,6 +79,8 @@ samples and measures shift-detection delay against monitoring work.
 and delay percentiles without relying on one replacement sequence.
 [Monitoring-policy calibration](docs/monitoring-policy-calibration.md) crosses
 sample size and threshold against both shifted and healthy control streams.
+[Shift-shape generalization](docs/shift-shape-generalization.md) checks the
+calibrated policy on rotational, magnitude-only, and localized drift.
 
 ### Honest native measurements
 
@@ -123,6 +125,7 @@ just adaptive-threshold-samples
 just reservoir-shift-detection
 just reservoir-seed-trials
 just monitoring-policy-calibration
+just shift-shape-generalization
 
 # Bounded-memory policies and timing
 just memory-timing

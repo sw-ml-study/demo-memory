@@ -1,0 +1,9 @@
+number = 31
+slug = "shift-shape-generalization"
+status = "in-progress"
+description = "Validate the calibrated reservoir-size-1 threshold-0.75 monitoring policy acr..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T19:50:25"
+task_type = "feature"
+commits = []

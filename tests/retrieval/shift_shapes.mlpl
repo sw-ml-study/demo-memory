@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/shift_shapes.mlpl"
+def u:check_shapes(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+v=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];q=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]];stream=concat(q,q,0);model=u:covariance_projection(v,4);r=u:shift_shape_summary(stream,v,q,model,1,[11,17],0.75)
+u:check_shapes(eq(r.stale_recall,1),"healthy stale recall")
+u:check_shapes(eq(r.rebuild_warranted,0),"healthy needs no rebuild")
+u:check_shapes(eq(r.detection_rate,0),"healthy does not trigger")
+"PASS shift_shapes"
