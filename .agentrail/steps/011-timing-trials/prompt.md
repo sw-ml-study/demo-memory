@@ -1,0 +1,1 @@
+Extend native hash timing across repeated trials and standard workloads, reporting min/median/mean/max throughput with stable schema and tests; integrate just/docs/check; publish with git add/commit/push without hooks; complete and suggest next step.

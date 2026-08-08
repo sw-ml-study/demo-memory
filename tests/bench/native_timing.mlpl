@@ -7,4 +7,6 @@ row = u:timed_hash(0, 11, [0, 11, 1, 12], [0, 12, 99], 100)
 u:check_timing(eq(tally(row), 11), "schema width")
 u:check_timing(gt(take(row, 0, 6), 0), "insert batch measurable")
 u:check_timing(gt(take(row, 0, 9), 0), "lookup batch measurable")
+summary = u:timed_three(0, 0, 11, [0,11,1,12], [0,12,99], 20)
+u:check_timing(eq(tally(summary), 12), "trial summary width")
 "PASS native_timing"

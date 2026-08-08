@@ -3,6 +3,8 @@
 `just timing-benchmark` uses `clock_ms()` after warmup and times repeated
 batches, not individual tiny operations. It reports elapsed milliseconds and
 operations per second for builds and lookups, plus calibrated clock-call cost.
+It also runs three independent trials and reports min, median, mean, and max
+throughput, making run-to-run variability visible.
 
 These numbers include immutable MLPL evaluator and allocation overhead; they
 compare executable implementations rather than production hash-table kernels.
