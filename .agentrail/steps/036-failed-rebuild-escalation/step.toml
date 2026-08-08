@@ -1,0 +1,9 @@
+number = 36
+slug = "failed-rebuild-escalation"
+status = "in-progress"
+description = "After localized drift rebuild validation fails, compare escalation strategies..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T20:36:34"
+task_type = "feature"
+commits = []

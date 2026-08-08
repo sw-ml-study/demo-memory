@@ -1,0 +1,7 @@
+include "../../src/retrieval/rebuild_escalation.mlpl"
+def u:check_escalation(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+d=u:dense_fallback_summary([[1,0],[0,1],[-1,0]],[[1,0],[0,1]]);bad={indexed_recall: 0.5,indexed_comparisons: 3};good={indexed_recall: 1,indexed_comparisons: 4};a=u:validated_dense_fallback(bad,d,0.75);b=u:validated_dense_fallback(good,d,0.75)
+u:check_escalation(eq(d.comparisons,6),"dense comparison work")
+u:check_escalation(eq(a.fallback,1)*eq(a.recall,1)*eq(a.total_work,9),"failed index falls back")
+u:check_escalation(eq(b.fallback,0)*eq(b.total_work,4),"valid index remains sparse")
+"PASS rebuild_escalation"

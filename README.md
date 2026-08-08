@@ -89,6 +89,8 @@ stale samples detects localized drift sooner.
 covariance-subspace residuals with failure-based recall monitoring.
 [Feature-alarm actions](docs/feature-alarm-actions.md) expose the cost of
 immediate rebuilding versus recall confirmation.
+[Failed-rebuild escalation](docs/failed-rebuild-escalation.md) tests wider
+codes, broader probing, and dense correctness fallback.
 
 ### Honest native measurements
 
@@ -138,6 +140,7 @@ just stratified-local-drift
 just recency-local-drift
 just feature-drift-alarm
 just feature-alarm-actions
+just failed-rebuild-escalation
 
 # Bounded-memory policies and timing
 just memory-timing

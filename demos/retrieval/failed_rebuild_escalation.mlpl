@@ -1,0 +1,10 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/covariance_projection.mlpl"
+include "../../src/retrieval/rebuild_escalation.mlpl"
+memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];queries=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]]
+model=u:covariance_projection(memory,4);centered_queries=u:center_queries(queries,model.mean);base=u:evaluate_projected(model.centered,centered_queries,model.projection,4,1);radius2=u:evaluate_projected(model.centered,centered_queries,model.projection,4,2)
+wide_projection=randn(29,[4,8]);wide=u:evaluate_projected(memory,queries,wide_projection,8,1);wide_radius2=u:evaluate_projected(memory,queries,wide_projection,8,2);dense=u:dense_fallback_summary(memory,queries);selected=u:validated_dense_fallback(base,dense,0.75)
+print("schema policy width radius hamming_recall indexed_recall index_work fallback fallback_work total_work selected_recall")
+print([1,1,4,1,base.hamming_recall,base.indexed_recall,base.indexed_comparisons,0,0,base.indexed_comparisons,base.indexed_recall]);print([1,2,4,2,radius2.hamming_recall,radius2.indexed_recall,radius2.indexed_comparisons,0,0,radius2.indexed_comparisons,radius2.indexed_recall]);print([1,3,8,1,wide.hamming_recall,wide.indexed_recall,wide.indexed_comparisons,0,0,wide.indexed_comparisons,wide.indexed_recall]);print([1,4,8,2,wide_radius2.hamming_recall,wide_radius2.indexed_recall,wide_radius2.indexed_comparisons,0,0,wide_radius2.indexed_comparisons,wide_radius2.indexed_recall]);[1,5,4,1,base.hamming_recall,base.indexed_recall,selected.index_work,selected.fallback,selected.fallback_work,selected.total_work,selected.recall]

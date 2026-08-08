@@ -73,6 +73,9 @@ feature-drift-alarm:
 feature-alarm-actions:
     ./scripts/run-feature-alarm-actions
 
+failed-rebuild-escalation:
+    ./scripts/run-failed-rebuild-escalation
+
 check:
     ./scripts/check
 
