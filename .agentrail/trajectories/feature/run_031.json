@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 34,
+    "step": "feature-drift-alarm"
+  },
+  "action": "Implemented visible residual-energy measurement, three-shape demo, inside/outside-subspace tests, documentation of feature-versus-quality limits, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T20:11:43"
+}

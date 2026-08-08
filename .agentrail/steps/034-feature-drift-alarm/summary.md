@@ -1,0 +1,1 @@
+Added a proactive covariance-subspace residual alarm and compared it with recall-based monitoring across rotational, magnitude-only, and localized drift.
