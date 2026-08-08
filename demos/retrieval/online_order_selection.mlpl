@@ -1,0 +1,16 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/projection_ensemble.mlpl"
+include "../../src/retrieval/budgeted_retrieval.mlpl"
+include "../../src/retrieval/fair_budget.mlpl"
+include "../../src/retrieval/adaptive_ensemble.mlpl"
+include "../../src/retrieval/online_order.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]];shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a=initial*0.33+shifted*0.67;rotation_queries=iq*0.33+sq*0.67;rotation_memory=concat(initial,a,0);local_memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];local_queries=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]];scaled=iq*1.25;p11=randn(11,[4,8]);p17=randn(17,[4,8]);p29=randn(29,[4,8])
+def u:run_pair(pair,v,q){if eq(pair,1){u:evaluate_adaptive_ensemble3(v,q,p11,p17,p29,8,1,24)}else{if eq(pair,2){u:evaluate_adaptive_ensemble3(v,q,p11,p29,p17,8,1,24)}else{u:evaluate_adaptive_ensemble3(v,q,p17,p29,p11,8,1,24)}}}
+def u:online_case(v,q){a=u:pair_agreement_probe(v,q,p11,p17,8,1,2,1);b=u:pair_agreement_probe(v,q,p11,p29,8,1,2,2);c=u:pair_agreement_probe(v,q,p17,p29,8,1,2,3);chosen=u:choose_projection_pair(a,b,c);ra=u:run_pair(1,v,q);rb=u:run_pair(2,v,q);rc=u:run_pair(3,v,q);selected=if eq(chosen.pair,1){ra}else{if eq(chosen.pair,2){rb}else{rc}};oracle=u:oracle_recall3(ra.recall,rb.recall,rc.recall);{pair: chosen.pair,agreement: chosen.agreement,selection_work: a.work+b.work+c.work,recall: selected.recall,retrieval_work: selected.comparisons,oracle_recall: oracle,regret: oracle-selected.recall} }
+r=u:online_case(rotation_memory,rotation_queries);l=u:online_case(local_memory,local_queries);s=u:online_case(initial,scaled)
+def u:online_row(workload,x){[1,workload,x.pair,x.agreement,x.selection_work,x.recall,x.retrieval_work,x.oracle_recall,x.regret]}
+print("schema workload chosen_pair prefix_agreement selection_work recall retrieval_work oracle_recall regret")
+print(u:online_row(1,r));print(u:online_row(2,l));u:online_row(3,s)

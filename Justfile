@@ -19,6 +19,9 @@ adaptive-ensemble-order:
 ensemble-order-transfer:
     ./scripts/run-ensemble-order-transfer
 
+online-order-selection:
+    ./scripts/run-online-order-selection
+
 benchmark-report:
     ./scripts/save-benchmark-report
 

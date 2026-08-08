@@ -1,0 +1,4 @@
+def u:pair_agreement_probe(vectors,queries,p1,p2,width,radius,count,pair) { c1=u:project_codes(vectors,p1);c2=u:project_codes(vectors,p2);q1=u:project_codes(queries,p1);q2=u:project_codes(queries,p2);i=0;agreements=0;work=0;while gt(count,i){a=u:nearest_multiprobe(c1,take(q1,0,i),width,radius);b=u:nearest_multiprobe(c2,take(q2,0,i),width,radius);agreements=agreements+eq(a.index,b.index);work=work+a.comparisons+b.comparisons;i=i+1};{pair: pair,agreement: agreements/count,work: work} }
+def u:pair_consider(best,candidate) { better=gt(candidate.agreement,best.agreement)+eq(candidate.agreement,best.agreement)*lt(candidate.work,best.work);if gt(better,0){candidate}else{best} }
+def u:choose_projection_pair(a,b,c) { u:pair_consider(u:pair_consider(a,b),c) }
+def u:oracle_recall3(a,b,c) { if gt(a,b){if gt(a,c){a}else{c}}else{if gt(b,c){b}else{c}} }

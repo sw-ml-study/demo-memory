@@ -1,0 +1,9 @@
+number = 46
+slug = "online-order-selection"
+status = "in-progress"
+description = "Implement unlabeled online adaptive-ensemble order selection. Probe each cand..."
+role = "production"
+context_files = []
+created_at = "2026-08-08T09:57:00"
+task_type = "feature"
+commits = []

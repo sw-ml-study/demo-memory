@@ -109,6 +109,8 @@ after two agreeing projections and carries saved work forward.
 ordering to expose early-stop sensitivity.
 [Ensemble order transfer](docs/ensemble-order-transfer.md) freezes the
 rotation-tuned pair and tests it on other shift shapes.
+[Online order selection](docs/online-order-selection.md) chooses a first pair
+from unlabeled prefix agreement and measures hindsight regret.
 
 ### Honest native measurements
 
@@ -168,6 +170,7 @@ just fair-budget-scheduling
 just adaptive-ensemble-scheduling
 just adaptive-ensemble-order
 just ensemble-order-transfer
+just online-order-selection
 
 # Bounded-memory policies and timing
 just memory-timing

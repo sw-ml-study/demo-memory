@@ -1,0 +1,6 @@
+include "../../src/retrieval/online_order.mlpl"
+def u:check_online(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+a={pair: 1,agreement: 0.5,work: 4};b={pair: 2,agreement: 1,work: 8};c={pair: 3,agreement: 1,work: 6};chosen=u:choose_projection_pair(a,b,c)
+u:check_online(eq(chosen.pair,3),"agreement then work")
+u:check_online(eq(u:oracle_recall3(0.5,1,0.75),1),"oracle maximum")
+"PASS online_order"
