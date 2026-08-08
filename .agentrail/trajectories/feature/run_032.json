@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 35,
+    "step": "feature-alarm-actions"
+  },
+  "action": "Added reusable action policies, six-case demo rows, harmless-confirmation tests, documentation of rebuild cost and failed-recovery validation, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T20:33:32"
+}

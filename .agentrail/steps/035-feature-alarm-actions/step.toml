@@ -1,9 +1,10 @@
 number = 35
 slug = "feature-alarm-actions"
-status = "in-progress"
+status = "completed"
 description = "Compare two actions after a proactive feature-drift alarm: immediate projecti..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T20:30:35"
+completed_at = "2026-08-07T20:33:32"
 task_type = "feature"
-commits = []
+commits = ["792c7426eb31ea6bd9842907960e169c1a906fa7"]

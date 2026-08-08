@@ -1,0 +1,1 @@
+Compared immediate and recall-confirmed actions after feature alarms across recoverable rotation, harmless out-of-subspace queries, and localized drift that rebuilding cannot repair.
