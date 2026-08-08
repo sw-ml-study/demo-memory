@@ -16,5 +16,8 @@ check:
 demo:
     ./scripts/run-demo
 
+eviction-benchmark:
+    ./scripts/run-eviction-benchmark
+
 test:
     ./scripts/test

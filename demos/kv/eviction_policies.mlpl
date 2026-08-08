@@ -1,0 +1,9 @@
+include "../../src/kv/lru_memory.mlpl"
+include "../../src/kv/fifo_memory.mlpl"
+include "../../src/bench/eviction_policy_matrix.mlpl"
+
+print("demo-memory eviction policy benchmark schema v1")
+print("rows: schema policy workload pattern capacity accesses hits misses promotions evictions final_size")
+matrix = u:standard_eviction_matrix()
+for row in matrix { print("row", row) }
+"PASS eviction_policies"

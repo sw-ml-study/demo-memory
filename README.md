@@ -27,6 +27,8 @@ and its [executable invariants](tests/hash/open_addressing.mlpl).
 
 The [LRU/KV bridge](docs/lru-kv-bridge.md) adds bounded key/value memory and
 compares uniform-reuse, hot-set, scan, and bursty access patterns.
+[FIFO-versus-LRU comparison](docs/eviction-policies.md) makes eviction policy
+an explicit parameter on those same traces.
 [Probe-distribution reporting](docs/probe-distributions.md) exposes the lookup
 tails hidden by aggregate totals through histograms and p50/p95 summaries.
 
@@ -36,6 +38,7 @@ Install [`just`](https://just.systems/), then use the repository recipes:
 just demo
 just benchmark
 just lru-benchmark
+just eviction-benchmark
 just probe-distributions
 just test
 just check       # required before each feature/fix commit
@@ -53,6 +56,7 @@ tests/hash/open_addressing.mlpl     invariants and expected metrics
 scripts/run-demo                    stable command-line entry point
 scripts/run-benchmark               deterministic workload matrix
 scripts/run-lru-benchmark           LRU/KV access-pattern matrix
+scripts/run-eviction-benchmark      FIFO versus LRU policy matrix
 scripts/run-probe-distributions     lookup histogram and tail summaries
 scripts/test                        smoke/unit gate
 scripts/check                       repository pre-commit gate

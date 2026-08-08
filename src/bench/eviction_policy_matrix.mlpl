@@ -1,0 +1,20 @@
+# Policy comparison schema v1: schema, policy, workload, pattern, capacity,
+# accesses, hits, misses, promotions, evictions, final_size.
+# Policy 0 is LRU; policy 1 is FIFO.
+
+def u:eviction_row(policy, workload, pattern, capacity, trace) { "Return one stable eviction-policy benchmark row.";
+  result = if eq(policy, 0) { u:lru_trace(capacity, trace) } else { u:fifo_trace(capacity, trace) };
+  [1, policy, workload, pattern, capacity, result.accesses, result.hits, result.misses, result.promotions, result.evictions, result.memory.size]
+}
+def u:eviction_pair(workload, pattern, capacity, trace) { "Run LRU and FIFO on an identical trace.";
+  lru = reshape(u:eviction_row(0, workload, pattern, capacity, trace), [1, 11]);
+  fifo = reshape(u:eviction_row(1, workload, pattern, capacity, trace), [1, 11]);
+  concat(lru, fifo, 0)
+}
+def u:standard_eviction_matrix() { "Compare both policies on the four standard locality traces.";
+  uniform = u:eviction_pair(0, 0, 4, [0, 1, 2, 3, 0, 1, 2, 3]);
+  hot = u:eviction_pair(1, 1, 3, [0, 1, 0, 1, 2, 0, 1, 3, 0, 1]);
+  scan = u:eviction_pair(2, 2, 3, [0, 1, 2, 3, 4, 5, 6, 7]);
+  bursty = u:eviction_pair(3, 3, 4, [0, 0, 0, 1, 1, 2, 3, 4, 4, 4, 0, 0]);
+  concat(concat(concat(uniform, hot, 0), scan, 0), bursty, 0)
+}

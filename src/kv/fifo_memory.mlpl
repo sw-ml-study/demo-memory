@@ -1,0 +1,42 @@
+# A bounded numeric key/value memory with first-in, first-out eviction.
+# Hits do not change loaded_at, which is the defining contrast with LRU.
+
+def u:fifo_new(capacity) { "Create an empty fixed-capacity FIFO key/value memory."; {active: fill([capacity], 0), keys: fill([capacity], 0), values: fill([capacity], 0), loaded_at: fill([capacity], 0), capacity: capacity, size: 0, clock: 0} }
+def u:fifo_find_from(memory, key, index) { "Return the active slot for key or -1."; if eq(index, memory.capacity) { -1 } else { if eq(take(memory.active, 0, index), 1) * eq(take(memory.keys, 0, index), key) { index } else { u:fifo_find_from(memory, key, index + 1) } } }
+def u:fifo_free_from(memory, index) { "Return the first inactive slot or -1."; if eq(index, memory.capacity) { -1 } else { if eq(take(memory.active, 0, index), 0) { index } else { u:fifo_free_from(memory, index + 1) } } }
+def u:fifo_oldest_from(memory, index, best, best_tick) { "Return the earliest-loaded active slot.";
+  if eq(index, memory.capacity) { best } else {
+    active = take(memory.active, 0, index);
+    tick = take(memory.loaded_at, 0, index);
+    choose = if eq(active, 0) { 0 } else { if eq(best, -1) { 1 } else { lt(tick, best_tick) } };
+    u:fifo_oldest_from(memory, index + 1, if choose { index } else { best }, if choose { tick } else { best_tick })
+  }
+}
+def u:fifo_oldest(memory) { "Return the earliest-loaded active slot."; u:fifo_oldest_from(memory, 0, -1, 0) }
+
+def u:fifo_step(memory, key, value) { "Access key, loading value on a miss without promoting hits.";
+  slot = u:fifo_find_from(memory, key, 0);
+  if gt(slot, -1) {
+    {memory: memory, value: take(memory.values, 0, slot), hit: 1, miss: 0, promoted: 0, evicted: 0, evicted_key: -1}
+  } else {
+    full = eq(memory.size, memory.capacity);
+    target = if full { u:fifo_oldest(memory) } else { u:fifo_free_from(memory, 0) };
+    victim = if full { take(memory.keys, 0, target) } else { -1 };
+    next = {active: scatter(memory.active, target, 1), keys: scatter(memory.keys, target, key), values: scatter(memory.values, target, value), loaded_at: scatter(memory.loaded_at, target, memory.clock), capacity: memory.capacity, size: if full { memory.size } else { memory.size + 1 }, clock: memory.clock + 1};
+    {memory: next, value: value, hit: 0, miss: 1, promoted: 0, evicted: full, evicted_key: victim}
+  }
+}
+
+def u:fifo_count_from(values, wanted, index) { "Count matching vector values."; if eq(index, tally(values)) { 0 } else { eq(take(values, 0, index), wanted) + u:fifo_count_from(values, wanted, index + 1) } }
+def u:fifo_valid(memory) { "Check parallel-array shapes, capacity, size, and logical clock invariants.";
+  shapes = eq(tally(memory.active), memory.capacity) * eq(tally(memory.keys), memory.capacity) * eq(tally(memory.values), memory.capacity) * eq(tally(memory.loaded_at), memory.capacity);
+  shapes * gt(memory.capacity, 0) * eq(u:fifo_count_from(memory.active, 1, 0), memory.size) * (1 - gt(memory.size, memory.capacity)) * (1 - lt(memory.clock, memory.size))
+}
+def u:fifo_trace_from(memory, keys, index, hits, misses, evictions) { "Run the remaining demand-load trace and accumulate event counts.";
+  if eq(index, tally(keys)) { {memory: memory, accesses: tally(keys), hits: hits, misses: misses, promotions: 0, evictions: evictions} } else {
+    key = take(keys, 0, index);
+    event = u:fifo_step(memory, key, key * 10 + 1);
+    u:fifo_trace_from(event.memory, keys, index + 1, hits + event.hit, misses + event.miss, evictions + event.evicted)
+  }
+}
+def u:fifo_trace(capacity, keys) { "Run a deterministic FIFO demand-load trace."; u:fifo_trace_from(u:fifo_new(capacity), keys, 0, 0, 0, 0) }
