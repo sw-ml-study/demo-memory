@@ -1,0 +1,1 @@
+Added a failed-rebuild escalation benchmark comparing covariance codes, broader probing, wider seeded sign codes, and validation-gated dense fallback.

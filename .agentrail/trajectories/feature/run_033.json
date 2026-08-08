@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 36,
+    "step": "failed-rebuild-escalation"
+  },
+  "action": "Added dense fallback accounting and validation selection, localized-drift escalation demo, tests, documentation of representation limits and observed wider-code recovery, plus README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T20:38:40"
+}
