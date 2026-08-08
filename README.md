@@ -15,6 +15,8 @@ This repository is deliberately a downstream forcing function for
 
 ## What runs now
 
+### Hash tables and probe behavior
+
 The first vertical slice compares ordinary linear probing with Robin Hood
 insertion on the same collision-heavy workload. It reports load factor, total
 insertion probes, worst displacement, successful lookup probes, and the full
@@ -25,16 +27,27 @@ Run the narrated [probe-tradeoffs demo](demos/hash/probe_tradeoffs.mlpl), or
 read the reusable [open-addressing implementation](src/hash/open_addressing.mlpl)
 and its [executable invariants](tests/hash/open_addressing.mlpl).
 
+The [probe-distribution report](docs/probe-distributions.md) exposes the lookup
+tails hidden by aggregate totals through histograms and p50/p95 summaries.
+
+### Bounded memory and eviction
+
 The [LRU/KV bridge](docs/lru-kv-bridge.md) adds bounded key/value memory and
 compares uniform-reuse, hot-set, scan, and bursty access patterns.
 [FIFO-versus-LRU comparison](docs/eviction-policies.md) makes eviction policy
 an explicit parameter on those same traces.
+
+### Bloom filters
+
 [The logical Bloom filter](docs/bloom-filter.md) measures false positives
 against an exact-set oracle while keeping packed-memory claims upstream-gated.
 [Counting Bloom deletion](docs/counting-bloom-filter.md) adds duplicate-aware
 counters, removal, and explicit underflow protection.
 [Packed-word Bloom](docs/packed-bloom-filter.md) uses the delivered bit
 operations and proves equivalence with the logical representation.
+
+### Binary retrieval and sparse aggregation
+
 [Binary-code retrieval](docs/binary-retrieval.md) uses Hamming shortlists as
 the bridge from classical indexing toward sparse ML retrieval.
 [Prefix-width tradeoffs](docs/prefix-width-tradeoff.md) sweep index selectivity
@@ -43,41 +56,60 @@ against recall, comparisons, and fallback rate.
 buckets to recover recall for controlled extra work.
 [Sparse aggregation](docs/sparse-aggregation.md) attaches values and measures
 output error after Hamming-indexed candidate selection.
+
+### Learned projections
+
 [Projected binary codes](docs/projected-binary-codes.md) derive indexes from
 continuous vectors and separate projection recall from shortlist recall.
 [Projection sweeps](docs/projection-sweep.md) measure width trends and seed
 variance instead of relying on one projection.
 [Data-derived projection](docs/data-derived-projection.md) extracts covariance
 directions from memory itself as a small BinaryPC-like bridge.
+
+### Honest native measurements
+
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
-[Probe-distribution reporting](docs/probe-distributions.md) exposes the lookup
-tails hidden by aggregate totals through histograms and p50/p95 summaries.
+
+## Run the demos
 
 Install [`just`](https://just.systems/), then use the repository recipes:
 
 ```sh
+# Guided starting point
 just demo
+
+# Hash tables
 just benchmark
+just probe-distributions
+just timing-benchmark
+just benchmark-report
+# just compare-reports out/BEFORE.txt out/AFTER.txt
+
+# Bloom filters
 just bloom-benchmark
 just counting-bloom
 just packed-bloom
+
+# Binary and sparse retrieval
 just binary-retrieval
 just prefix-widths
 just multiprobe
 just sparse-aggregation
+
+# Projection-based retrieval
 just projected-codes
 just projection-sweep
 just data-derived-projection
-just timing-benchmark
-just benchmark-report
-# just compare-reports out/BEFORE.txt out/AFTER.txt
+
+# Bounded-memory policies and timing
 just memory-timing
 just memory-report
 just lru-benchmark
 just eviction-benchmark
-just probe-distributions
+
+# Verification
 just test
 just check       # required before each feature/fix commit
 ```

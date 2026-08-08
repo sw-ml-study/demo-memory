@@ -1,0 +1,1 @@
+Reformat README.md so dense demo links and commands are organized into logical, readable groups with whitespace. Preserve technical content, verify links and repository checks, commit and push using only git add/commit/push without hooks.
