@@ -1,0 +1,1 @@
+Added a one-through-five-bit prefix sweep over 32 binary codes and 16 perturbed queries, reporting recall, exhaustive/shortlist comparisons, fallbacks, average candidates, and reduction; documented the selectivity tradeoff and integrated tests, just, and checks.

@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 17,
+    "step": "prefix-width-matrix"
+  },
+  "action": "Built a stable prefix-width matrix, validated dimensions and shrinking candidate counts, observed recall versus work results, ran just check and just prefix-widths, and committed without hooks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T18:22:35"
+}
