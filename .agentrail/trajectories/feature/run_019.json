@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 21,
+    "step": "projection-sweep"
+  },
+  "action": "Built deterministic width/seed summaries and ordering invariants, ran just check and just projection-sweep, interpreted recall variability, and committed without hooks.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:11:42"
+}

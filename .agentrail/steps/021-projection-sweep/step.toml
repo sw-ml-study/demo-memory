@@ -1,9 +1,10 @@
 number = 21
 slug = "projection-sweep"
-status = "in-progress"
+status = "completed"
 description = "Sweep sign-projection widths 4/8/12/16 across three deterministic seeds, summ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:10:17"
+completed_at = "2026-08-07T19:11:42"
 task_type = "feature"
-commits = []
+commits = ["5a15d1cb53e4be5b030d2b48f42ea26bf21ab59a"]

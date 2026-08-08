@@ -1,0 +1,1 @@
+Swept 4/8/12/16-bit sign projections across seeds 11/29/47, reporting min/mean/max exhaustive Hamming recall, indexed recall, and comparison reduction; exposed non-monotonic width behavior and substantial seed variance.
