@@ -81,6 +81,8 @@ and delay percentiles without relying on one replacement sequence.
 sample size and threshold against both shifted and healthy control streams.
 [Shift-shape generalization](docs/shift-shape-generalization.md) checks the
 calibrated policy on rotational, magnitude-only, and localized drift.
+[Stratified localized monitoring](docs/stratified-local-drift.md) compares a
+global reservoir with explicit per-cluster samples.
 
 ### Honest native measurements
 
@@ -126,6 +128,7 @@ just reservoir-shift-detection
 just reservoir-seed-trials
 just monitoring-policy-calibration
 just shift-shape-generalization
+just stratified-local-drift
 
 # Bounded-memory policies and timing
 just memory-timing

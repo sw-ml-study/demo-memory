@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/stratified_monitor.mlpl"
+def u:check_strata(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+a=[[1,0],[2,0],[3,0],[4,0]];b=[[0,1],[0,2],[0,3],[0,4]];s=u:two_stratum_sample(a,4,b,2,17)
+u:check_strata(eq(reduce_add(eq(shape(s),[2,2]),0),2),"one row per stratum")
+u:check_strata(gt(take(take(s,0,0),0,0),0),"first stratum row")
+u:check_strata(gt(take(take(s,0,1),0,1),0),"second stratum row")
+"PASS stratified_monitor"

@@ -91,5 +91,8 @@ test:
 sparse-aggregation:
     ./scripts/run-sparse-aggregation
 
+stratified-local-drift:
+    ./scripts/run-stratified-local-drift
+
 timing-benchmark:
     ./scripts/run-timing-benchmark

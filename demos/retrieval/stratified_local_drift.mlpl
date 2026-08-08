@@ -1,0 +1,8 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/stratified_monitor.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];xq=[[1.9,0.1,0,0],[1.7,0.25,0,0],[-1.9,-0.1,0,0],[-1.7,-0.25,0,0]];yq=[[0.1,1.9,0,0],[-0.1,-1.9,0,0],[0.2,1.8,0,0],[-0.2,-1.8,0,0]]
+memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];drift=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]];global_stream=concat(yq,drift,0);healthy_stream=concat(yq,xq,0);model=u:covariance_projection(initial,4);seeds=[11,17,29,47,83]
+global=u:reservoir_trial_summary(global_stream,memory,model,1,seeds,0.75);strat=u:stratified_trial_summary(yq,drift,memory,model,seeds,0.75);global_control=u:reservoir_trial_summary(healthy_stream,initial,model,1,seeds,0.75);strat_control=u:stratified_trial_summary(yq,xq,initial,model,seeds,0.75)
+print("schema policy trials detection_rate p50_delay p95_delay mean_monitored false_trigger_rate")
+print([1,1,global.trials,global.detection_rate,global.p50_delay,global.p95_delay,global.mean_monitored,global_control.detection_rate]);[1,2,strat.trials,strat.detection_rate,strat.p50_delay,strat.p95_delay,strat.mean_monitored,strat_control.detection_rate]
