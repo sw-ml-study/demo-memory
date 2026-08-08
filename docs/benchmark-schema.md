@@ -35,5 +35,5 @@ existing column meanings must not change.
 Run it with:
 
 ```sh
-make benchmark
+just benchmark
 ```

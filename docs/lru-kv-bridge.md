@@ -34,5 +34,5 @@ Each schema-v1 row has ten numeric columns:
 | 8 | evictions |
 | 9 | final size |
 
-Run the comparison with `make lru-benchmark`. These are deterministic event
+Run the comparison with `just lru-benchmark`. These are deterministic event
 counts. Elapsed time and physical memory measurements remain upstream-gated.

@@ -1,0 +1,9 @@
+number = 6
+slug = "migrate-to-just"
+status = "in-progress"
+description = "Replace the Makefile command facade with a Justfile. Update repository docume..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T17:13:09"
+task_type = "fix"
+commits = []

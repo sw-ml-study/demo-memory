@@ -1,0 +1,1 @@
+Replace the Makefile command facade with a Justfile. Update repository documentation, AgentRail project rules, and references to use just for explicit checks and demo runners. Verify all recipes without Git hooks, gh CLI, or GitHub Actions; publish only with git add, git commit, and git push; complete the step and suggest the next unblocked step.

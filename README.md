@@ -30,13 +30,15 @@ compares uniform-reuse, hot-set, scan, and bursty access patterns.
 [Probe-distribution reporting](docs/probe-distributions.md) exposes the lookup
 tails hidden by aggregate totals through histograms and p50/p95 summaries.
 
+Install [`just`](https://just.systems/), then use the repository recipes:
+
 ```sh
-make demo
-make benchmark
-make lru-benchmark
-make probe-distributions
-make test
-make check       # required before each feature/fix commit
+just demo
+just benchmark
+just lru-benchmark
+just probe-distributions
+just test
+just check       # required before each feature/fix commit
 ```
 
 By default the scripts use `../sw-mlpl/target/debug/mlpl-repl`. Override that

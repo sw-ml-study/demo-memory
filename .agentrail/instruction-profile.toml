@@ -1,0 +1,7 @@
+targets = []
+auto_apply = false
+exclude = [
+    "global/branch-handoff.md",
+    "global/push-discipline.md",
+    "global/git-hygiene.md",
+]

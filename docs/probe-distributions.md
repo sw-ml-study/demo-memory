@@ -4,7 +4,7 @@ Totals can hide tail behavior. The distribution benchmark therefore records
 one probe count per lookup, bins those observations, and reports nearest-rank
 p50 and p95 values alongside minimum, mean, and maximum.
 
-Two versioned numeric schemas are emitted by `make probe-distributions`:
+Two versioned numeric schemas are emitted by `just probe-distributions`:
 
 - `summary` rows have 12 columns: schema, implementation, workload, phase,
   capacity, count, total, mean, minimum, p50, p95, maximum;
