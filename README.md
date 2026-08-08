@@ -43,6 +43,8 @@ against recall, comparisons, and fallback rate.
 buckets to recover recall for controlled extra work.
 [Sparse aggregation](docs/sparse-aggregation.md) attaches values and measures
 output error after Hamming-indexed candidate selection.
+[Projected binary codes](docs/projected-binary-codes.md) derive indexes from
+continuous vectors and separate projection recall from shortlist recall.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
@@ -61,6 +63,7 @@ just binary-retrieval
 just prefix-widths
 just multiprobe
 just sparse-aggregation
+just projected-codes
 just timing-benchmark
 just benchmark-report
 # just compare-reports out/BEFORE.txt out/AFTER.txt

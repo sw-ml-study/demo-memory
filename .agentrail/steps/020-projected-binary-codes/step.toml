@@ -1,0 +1,9 @@
+number = 20
+slug = "projected-binary-codes"
+status = "in-progress"
+description = "Derive packed binary codes from continuous vectors using deterministic sign p..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T19:06:52"
+task_type = "feature"
+commits = []

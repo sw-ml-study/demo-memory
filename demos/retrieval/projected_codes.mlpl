@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+vectors=[[1,0,0,0],[0.9,0.1,0,0],[0,1,0,0],[0.1,0.9,0,0],[0,0,1,0],[0,0.1,0.9,0],[0,0,0,1],[0,0,0.1,0.9]]
+queries=[[1,0.05,0,0],[0.05,1,0,0],[0,0,1,0.05],[0,0,0.05,1]]
+projection=randn(77,[4,12]);r=u:evaluate_projected(vectors,queries,projection,4,1)
+print("schema vectors queries code_bits hamming_recall indexed_recall dense_comparisons hamming_comparisons indexed_comparisons reduction")
+print("codes",r.codes)
+[1,8,r.queries,12,r.hamming_recall,r.indexed_recall,r.dense_comparisons,r.hamming_comparisons,r.indexed_comparisons,r.reduction]

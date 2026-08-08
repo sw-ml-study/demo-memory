@@ -1,0 +1,11 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+def u:check_projection(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+p=[[1,0,-1],[0,1,1]];code=u:project_code([2,1],p)
+u:check_projection(eq(code,3),"LSB sign packing")
+vectors=[[1,0],[0,1],[-1,0],[0,-1]];queries=[[1,0],[0,1]];projection=randn(7,[2,8]);r=u:evaluate_projected(vectors,queries,projection,3,1)
+u:check_projection(eq(tally(r.codes),4),"one code per vector")
+u:check_projection(eq(r.hamming_recall,1),"projected Hamming preserves fixture neighbors")
+u:check_projection(1-gt(r.indexed_recall,r.hamming_recall),"index cannot exceed code recall")
+"PASS sign_projection"

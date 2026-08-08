@@ -43,6 +43,9 @@ probe-distributions:
 prefix-widths:
     ./scripts/run-prefix-widths
 
+projected-codes:
+    ./scripts/run-projected-codes
+
 check:
     ./scripts/check
 

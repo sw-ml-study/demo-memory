@@ -1,0 +1,1 @@
+Derive packed binary codes from continuous vectors using deterministic sign projections and from_bits, compare dense dot-product nearest neighbors with exhaustive and indexed Hamming retrieval, report recall/work, add tests/docs/just/check; publish via git add/commit/push without hooks; complete and suggest next step.
