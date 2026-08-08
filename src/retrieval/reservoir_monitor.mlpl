@@ -1,0 +1,4 @@
+def u:reservoir_indices(count,size,seed) { "Choose a deterministic reservoir from stream positions 0..count-1.";r=range(size);i=size;while gt(count,i){j=floor(take(random(seed+i,[1]),0,0)*(i+1));if gt(size,j){r=scatter(r,j,i)}else{0};i=i+1};r }
+def u:rows_at_from(vectors,indices,index) { row=reshape(take(vectors,0,take(indices,0,index)),[1,take(shape(vectors),0,1)]);if eq(index+1,tally(indices)){row}else{concat(row,u:rows_at_from(vectors,indices,index+1),0)} }
+def u:rows_at(vectors,indices) { "Gather stream rows at explicit indices.";u:rows_at_from(vectors,indices,0) }
+def u:reservoir_sample(vectors,count,size,seed) { "Sample size rows uniformly without replacement from the first count stream rows.";indices=u:reservoir_indices(count,size,seed);{indices: indices,rows: u:rows_at(vectors,indices)} }

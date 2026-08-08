@@ -55,6 +55,9 @@ projected-codes:
 projection-sweep:
     ./scripts/run-projection-sweep
 
+reservoir-shift-detection:
+    ./scripts/run-reservoir-shift-detection
+
 check:
     ./scripts/check
 

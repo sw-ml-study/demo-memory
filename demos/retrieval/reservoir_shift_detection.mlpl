@@ -1,0 +1,15 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/distribution_shift.mlpl"
+include "../../src/retrieval/reservoir_monitor.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a=initial*0.33+shifted*0.67;aq=iq*0.33+sq*0.67;memory=concat(initial,a,0);stream=concat(iq,aq,0);base=u:covariance_projection(initial,4);threshold=0.75
+def u:monitor(stream,memory,base,count,size,seed,threshold) { sample=u:reservoir_sample(stream,count,size,seed);evaluation=u:rows_at(stream,range(count));u:adaptive_projection_sampled_step(memory,sample.rows,evaluation,base,4,1,threshold) }
+a14=u:monitor(stream,memory,base,4,1,17,threshold);a16=u:monitor(stream,memory,base,6,1,17,threshold);a18=u:monitor(stream,memory,base,8,1,17,threshold)
+a24=u:monitor(stream,memory,base,4,2,17,threshold);a26=u:monitor(stream,memory,base,6,2,17,threshold);a28=u:monitor(stream,memory,base,8,2,17,threshold)
+a44=u:monitor(stream,memory,base,4,4,17,threshold);a46=u:monitor(stream,memory,base,6,4,17,threshold);a48=u:monitor(stream,memory,base,8,4,17,threshold)
+print("schema reservoir checkpoint shifted_seen sample_recall triggered post_recall monitored rebuild_cells")
+print([1,4,0,a14.sample_recall,a14.rebuilt,a14.result.hamming_recall,1,a14.rebuild_cells]);print([1,6,2,a16.sample_recall,a16.rebuilt,a16.result.hamming_recall,2,a16.rebuild_cells]);print([1,8,4,a18.sample_recall,a18.rebuilt,a18.result.hamming_recall,3,a18.rebuild_cells])
+print([2,4,0,a24.sample_recall,a24.rebuilt,a24.result.hamming_recall,2,a24.rebuild_cells]);print([2,6,2,a26.sample_recall,a26.rebuilt,a26.result.hamming_recall,4,a26.rebuild_cells]);print([2,8,4,a28.sample_recall,a28.rebuilt,a28.result.hamming_recall,6,a28.rebuild_cells])
+print([4,4,0,a44.sample_recall,a44.rebuilt,a44.result.hamming_recall,4,a44.rebuild_cells]);print([4,6,2,a46.sample_recall,a46.rebuilt,a46.result.hamming_recall,8,a46.rebuild_cells]);[4,8,4,a48.sample_recall,a48.rebuilt,a48.result.hamming_recall,12,a48.rebuild_cells]

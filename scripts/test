@@ -30,3 +30,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/shift_rebuild_cadence.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/adaptive_rebuild.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/adaptive_threshold_samples.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/retrieval/reservoir_monitor.mlpl"

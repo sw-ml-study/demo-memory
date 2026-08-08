@@ -22,6 +22,7 @@ sh -n "$repo_root/scripts/compare-memory-reports" "$repo_root/scripts/run-memory
 "$repo_root/scripts/run-shift-rebuild-cadence" >/dev/null
 "$repo_root/scripts/run-adaptive-rebuild" >/dev/null
 "$repo_root/scripts/run-adaptive-threshold-samples" >/dev/null
+"$repo_root/scripts/run-reservoir-shift-detection" >/dev/null
 "$repo_root/scripts/run-benchmark" >/dev/null
 "$repo_root/scripts/run-demo" >/dev/null
 "$repo_root/scripts/run-lru-benchmark" >/dev/null

@@ -73,6 +73,8 @@ never, periodic, and every-batch rebuild policies as the memory drifts.
 recall instead of assuming a fixed maintenance interval.
 [Adaptive thresholds and sample size](docs/adaptive-threshold-samples.md)
 exposes missed degradation and unnecessary rebuilds from policy choices.
+[Reservoir monitoring](docs/reservoir-shift-detection.md) replaces hand-picked
+samples and measures shift-detection delay against monitoring work.
 
 ### Honest native measurements
 
@@ -114,6 +116,7 @@ just distribution-shift
 just shift-rebuild-cadence
 just adaptive-rebuild
 just adaptive-threshold-samples
+just reservoir-shift-detection
 
 # Bounded-memory policies and timing
 just memory-timing

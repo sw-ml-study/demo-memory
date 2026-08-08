@@ -1,0 +1,8 @@
+include "../../src/retrieval/reservoir_monitor.mlpl"
+def u:check_reservoir(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+r=u:reservoir_indices(8,3,17);again=u:reservoir_indices(8,3,17);rows=u:rows_at([[0,10],[1,11],[2,12],[3,13],[4,14],[5,15],[6,16],[7,17]],r)
+u:check_reservoir(eq(tally(r),3),"reservoir size")
+u:check_reservoir(eq(reduce_add(eq(r,again),0),3),"deterministic seed")
+u:check_reservoir(eq(reduce_add(eq(shape(rows),[3,2]),0),2),"gathered shape")
+u:check_reservoir((1-eq(take(r,0,0),take(r,0,1)))*(1-eq(take(r,0,0),take(r,0,2)))*(1-eq(take(r,0,1),take(r,0,2))),"without replacement")
+"PASS reservoir_monitor"

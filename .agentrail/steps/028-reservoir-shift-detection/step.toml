@@ -1,0 +1,9 @@
+number = 28
+slug = "reservoir-shift-detection"
+status = "in-progress"
+description = "Implement deterministic reservoir sampling over a retrieval query stream and ..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T19:37:55"
+task_type = "feature"
+commits = []
