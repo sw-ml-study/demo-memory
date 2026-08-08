@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/reservoir_trials.mlpl"
+initial=[[2,0,0,0],[1.8,0.2,0,0],[-2,0,0,0],[-1.8,-0.2,0,0],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];iq=[[1.9,0.1,0,0],[-1.9,-0.1,0,0],[0.1,1.9,0,0],[-0.1,-1.9,0,0]]
+shifted=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,0,0,2],[0,0,0.2,1.8],[0,0,0,-2],[0,0,-0.2,-1.8]];sq=[[0,0,1.9,0.1],[0,0,-1.9,-0.1],[0,0,0.1,1.9],[0,0,-0.1,-1.9]]
+a=initial*0.33+shifted*0.67;aq=iq*0.33+sq*0.67;memory=concat(initial,a,0);stream=concat(iq,aq,0);base=u:covariance_projection(initial,4);seeds=[11,17,29,47,83]
+s1=u:reservoir_trial_summary(stream,memory,base,1,seeds,0.75);s2=u:reservoir_trial_summary(stream,memory,base,2,seeds,0.75);s4=u:reservoir_trial_summary(stream,memory,base,4,seeds,0.75)
+print("schema reservoir trials detection_rate p50_delay p95_delay mean_monitored censored_delay")
+print([1,s1.size,s1.trials,s1.detection_rate,s1.p50_delay,s1.p95_delay,s1.mean_monitored,6]);print([1,s2.size,s2.trials,s2.detection_rate,s2.p50_delay,s2.p95_delay,s2.mean_monitored,6]);[1,s4.size,s4.trials,s4.detection_rate,s4.p50_delay,s4.p95_delay,s4.mean_monitored,6]

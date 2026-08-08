@@ -1,0 +1,8 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/reservoir_trials.mlpl"
+def u:check_trials(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+u:check_trials(eq(u:delay_percentile([2,2,4,6,6],0.5),4),"delay p50")
+u:check_trials(eq(u:delay_percentile([2,2,4,6,6],0.95),6),"delay p95 includes censoring")
+u:check_trials(eq(u:delay_percentile([2,2,2,2,4],0.95),4),"delay p95 detected")
+"PASS reservoir_trials"

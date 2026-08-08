@@ -58,6 +58,9 @@ projection-sweep:
 reservoir-shift-detection:
     ./scripts/run-reservoir-shift-detection
 
+reservoir-seed-trials:
+    ./scripts/run-reservoir-seed-trials
+
 check:
     ./scripts/check
 

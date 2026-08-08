@@ -1,0 +1,1 @@
+Run reservoir shift detection across multiple deterministic seeds and summarize each reservoir size with detection probability plus p50/p95 detection delay. Represent non-detection explicitly as a censored sentinel, report monitoring work, add focused tests/docs/Just/README/check integration, and publish using only git add/commit/push without hooks.

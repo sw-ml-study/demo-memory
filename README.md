@@ -75,6 +75,8 @@ recall instead of assuming a fixed maintenance interval.
 exposes missed degradation and unnecessary rebuilds from policy choices.
 [Reservoir monitoring](docs/reservoir-shift-detection.md) replaces hand-picked
 samples and measures shift-detection delay against monitoring work.
+[Reservoir seed trials](docs/reservoir-seed-trials.md) report detection rate
+and delay percentiles without relying on one replacement sequence.
 
 ### Honest native measurements
 
@@ -117,6 +119,7 @@ just shift-rebuild-cadence
 just adaptive-rebuild
 just adaptive-threshold-samples
 just reservoir-shift-detection
+just reservoir-seed-trials
 
 # Bounded-memory policies and timing
 just memory-timing
