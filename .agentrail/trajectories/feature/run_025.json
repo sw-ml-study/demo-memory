@@ -1,0 +1,11 @@
+{
+  "task_type": "feature",
+  "state": {
+    "number": 28,
+    "step": "reservoir-shift-detection"
+  },
+  "action": "Implemented visible seeded reservoir replacement and row gathering, stream detection demo, deterministic tests, threshold-boundary documentation, RNG-stream capability note, and README/Just/check integration.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-07T19:40:16"
+}

@@ -1,9 +1,10 @@
 number = 28
 slug = "reservoir-shift-detection"
-status = "in-progress"
+status = "completed"
 description = "Implement deterministic reservoir sampling over a retrieval query stream and ..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T19:37:55"
+completed_at = "2026-08-07T19:40:16"
 task_type = "feature"
-commits = []
+commits = ["9615af6bc6623d2dd7e06d1ad685750c80df3dba"]

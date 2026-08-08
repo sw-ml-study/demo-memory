@@ -1,0 +1,1 @@
+Added deterministic reservoir sampling over a healthy-to-shifted query stream and measured adaptive rebuild detection across reservoir sizes, checkpoints, and monitoring work.
