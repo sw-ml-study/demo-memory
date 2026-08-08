@@ -1,9 +1,10 @@
 number = 18
 slug = "multiprobe-retrieval"
-status = "in-progress"
+status = "completed"
 description = "Implement binary multi-probe retrieval over exact and one-bit-neighbor prefix..."
 role = "production"
 context_files = []
 created_at = "2026-08-07T18:40:44"
+completed_at = "2026-08-07T18:42:05"
 task_type = "feature"
-commits = []
+commits = ["d9aff248fa574f992660281ac12d27670d1ec8d0"]

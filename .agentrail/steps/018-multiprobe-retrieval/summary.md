@@ -1,0 +1,1 @@
+Implemented radius-one multi-probe binary retrieval and compared it with exact-prefix search at widths three through five; reported recall, comparisons, average candidates, fallbacks, and reduction; radius one recovered 100% recall while width five retained 81.25% comparison reduction.
