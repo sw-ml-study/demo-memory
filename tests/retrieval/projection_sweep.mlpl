@@ -1,0 +1,8 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/bench/projection_sweep.mlpl"
+def u:check_sweep(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+m=u:standard_projection_sweep();u:check_sweep(eq(take(shape(m),0,0),4),"four widths");u:check_sweep(eq(take(shape(m),0,1),12),"schema width")
+for row in m{u:check_sweep(1-gt(take(row,0,3),take(row,0,4)),"hamming min mean");u:check_sweep(1-gt(take(row,0,4),take(row,0,5)),"hamming mean max");u:check_sweep(1-gt(take(row,0,6),take(row,0,7)),"indexed min mean");u:check_sweep(1-gt(take(row,0,7),take(row,0,8)),"indexed mean max")}
+"PASS projection_sweep"

@@ -1,0 +1,1 @@
+Sweep sign-projection widths 4/8/12/16 across three deterministic seeds, summarize min/mean/max exhaustive Hamming recall, indexed recall, and comparison reduction, with stable schema/tests/docs/just/check; publish via git add/commit/push without hooks; complete and suggest next step.

@@ -46,6 +46,9 @@ prefix-widths:
 projected-codes:
     ./scripts/run-projected-codes
 
+projection-sweep:
+    ./scripts/run-projection-sweep
+
 check:
     ./scripts/check
 

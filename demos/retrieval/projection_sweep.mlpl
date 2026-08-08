@@ -1,0 +1,7 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/bench/projection_sweep.mlpl"
+print("schema width seeds hamming_recall_min mean max indexed_recall_min mean max reduction_min mean max")
+m=u:standard_projection_sweep();for row in m{print("row",row)}
+"PASS projection_sweep"
