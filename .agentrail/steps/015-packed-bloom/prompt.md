@@ -1,0 +1,1 @@
+Implement a packed-word Bloom filter using delivered MLPL bit operations, verify membership equivalence with the logical filter, compare logical bits versus word count and native operation throughput, document exact-f64 integer and packed-storage boundaries, add just/tests/check integration; publish by git add/commit/push without hooks; complete and suggest next step.

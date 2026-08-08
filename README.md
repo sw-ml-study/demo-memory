@@ -33,6 +33,8 @@ an explicit parameter on those same traces.
 against an exact-set oracle while keeping packed-memory claims upstream-gated.
 [Counting Bloom deletion](docs/counting-bloom-filter.md) adds duplicate-aware
 counters, removal, and explicit underflow protection.
+[Packed-word Bloom](docs/packed-bloom-filter.md) uses the delivered bit
+operations and proves equivalence with the logical representation.
 [Native timing](docs/native-timing.md) adds warmed, batched throughput using
 the monotonic `clock_ms()` runtime capability and emits reproducibility
 metadata before every run.
@@ -46,6 +48,7 @@ just demo
 just benchmark
 just bloom-benchmark
 just counting-bloom
+just packed-bloom
 just timing-benchmark
 just benchmark-report
 # just compare-reports out/BEFORE.txt out/AFTER.txt

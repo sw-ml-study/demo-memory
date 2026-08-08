@@ -1,0 +1,10 @@
+# Logical bits packed into exact 32-bit integer-valued MLPL words.
+def u:packed_new(bit_count, hash_count) { "Create an empty packed-word Bloom filter."; {words: fill([ceil(bit_count / 32)], 0), bit_count: bit_count, hash_count: hash_count, word_width: 32, inserted: 0} }
+def u:packed_set_hashes(filter, key, h) { "Set remaining hash-selected bits."; if eq(h, filter.hash_count) { filter } else { bit=u:bloom_hash(key,h,filter.bit_count); word=floor(bit/32); offset=u:bloom_rem(bit,32); mask=shl(1,offset,32); next={words: scatter(filter.words,word,bor(take(filter.words,0,word),mask)),bit_count: filter.bit_count,hash_count: filter.hash_count,word_width: 32,inserted: filter.inserted}; u:packed_set_hashes(next,key,h+1) } }
+def u:packed_insert(filter,key) { f=u:packed_set_hashes(filter,key,0); {words: f.words,bit_count: f.bit_count,hash_count: f.hash_count,word_width: 32,inserted: filter.inserted+1} }
+def u:packed_build_from(filter,keys,i) { if eq(i,tally(keys)){filter}else{u:packed_build_from(u:packed_insert(filter,take(keys,0,i)),keys,i+1)} }
+def u:packed_build(bit_count,hash_count,keys) { "Build a packed-word Bloom filter."; u:packed_build_from(u:packed_new(bit_count,hash_count),keys,0) }
+def u:packed_contains_from(filter,key,h) { if eq(h,filter.hash_count){1}else{bit=u:bloom_hash(key,h,filter.bit_count);word=floor(bit/32);offset=u:bloom_rem(bit,32);if gt(band(take(filter.words,0,word),shl(1,offset,32)),0){u:packed_contains_from(filter,key,h+1)}else{0}} }
+def u:packed_contains(filter,key) { "Return possible membership from packed words."; u:packed_contains_from(filter,key,0) }
+def u:packed_set_bits(filter) { "Count set bits across words."; reduce_add(popcount(filter.words),0) }
+def u:packed_valid(filter) { eq(tally(filter.words),ceil(filter.bit_count/32))*eq(filter.word_width,32)*eq(reduce_add(eq(filter.words,bmask(filter.words,32)),0),tally(filter.words)) }

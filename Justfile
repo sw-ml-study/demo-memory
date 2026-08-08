@@ -25,6 +25,9 @@ bloom-benchmark:
 counting-bloom:
     ./scripts/run-counting-bloom
 
+packed-bloom:
+    ./scripts/run-packed-bloom
+
 lru-benchmark:
     ./scripts/run-lru-benchmark
 

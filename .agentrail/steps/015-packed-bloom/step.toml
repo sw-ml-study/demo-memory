@@ -1,0 +1,9 @@
+number = 15
+slug = "packed-bloom"
+status = "in-progress"
+description = "Implement a packed-word Bloom filter using delivered MLPL bit operations, ver..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T18:13:46"
+task_type = "feature"
+commits = []

@@ -1,0 +1,10 @@
+include "../../src/bloom/filter.mlpl"
+include "../../src/bloom/packed_filter.mlpl"
+def u:check_packed(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+keys=[3,7,11,19,23,31,43,47]; logical=u:bloom_build(61,3,keys); packed=u:packed_build(61,3,keys)
+u:check_packed(u:packed_valid(packed),"packed invariant")
+u:check_packed(eq(tally(packed.words),2),"61 bits use two words")
+u:check_packed(eq(u:packed_set_bits(packed),reduce_add(logical.bits,0)),"set-bit equivalence")
+same=1; for key in concat(keys,[100,101,102,103]) { same=same*eq(u:bloom_contains(logical,key),u:packed_contains(packed,key)) }
+u:check_packed(same,"membership equivalence")
+"PASS packed_filter"

@@ -1,0 +1,12 @@
+include "../../src/bloom/filter.mlpl"
+include "../../src/bloom/packed_filter.mlpl"
+inserted=[3,7,11,19,23,31,43,47]
+queries=concat(inserted,floor(random(42,[80])*100000)+100)
+logical=u:bloom_build(61,3,inserted); packed=u:packed_build(61,3,inserted)
+same=1; for key in queries { same=same*eq(u:bloom_contains(logical,key),u:packed_contains(packed,key)) }
+print("representation logical_slots packed_words set_bits equivalent")
+print("row",[tally(logical.bits),tally(packed.words),u:packed_set_bits(packed),same])
+i=0;t0=clock_ms();while gt(50,i){for key in queries{x=u:bloom_contains(logical,key)};i=i+1};logical_rate=50*tally(queries)*1000/(clock_ms()-t0)
+i=0;t0=clock_ms();while gt(50,i){for key in queries{x=u:packed_contains(packed,key)};i=i+1};packed_rate=50*tally(queries)*1000/(clock_ms()-t0)
+print("throughput logical packed",logical_rate,packed_rate)
+"PASS packed_bloom"
