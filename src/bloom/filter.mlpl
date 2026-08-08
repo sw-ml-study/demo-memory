@@ -1,0 +1,44 @@
+# Logical Bloom filter. The bit vector is currently a dense f64 array, so this
+# demonstrates membership behavior but not a packed-memory representation.
+
+def u:bloom_rem(value, divisor) { "Return a nonnegative arithmetic remainder."; value - floor(value / divisor) * divisor }
+def u:bloom_hash(key, hash_index, bit_count) { "Return one deterministic Bloom-filter bit index."; u:bloom_rem(key * 37 + 17 + hash_index * (key * key * 13 + key * 7 + 19), bit_count) }
+def u:bloom_new(bit_count, hash_count) { "Create an empty logical Bloom filter."; {bits: fill([bit_count], 0), bit_count: bit_count, hash_count: hash_count, inserted: 0} }
+def u:bloom_insert_hashes(filter, key, hash_index) { "Set all remaining hash-selected bits for one key.";
+  if eq(hash_index, filter.hash_count) { filter } else {
+    index = u:bloom_hash(key, hash_index, filter.bit_count);
+    next = {bits: scatter(filter.bits, index, 1), bit_count: filter.bit_count, hash_count: filter.hash_count, inserted: filter.inserted};
+    u:bloom_insert_hashes(next, key, hash_index + 1)
+  }
+}
+def u:bloom_insert(filter, key) { "Insert one key into a logical Bloom filter.";
+  updated = u:bloom_insert_hashes(filter, key, 0);
+  {bits: updated.bits, bit_count: updated.bit_count, hash_count: updated.hash_count, inserted: filter.inserted + 1}
+}
+def u:bloom_insert_many_from(filter, keys, index) { "Insert all remaining keys."; if eq(index, tally(keys)) { filter } else { u:bloom_insert_many_from(u:bloom_insert(filter, take(keys, 0, index)), keys, index + 1) } }
+def u:bloom_build(bit_count, hash_count, keys) { "Build a logical Bloom filter from a key vector."; u:bloom_insert_many_from(u:bloom_new(bit_count, hash_count), keys, 0) }
+def u:bloom_contains_hashes(filter, key, hash_index) { "Return whether all remaining selected bits are set.";
+  if eq(hash_index, filter.hash_count) { 1 } else {
+    index = u:bloom_hash(key, hash_index, filter.bit_count);
+    if eq(take(filter.bits, 0, index), 0) { 0 } else { u:bloom_contains_hashes(filter, key, hash_index + 1) }
+  }
+}
+def u:bloom_contains(filter, key) { "Return possible membership; zero proves absence."; u:bloom_contains_hashes(filter, key, 0) }
+def u:exact_contains_from(keys, key, index) { "Return exact vector membership for the benchmark oracle."; if eq(index, tally(keys)) { 0 } else { if eq(take(keys, 0, index), key) { 1 } else { u:exact_contains_from(keys, key, index + 1) } } }
+def u:exact_contains(keys, key) { "Return exact vector membership."; u:exact_contains_from(keys, key, 0) }
+def u:bloom_valid(filter) { "Check logical vector shape and binary bit values."; eq(tally(filter.bits), filter.bit_count) * gt(filter.bit_count, 0) * gt(filter.hash_count, 0) * eq(reduce_add(eq(filter.bits, 0) + eq(filter.bits, 1), 0), filter.bit_count) }
+
+def u:bloom_evaluate(filter, inserted_keys, queries) { "Evaluate approximate membership against an exact-set oracle.";
+  index = 0; true_positive = 0; false_negative = 0; false_positive = 0; true_negative = 0;
+  while gt(tally(queries), index) {
+    key = take(queries, 0, index);
+    exact = u:exact_contains(inserted_keys, key);
+    possible = u:bloom_contains(filter, key);
+    true_positive = true_positive + exact * possible;
+    false_negative = false_negative + exact * (1 - possible);
+    false_positive = false_positive + (1 - exact) * possible;
+    true_negative = true_negative + (1 - exact) * (1 - possible);
+    index = index + 1
+  };
+  {true_positive: true_positive, false_negative: false_negative, false_positive: false_positive, true_negative: true_negative}
+}

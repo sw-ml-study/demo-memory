@@ -35,7 +35,7 @@ its systems claim being measurable. It is the handoff surface from
 | Demo | Runs with current surface | Upstream pressure |
 |---|---|---|
 | Linear vs Robin Hood probing | Yes | clock for throughput |
-| Bloom/counting filters | Approximation | unsigned bits, popcount |
+| Bloom/counting filters | Logical Bloom filter runs; packed form blocked | unsigned bits, popcount, packed storage |
 | Tiny-pointer navigation | Logical approximation | packed widths/layout/size |
 | LRU and KV eviction | Yes | clock only for performance claims |
 | Binary-code sparse retrieval | Numeric approximation | bits, popcount, top-k/index APIs |

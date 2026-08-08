@@ -1,0 +1,23 @@
+include "../../src/bloom/filter.mlpl"
+include "../../src/bench/bloom_matrix.mlpl"
+
+def u:check_bloom(condition, label) { "Exit unsuccessfully when a Bloom-filter invariant is false."; if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+
+inserted = [3, 7, 11, 19]
+filter = u:bloom_build(17, 3, inserted)
+u:check_bloom(u:bloom_valid(filter), "filter invariant")
+u:check_bloom(eq(u:bloom_contains(filter, 3), 1), "inserted key may be present")
+u:check_bloom(eq(u:bloom_contains(filter, 19), 1), "last inserted key may be present")
+result = u:bloom_evaluate(filter, inserted, concat(inserted, [100, 101, 102, 103]))
+u:check_bloom(eq(result.false_negative, 0), "Bloom filters have no false negatives")
+u:check_bloom(eq(result.true_positive, tally(inserted)), "oracle confirms all inserted keys")
+u:check_bloom(eq(result.false_positive + result.true_negative, 4), "all absent queries classified")
+
+matrix = u:bloom_standard_matrix()
+u:check_bloom(eq(take(shape(matrix), 0, 0), 6), "six configurations")
+u:check_bloom(eq(take(shape(matrix), 0, 1), 13), "schema width")
+u:check_bloom(eq(reduce_add(take(matrix, 1, 7), 0), 0), "no configuration has false negatives")
+u:check_bloom(eq(reduce_add(take(matrix, 1, 6), 0), 48), "all inserted queries are true positives")
+u:check_bloom(lt(take(take(matrix, 0, 4), 0, 12), take(take(matrix, 0, 0), 0, 12)), "larger one-hash budget lowers false positives")
+u:check_bloom(lt(take(take(matrix, 0, 5), 0, 12), take(take(matrix, 0, 1), 0, 12)), "larger three-hash budget lowers false positives")
+"PASS bloom_filter"

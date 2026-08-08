@@ -1,0 +1,8 @@
+include "../../src/bloom/filter.mlpl"
+include "../../src/bench/bloom_matrix.mlpl"
+
+print("demo-memory logical Bloom filter schema v1")
+print("rows: schema workload bits hashes inserted queries true_positive false_negative false_positive true_negative set_bits density false_positive_rate")
+matrix = u:bloom_standard_matrix()
+for row in matrix { print("row", row) }
+"PASS bloom_false_positives"

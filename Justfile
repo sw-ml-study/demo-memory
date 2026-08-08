@@ -4,6 +4,9 @@ default:
 benchmark:
     ./scripts/run-benchmark
 
+bloom-benchmark:
+    ./scripts/run-bloom-benchmark
+
 lru-benchmark:
     ./scripts/run-lru-benchmark
 

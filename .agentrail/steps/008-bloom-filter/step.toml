@@ -1,0 +1,9 @@
+number = 8
+slug = "bloom-filter"
+status = "in-progress"
+description = "Implement a deterministic logical Bloom filter backed by current MLPL numeric..."
+role = "production"
+context_files = []
+created_at = "2026-08-07T17:23:51"
+task_type = "feature"
+commits = []

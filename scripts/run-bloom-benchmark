@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+mlpl=${MLPL:-"$repo_root/../sw-mlpl/target/debug/mlpl-repl"}
+
+if [ ! -x "$mlpl" ]; then
+  echo "mlpl-repl is not executable: $mlpl" >&2
+  echo "set MLPL=/absolute/path/to/mlpl-repl" >&2
+  exit 1
+fi
+
+exec "$mlpl" --source-dir "$repo_root" "$repo_root/demos/bloom/false_positives.mlpl"

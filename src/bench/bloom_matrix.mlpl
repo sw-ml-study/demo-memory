@@ -1,0 +1,23 @@
+# Bloom schema v1: schema, workload, bit_count, hash_count, inserted, queries,
+# true_positive, false_negative, false_positive, true_negative, set_bits,
+# bit_density, false_positive_rate.
+
+def u:bloom_benchmark_row(workload, bit_count, hash_count, inserted_keys, queries) { "Return one stable Bloom-filter benchmark row.";
+  filter = u:bloom_build(bit_count, hash_count, inserted_keys);
+  result = u:bloom_evaluate(filter, inserted_keys, queries);
+  set_bits = reduce_add(filter.bits, 0);
+  negatives = result.false_positive + result.true_negative;
+  [1, workload, bit_count, hash_count, tally(inserted_keys), tally(queries), result.true_positive, result.false_negative, result.false_positive, result.true_negative, set_bits, set_bits / bit_count, result.false_positive / negatives]
+}
+def u:bloom_standard_matrix() { "Compare three bit budgets and two hash counts on one exact workload.";
+  inserted = [3, 7, 11, 19, 23, 31, 43, 47];
+  absent = floor(random(42, [400]) * 100000) + 100;
+  queries = concat(inserted, absent);
+  a = reshape(u:bloom_benchmark_row(0, 17, 1, inserted, queries), [1, 13]);
+  b = reshape(u:bloom_benchmark_row(1, 17, 3, inserted, queries), [1, 13]);
+  c = reshape(u:bloom_benchmark_row(2, 31, 1, inserted, queries), [1, 13]);
+  d = reshape(u:bloom_benchmark_row(3, 31, 3, inserted, queries), [1, 13]);
+  e = reshape(u:bloom_benchmark_row(4, 61, 1, inserted, queries), [1, 13]);
+  f = reshape(u:bloom_benchmark_row(5, 61, 3, inserted, queries), [1, 13]);
+  concat(concat(concat(concat(concat(a, b, 0), c, 0), d, 0), e, 0), f, 0)
+}

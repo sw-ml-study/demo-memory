@@ -14,3 +14,4 @@ fi
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/bench/probe_distributions.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/kv/lru_memory.mlpl"
 "$mlpl" --source-dir "$repo_root" "$repo_root/tests/kv/fifo_vs_lru.mlpl"
+"$mlpl" --source-dir "$repo_root" "$repo_root/tests/bloom/filter.mlpl"
