@@ -1,0 +1,7 @@
+include "../../src/bloom/filter.mlpl"
+include "../../src/bloom/counting_filter.mlpl"
+
+def u:row(id, bits, hashes) { f = u:counting_build(bits, hashes, [3, 7, 7, 11, 19]); once = unwrap(u:counting_remove(f, 7)); twice = unwrap(u:counting_remove(once, 7)); [1, id, bits, hashes, f.inserts, twice.removals, reduce_add(twice.counters, 0), u:counting_max_from(twice.counters, 0, 0), u:counting_contains(twice, 7)] }
+print("schema config bits hashes inserts removals counter_sum max_counter removed_key_possible")
+for row in concat(concat(reshape(u:row(0, 17, 1), [1, 9]), reshape(u:row(1, 17, 3), [1, 9]), 0), concat(reshape(u:row(2, 61, 1), [1, 9]), reshape(u:row(3, 61, 3), [1, 9]), 0), 0) { print("row", row) }
+"PASS counting_deletions"

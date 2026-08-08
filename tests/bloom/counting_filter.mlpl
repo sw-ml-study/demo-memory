@@ -1,0 +1,13 @@
+include "../../src/bloom/filter.mlpl"
+include "../../src/bloom/counting_filter.mlpl"
+def u:check_counting(condition, label) { if condition { 1 } else { eprint("FAIL", label); exit(1) } }
+f = u:counting_build(31, 3, [7, 7, 11])
+u:check_counting(u:counting_valid(f), "valid counters")
+once = unwrap(u:counting_remove(f, 7))
+u:check_counting(eq(u:counting_contains(once, 7), 1), "duplicate survives one removal")
+twice = unwrap(u:counting_remove(once, 7))
+u:check_counting(eq(u:counting_contains(twice, 11), 1), "other key survives")
+empty = u:counting_new(31, 3)
+u:check_counting(1 - is_ok(u:counting_remove(empty, 99)), "underflow rejected")
+u:check_counting(u:counting_valid(twice), "removal preserves invariant")
+"PASS counting_filter"

@@ -7,6 +7,9 @@ benchmark:
 bloom-benchmark:
     ./scripts/run-bloom-benchmark
 
+counting-bloom:
+    ./scripts/run-counting-bloom
+
 lru-benchmark:
     ./scripts/run-lru-benchmark
 

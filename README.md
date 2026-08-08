@@ -31,6 +31,8 @@ compares uniform-reuse, hot-set, scan, and bursty access patterns.
 an explicit parameter on those same traces.
 [The logical Bloom filter](docs/bloom-filter.md) measures false positives
 against an exact-set oracle while keeping packed-memory claims upstream-gated.
+[Counting Bloom deletion](docs/counting-bloom-filter.md) adds duplicate-aware
+counters, removal, and explicit underflow protection.
 [Probe-distribution reporting](docs/probe-distributions.md) exposes the lookup
 tails hidden by aggregate totals through histograms and p50/p95 summaries.
 
@@ -40,6 +42,7 @@ Install [`just`](https://just.systems/), then use the repository recipes:
 just demo
 just benchmark
 just bloom-benchmark
+just counting-bloom
 just lru-benchmark
 just eviction-benchmark
 just probe-distributions
