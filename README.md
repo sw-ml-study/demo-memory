@@ -91,6 +91,8 @@ covariance-subspace residuals with failure-based recall monitoring.
 immediate rebuilding versus recall confirmation.
 [Failed-rebuild escalation](docs/failed-rebuild-escalation.md) tests wider
 codes, broader probing, and dense correctness fallback.
+[Wider-code seed trials](docs/wider-code-seed-trials.md) measure whether
+random-projection recovery survives width and seed variation.
 
 ### Honest native measurements
 
@@ -141,6 +143,7 @@ just recency-local-drift
 just feature-drift-alarm
 just feature-alarm-actions
 just failed-rebuild-escalation
+just wider-code-seed-trials
 
 # Bounded-memory policies and timing
 just memory-timing

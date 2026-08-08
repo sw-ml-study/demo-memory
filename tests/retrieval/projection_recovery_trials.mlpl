@@ -1,0 +1,7 @@
+include "../../src/retrieval/projection_recovery_trials.mlpl"
+def u:check_recovery(c,l){if c{1}else{eprint("FAIL",l);exit(1)}}
+v=[0.25,1,0.75,0.5]
+u:check_recovery(eq(u:recovery_min_from(v,1,take(v,0,0)),0.25),"minimum")
+u:check_recovery(eq(u:recovery_max_from(v,1,take(v,0,0)),1),"maximum")
+u:check_recovery(eq(reduce_add(1-lt(v,0.75),0),2),"threshold successes")
+"PASS projection_recovery_trials"

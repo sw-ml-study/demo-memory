@@ -76,6 +76,9 @@ feature-alarm-actions:
 failed-rebuild-escalation:
     ./scripts/run-failed-rebuild-escalation
 
+wider-code-seed-trials:
+    ./scripts/run-wider-code-seed-trials
+
 check:
     ./scripts/check
 

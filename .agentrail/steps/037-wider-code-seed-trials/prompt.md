@@ -1,0 +1,1 @@
+Validate localized-drift recovery from random sign projections across widths 4, 8, and 12 and deterministic seeds 11, 17, 29, 47, and 83. Report recall min/mean/max, validation success rate, mean indexed recall, and mean indexed work. Add focused tests/docs/Just/README/check integration and publish using only git add/commit/push without hooks.

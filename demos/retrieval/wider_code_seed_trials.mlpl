@@ -1,0 +1,9 @@
+include "../../src/retrieval/binary_index.mlpl"
+include "../../src/retrieval/multiprobe_index.mlpl"
+include "../../src/retrieval/sign_projection.mlpl"
+include "../../src/retrieval/projection_recovery_trials.mlpl"
+memory=[[0,0,2,0],[0,0,1.8,0.2],[0,0,-2,0],[0,0,-1.8,-0.2],[0,2,0,0],[0.2,1.8,0,0],[0,-2,0,0],[-0.2,-1.8,0,0]];queries=[[0,0,1.9,0.1],[0,0,1.7,0.25],[0,0,-1.9,-0.1],[0,0,-1.7,-0.25]];seeds=[11,17,29,47,83]
+a=u:projection_recovery_summary(memory,queries,4,seeds,1,0.75);b=u:projection_recovery_summary(memory,queries,8,seeds,1,0.75);c=u:projection_recovery_summary(memory,queries,12,seeds,1,0.75)
+def u:recovery_row(x) { [1,x.width,x.trials,x.recall_min,x.recall_mean,x.recall_max,x.success_rate,x.indexed_mean,x.work_mean] }
+print("schema width trials recall_min recall_mean recall_max success_rate indexed_mean work_mean")
+print(u:recovery_row(a));print(u:recovery_row(b));u:recovery_row(c)
